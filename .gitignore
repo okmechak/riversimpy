@@ -4,6 +4,9 @@
 # Python
 *.pyc
 
+#PyPi
+dist/
+
 # Compiled Object files
 *.slo
 *.lo
