@@ -1,0 +1,87 @@
+# Prerequisites
+*.d
+
+# Python
+*.pyc
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+#folders
+bin/*
+build/*
+lib/*
+install/*
+**/build
+
+#vscode project file
+*.code-workspace
+.vscode/ipch/*
+
+#visual studio output files
+**/.vs
+**/Debug
+**/x64
+Doxyfile
+out/*
+
+#some test files..FIXME:
+tests/solution-0.vtk
+tests/grid-0.eps
+tests/test.msh
+tests/solution.vtk
+tests/iotest.json
+mesh.msh
+simulation_data.json
+solution.vtk
+research/*.vtk
+research/*.json
+research/*.msh
+research/experiment_results/*
+tests/simulation.json
+tests/mesh_max_area.msh
+tests/mesh_max_edge_lenght.msh
+tests/mesh_max_triangle_ratio.msh
+tests/mesh_min_angle.msh
+tests/mesh_min_area.msh
+tests/mesh_min_edge_lenght.msh
+tests/test_boundary.msh
+tests/Forward_River_Evolution_boundary.msh
+tests/Forward_River_Evolution.msh
+
+#LaTeX
+docsrc/master/*.aux
+docsrc/master/*.bcf
+docsrc/master/*.fls
+docsrc/master/*.log
+docsrc/master/*.run.xml
+docsrc/master/*.synctex.gz
+docsrc/master/*.fdb_latexmk
+docsrc/master/*.toc
