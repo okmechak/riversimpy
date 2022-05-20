@@ -9,7 +9,7 @@ setup(
   author = 'OLEG KMECHAK',                   # Type in your name
   author_email = 'oleg.kmechak@gmail.com',      # Type in your E-Mail
   url = 'https://github.com/okmechak/riversimpy',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/okmechak/riversimpy/archive/refs/tags/v0.1.tar.gz',    # I explain this later on
+  download_url = 'https://github.com/okmechak/riversimpy/archive/refs/tags/v0.2.tar.gz',    # I explain this later on
   keywords = ['LAPLACEA', 'RIVER', 'FEM', 'HARMONIC', 'NETWORK', 'GROWTH', 'SIMULATION'],   # Keywords that define your package best
   install_requires=[ ]  ,
   classifiers=[
