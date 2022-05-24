@@ -4,6 +4,10 @@
 # Python
 *.pyc
 
+# Riversim
+*msh
+*json
+
 #PyPi
 dist/
 
