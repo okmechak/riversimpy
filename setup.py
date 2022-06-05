@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
   name = 'riversim',         # How you named your package folder (MyLib)
   packages = ['riversim'],   # Chose the same as "name"
-  version = '0.3',      # Start with a small number and increase it with every change you make
+  version = '0.4',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Simulation of river growth using model based on Laplace equation. Mathematicaly, in this program we solve PDE equation using Finite Element Method(FEM).',   # Give a short description about your library
   author = 'OLEG KMECHAK',                   # Type in your name
