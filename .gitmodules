@@ -1,3 +1,4 @@
 [submodule "riversim_source"]
 	path = riversim_source
 	url = https://github.com/okmechak/riversim
+	branch = riversimpy
