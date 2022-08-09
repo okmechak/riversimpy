@@ -6,7 +6,7 @@ setup(
   version = '0.4',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Simulation of river growth using model based on Laplace equation. Mathematicaly, in this program we solve PDE equation using Finite Element Method(FEM).',   # Give a short description about your library
-  author = 'OLEG KMECHAK',                   # Type in your name
+  author = 'Oleg Kmechak',                   # Type in your name
   author_email = 'oleg.kmechak@gmail.com',      # Type in your E-Mail
   url = 'https://github.com/okmechak/riversimpy',   # Provide either the link to your github or to your website
   download_url = '',#'https://github.com/okmechak/riversimpy/archive/refs/tags/v0.2.tar.gz',    # I explain this later on
