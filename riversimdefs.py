@@ -1,6 +1,8 @@
 from riversim import *
 import matplotlib.pyplot as plt
 from IPython.display import display, clear_output
+import time
+import numpy as np
 
 def plot(fig, ax, model, figsize = [40, 40]):
 
@@ -64,27 +66,45 @@ def growRiver(m, plot_period = 50):
 
     dynamic_river_ids = m.rivers.tipBranchesIds()
 
+    out = {\
+        "bound_gen_t": np.zeros(m.number_of_steps), \
+        "mesh_gen_t": np.zeros(m.number_of_steps), \
+        "solver_t": np.zeros(m.number_of_steps), \
+        "integ_t": np.zeros(m.number_of_steps), \
+        "growth_t": np.zeros(m.number_of_steps), \
+        "plot_t": np.zeros(m.number_of_steps), \
+        "total_t": np.zeros(m.number_of_steps), \
+        "all_steps_time" : time.time(), \ 
+        "status": "init"}
+
     for i in range(m.number_of_steps):
+        out["total_t"][i] = time.time()
         if i % 10 == 0:
             print(i)
         # boundary generation: Combines boundary and river 
         # geometry into one(or several) closed boundary lines
+
+        out["bound_gen_t"][i] = time.time()
         m.boundary = BoundaryGenerator(\
             m.sources, \
             m.region, \
             m.rivers, \
             m.region_params)
+        out["bound_gen_t"][i] -= time.time()
     
         # mesh will be refined aroud growing tip points
+        out["mesh_gen_t"][i] = time.time()
         tip_points = t_PointList()
         for id in dynamic_river_ids:
             tip_points.append(m.rivers[id].tipPoint())
         triangle.mesh_params.tip_points = tip_points
         mesh = triangle.generate(m.boundary, m.region.holes)
+        out["mesh_gen_t"][i] -= time.time()
     
         # reset solver values
         # solver.clear() lets try without it
         
+        out["solver_t"][i] = time.time()
         try:
             solver.openMesh(mesh)
             for j in range(m.solver_params.adaptive_refinment_steps + 1):
@@ -94,10 +114,12 @@ def growRiver(m, plot_period = 50):
                 solver.assembleSystem(m.boundary_conditions)
                 solver.solve()
         except:
-            print("Error with solver.")
-            break
+            out["status"] = "Error with solver. Most probably due to rivers intersection."
+            return out
+        out["solver_t"][i] -= time.time()
     
         #series parameters evaluation
+        out["integ_t"][i] = time.time()
         id_series_params = t_ids_series_params()
         max_a1 = 0
         for id in dynamic_river_ids:
@@ -106,7 +128,9 @@ def growRiver(m, plot_period = 50):
             id_series_params[id] = solver.integrate_new(m.integr_params, tip_point, tip_angle)
             if id_series_params[id][0] > max_a1:
                 max_a1 = id_series_params[id][0]
-    
+        out["integ_t"][i] -= time.time()
+
+        out["growth_t"][i] = time.time()
         for id_series_param in id_series_params:
             id = id_series_param.key()
             series_param = id_series_param.data()
@@ -140,11 +164,19 @@ def growRiver(m, plot_period = 50):
                     if dynamic_river_ids[f] == id:
                         del dynamic_river_ids[f]
                         break
+        out["growth_t"][i] -= time.time()
+        
+        out["plot_t"][i] = time.time()
         if i % plot_period == 0:
             plot(fig, ax, m)
-
+        out["plot_t"][i] -= time.time()
+        
         # nothing to grow
+        out["total_t"][i] -= time.time()
         if not dynamic_river_ids:
             break
 
-        save(m, "debug.json")
+    out["status"] = "done"
+    out["all_steps_time"] -= time.time()
+    
+    return out
