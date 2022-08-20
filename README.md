@@ -7,7 +7,7 @@ For build process look at riversim repo riversimpy branch.
 
 How to update package on PyPi([source](https://medium.com/@joel.barmettler/how-to-upload-your-python-package-to-pypi-65edc5fe9c56)):
 ```bash
-python setup.py sdist
+python3 setup.py sdist
 twine upload dist/*
-pip install riversimpy --upgrade
+pip3 install riversimpy --upgrade
 ```
