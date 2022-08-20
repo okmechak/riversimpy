@@ -9,5 +9,5 @@ How to update package on PyPi([source](https://medium.com/@joel.barmettler/how-t
 ```bash
 python3 setup.py sdist
 twine upload dist/*
-pip3 install riversimpy --upgrade
+pip3 install riversim --upgrade
 ```
