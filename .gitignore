@@ -85,11 +85,12 @@ tests/Forward_River_Evolution_boundary.msh
 tests/Forward_River_Evolution.msh
 
 #LaTeX
-docsrc/master/*.aux
-docsrc/master/*.bcf
-docsrc/master/*.fls
-docsrc/master/*.log
-docsrc/master/*.run.xml
-docsrc/master/*.synctex.gz
-docsrc/master/*.fdb_latexmk
-docsrc/master/*.toc
+master_thesis/*.aux
+master_thesis/*.bcf
+master_thesis/*.fls
+master_thesis/*.log
+master_thesis/*.run.xml
+master_thesis/*.synctex.gz
+master_thesis/*.fdb_latexmk
+master_thesis/*.toc
+master_thesis/*.pdf
