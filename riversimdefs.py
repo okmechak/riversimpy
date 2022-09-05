@@ -81,7 +81,6 @@ def growRiver(m, plot_period = 50, debug = False):
         "solver_t": np.zeros(m.number_of_steps), \
         "integ_t": np.zeros(m.number_of_steps), \
         "growth_t": np.zeros(m.number_of_steps), \
-        "selfintersect_t": np.zeros(m.number_of_steps), \
         "plot_t": np.zeros(m.number_of_steps), \
         "total_t": np.zeros(m.number_of_steps), \
         "all_steps_time" : time.time(), \
@@ -104,6 +103,14 @@ def growRiver(m, plot_period = 50, debug = False):
         num_of_intersects = NumOfBoundaryIntersection(m.boundary, m.rivers.tipBoundary())
         if num_of_intersects > 0:
             out["status"] = "self intersection detected: " + str(num_of_intersects)
+            break
+
+        empt_rivers = Rivers()
+        empt_source = Sources()
+        only_boundary = BoundaryGenerator(empt_source, m.region, empt_rivers, m.region_params)
+        distance_to_boundary = DistanceFromPointsToBoundary(only_boundary, m.rivers.tipPoints())
+        if distance_to_boundary <= m.integr_params.integration_radius:
+            out["status"] = "Integration radius exceeds boundary: " + str(distance_to_boundary)
             break
         out["bound_gen_t"][i] -= time.time()
 
@@ -207,17 +214,6 @@ def growRiver(m, plot_period = 50, debug = False):
         
         if debug:
             save(m, "debug " + str(i) + ".json")
-
-        # self intersection
-        out["selfintersect_t"][i] = time.time()
-        empt_rivers = Rivers()
-        empt_source = Sources()
-        only_boundary = BoundaryGenerator(empt_source, m.region, empt_rivers, m.region_params)
-        distance_to_boundary = DistanceFromPointsToBoundary(only_boundary, m.rivers.tipPoints())
-        if distance_to_boundary <= m.integr_params.integration_radius:
-            out["status"] = "Integration radius exceeds boundary: " + str(distance_to_boundary)
-            break
-        out["selfintersect_t"][i] -= time.time()
 
         # nothing to grow
         out["total_t"][i] -= time.time()
