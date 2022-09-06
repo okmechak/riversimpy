@@ -14,11 +14,11 @@
 
 % dodaj opcję [licencjacka] dla pracy licencjackiej
 % dodaj opcję [en] dla wersji angielskiej (mogą być obie: [licencjacka,en])
-\documentclass[licencjacka]{pracamgr}
+\documentclass[magisterska]{pracamgr}
 
 
 % Dane magistranta:
-\autor{Imię Nazwisko}{123456}
+\autor{Oleg Kmechak}{383501}
 
 
 % Dane magistrantów:
@@ -29,15 +29,15 @@
 %\autoriv{Autor nr Cztery}{432145}
 %\autorv{Autor nr Pięć}{342011}
 
-\title{Tytuł pracy licencjackiej}
+\title{Riversim: oprogramowanie do wyliczenia wzrowstu sieci rzecznych w polu laplasowskim}
 
 
-\tytulang{An implementation of a difference blabalizer based on the theory of $\sigma$ -- $\rho$ phetors}
+\tytulang{Riversm: river network growth in laplacea field simulation program.}
 
 %kierunek: 
 % - matematyka, informacyka, ...
 % - Mathematics, Computer Science, ...
-\kierunek{informatyka}
+\kierunek{Fizyka}
 
 % informatyka - nie okreslamy zakresu (opcja zakomentowana)
 % matematyka - zakres moze pozostac nieokreslony,
@@ -57,28 +57,29 @@
 % (podać tytuł/stopień imię i nazwisko opiekuna
 % Instytut
 % ew. Wydział ew. Uczelnia (jeżeli nie MIM UW))
-\opiekun{dr. hab. Filigrana Fifaka\\
-  Instytut Blabalii Fetorycznej\\
+\opiekun{prof. dr hab. Piotr Szymczak\\
+  Instytut Fizyki Teoretycznej\\
   }
 
 % miesiąc i~rok:
-\date{Maj 2017}
+\date{Wrzesień 2022}
 
 %Podać dziedzinę wg klasyfikacji Socrates-Erasmus:
 \dziedzina{ 
 %11.0 Matematyka, Informatyka:\\ 
-11.1 Matematyka\\ 
+%1.3 Nauki fizyczne\\ 
 %11.3 Informatyka\\ 
 }
 
 %Klasyfikacja tematyczna wedlug AMS (matematyka) lub ACM (informatyka)
-\klasyfikacja{D. Software\\
-  D.127. Blabalgorithms\\
-  D.127.6. Numerical blabalysis}
+%todo
+%\klasyfikacja{D. Software\\
+%  D.127. Blabalgorithms\\
+%  D.127.6. Numerical blabalysis}
+\klasyfikacja{}
 
 % Słowa kluczowe:
-\keywords{blabaliza różnicowa, fetory $\sigma$-$\rho$, fooizm,
-  blarbarucja, blaba, fetoryka, baleronik}
+\keywords{fem, fizyka, wody podziemne, rownanie Laplacea, erozja, metody numeryczne}
 
 % Tu jest dobre miejsce na Twoje własne makra i~środowiska:
 \newtheorem{defi}{Definicja}[section]
@@ -91,12 +92,8 @@
 
 %tu idzie streszczenie na strone poczatkowa
 \begin{abstract}
-  W~pracy przedstawiono prototypową implementację blabalizatora
-  różnicowego bazującą na teorii fetorów $\sigma$-$\rho$ profesora
-  Fifaka.  Wykorzystanie teorii Fifaka daje wreszcie możliwość
-  efektywnego wykonania blabalizy numerycznej.  Fakt ten stanowi
-  przełom technologiczny, którego konsekwencje trudno z~góry
-  przewidzieć.
+  Wysokosc wód podziemnych w gruncie(jakim?) można(jak) opisać równaniem Laplacea w miejscach gdzie woda wychodzi na zewnątrz, tworzą się
+  źródła. W okolicy źródła wynika erozja która kształtuje sieć rzeczną
 \end{abstract}
 
 \tableofcontents
@@ -105,6 +102,8 @@
 
 \chapter*{Wprowadzenie}
 \addcontentsline{toc}{chapter}{Wprowadzenie}
+
+Rzeki są kształtowane.
 
 Blabalizator różnicowy jest podstawowym narzędziem blabalii
 fetorycznej.  Dlatego naukowcy z~całego świata prześcigają się

@@ -326,18 +326,18 @@
 	  \end{center}
 	  \@keywords\par
 	  \vspace*{26pt}%
-	  \begin{center}%
-		\bfseries\large Dziedzina pracy (kody wg programu Socrates-Erasmus)
-		\@endparpenalty\@M
-	  \end{center}
-	   \@dziedzina\par
-	  \vspace*{26pt}%
-	  \begin{center}%
-		\bfseries\large Klasyfikacja tematyczna
-		\@endparpenalty\@M
-	  \end{center}
-	  \@klasyfikacja\par
-	  \vspace*{26pt}%
+	  %\begin{center}%
+	%	%\bfseries\large Dziedzina pracy (kody wg programu Socrates-Erasmus)
+	%	\@endparpenalty\@M
+	  %\end{center}
+	  % \@dziedzina\par
+	  %\vspace*{26pt}%
+	  %\begin{center}%
+	%	%\bfseries\large Klasyfikacja tematyczna
+	%	\@endparpenalty\@M
+	  %\end{center}
+	  %\@klasyfikacja\par
+	  %\vspace*{26pt}%
 	%-------------------nowosc----------------
 	  \begin{center}%
 		\bfseries\large Tytuł pracy w języku angielskim
