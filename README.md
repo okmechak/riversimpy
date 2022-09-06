@@ -19,7 +19,7 @@ LaTeX generation setup:
 https://nevalsar.hashnode.dev/writing-latex-documents-with-ubuntu-and-visual-studio-code
 
 ```bash
-sudo apt install texlive-science texlive-extra-utils latexmk
+sudo apt install texlive-science texlive-extra-utils latexmk texlive-lang-polish
 ```
 
 and install LaTeX Workshop extension for VS Code.
