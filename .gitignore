@@ -94,3 +94,4 @@ master_thesis/*.synctex.gz
 master_thesis/*.fdb_latexmk
 master_thesis/*.toc
 master_thesis/*.pdf
+master_thesis/*.lot
