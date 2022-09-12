@@ -96,3 +96,4 @@ master_thesis/*.toc
 master_thesis/*.pdf
 master_thesis/*.lot
 master_thesis/*.lof
+master_thesis/magisterkowytex/*
