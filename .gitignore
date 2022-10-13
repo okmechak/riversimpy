@@ -97,3 +97,5 @@ master_thesis/*.pdf
 master_thesis/*.lot
 master_thesis/*.lof
 master_thesis/magisterkowytex/*
+master_thesis/RiverSim_master_thesis.bbl
+master_thesis/RiverSim_master_thesis.blg
