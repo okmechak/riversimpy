@@ -14,7 +14,7 @@
   %tu idzie streszczenie na strone poczatkowa
   \begin{abstract}
 
-    Modele rozwoju sieci mogą być wykorzystane do opisu problemów w szerokim zakresie - obszarów rozwoju sieci rzecznych, awarii elektrycznych, tworzenia naczyń krwionośnych lub żył liściowych. Mechanizmy mikroskopowe napędzające wzrost takich sieci różnią się od procesów erozji w tworzeniu rzek, oddziaływanie pola elektrycznego z materią w przypadku wyładowyłania elektrycznego do procesów biologicznych w żywych tkankach. \par
+    Modele rozwoju sieci mogą być wykorzystane do opisu problemów w szerokim zakresie obszarów -- rozwoju sieci rzecznych, awarii elektrycznych, tworzenia naczyń krwionośnych lub żył liściowych. Mechanizmy mikroskopowe napędzające wzrost takich sieci różnią się od procesów erozji w tworzeniu rzek, oddziaływanie pola elektrycznego z materią w przypadku wyładowyłania elektrycznego do procesów biologicznych w żywych tkankach. \par
 
     Co ciekawe, matematyczny formalizm opisujący rozwój sieci może być bardzo podobny w każdym problemie, chociaż fizyczne pola napędzające wzrost są bardzo różne. W naszym badaniu koncentrujemy się na wzroście cienkich palców w polu harmonicznym, z tempem i kierunkiem wzrostu wyznaczonym przez pole w pobliżu źródła. Uzasadniamy to podejście do przypadku sieci rzecznych i symulujemy wzrost takich sieci w celu zbadania wpływu zasad wzrostu na geometrie sieci rzeki. Symulacja jest przeprowadzana w oprogramowaniu stworzonym w ramach danej pracy.\par
 
@@ -84,7 +84,7 @@
 
     Chociaż zaniedbanie spływu powierzchniowego nie może wyjaśnić ewolucji sieci rzecznej na obszarach suchych lub w górach, wiele sieci rzecznych wydaje się być zasilanych głównie przez przepływ wód gruntowych (zob. Ref.~\cite{schumm1995ground, petroff2011geometry, seybold2017climate} i rozdział~\ref{chapter:validation}). Pierwszy ilościowy model opisujący ewolucję takich rzek przedstawił w 1980 r. Dunne \cite{dunne1980formation}. Bardziej szczegółowe modele zaproponowano na przykład w grupie Daniela Rothmana z MIT (Refs.~\cite{petroff2012four, devauchelle2012ramification}), gdzie autorzy powiązali wysokość zwierciadła wód gruntowych z kierunkiem i prędkością wzrostu rzeki.
 
-    Oprócz wspomnianego wcześniej zaniedbania spływu powierzchniowego, model grupowy Rothmana pomijał zmienną wysokość nieprzepuszczalnej warstwy, na której leży rzeka, co miałoby wpływ na kształt zwierciadła wód gruntowych. Zakładają również, że przepuszczalność powierzchni jest stała. Model uwzględnia jedynie rozwój sieci poprzez ruch źródeł. W rzeczywistości woda płynąca w rzece nieustannie ma wpływ na brzeg rzeki i jej ukształtowanie - pojawiają się meandry, koryto rozszerza się. Dodatkowo sama rzeka traktowana jest jako obiekt liniowy o zerowej szerokości. Nie jest to dalekie od rzeczywistości, ponieważ szerokość pojedynczego koryta jest znikoma w skali całej sieci rzecznej.
+    Oprócz wspomnianego wcześniej zaniedbania spływu powierzchniowego, model grupowy Rothmana pomijał zmienną wysokość nieprzepuszczalnej warstwy, na której leży rzeka, co miałoby wpływ na kształt zwierciadła wód gruntowych. Zakładają również, że przepuszczalność powierzchni jest stała. Model uwzględnia jedynie rozwój sieci poprzez ruch źródeł. W rzeczywistości woda płynąca w rzece nieustannie ma wpływ na brzeg rzeki i jej ukształtowanie -- pojawiają się meandry, koryto rozszerza się. Dodatkowo sama rzeka traktowana jest jako obiekt liniowy o zerowej szerokości. Nie jest to dalekie od rzeczywistości, ponieważ szerokość pojedynczego koryta jest znikoma w skali całej sieci rzecznej.
 
     \section{Wody podziemne}
 
@@ -153,7 +153,8 @@
       
       lub równanie Laplace'a, gdzie nie ma opadów ($P=0$):
       
-      \begin{equation}\label{laplace}
+      \begin{equation}
+        \label{laplace}
     		\Delta \phi = 0 \,.
     	\end{equation}	
 
@@ -163,7 +164,7 @@
 
     \section{Przybliżenie rzeki cienkim palcem}
 
-      Aby wyjaśnić przejście od dwuwymiarowych rzek do jednowymiarowych obiektów je reprezentujących, tak zwanych cienkich palców, posłużymy się innym przykładem procesu wzrostu w odpowiedzi na pole Laplace'a - lepkim palcowaniem. Ten podstawowy, hydrodynamiczny przykład wzrostu Laplace'a został sformułowany przez Muskata w 1937 r. \cite{muskat1937flow} i opisuje ewolucję granicy faz między dwiema fazami -- na przykład dwoma płynami, gdzie jedna najeżdża i wypycha drugą. W tym konkretnym przypadku pole $\phi$ to ciśnienie, a $\kappa$ to współczynnik ruchliwości. Pomijając ruchliwości fazy inwazyjnej prowadzi do uproszczonej jednofazowej wersji tego problemu z warunkiem brzegowym Dirichleta na rosnącej powierzchni międzyfazowej. Zatem front ruchomy jest izolinią pola ciśnienia ($\phi = 0$). Front rośnie wzdłuż linii pola z prędkością ($\vec{v}$) proporcjonalną do gradientu pola ciśnienia:
+      Aby wyjaśnić przejście od dwuwymiarowych rzek do jednowymiarowych obiektów je reprezentujących, tak zwanych cienkich palców, posłużymy się innym przykładem procesu wzrostu w odpowiedzi na pole Laplace'a -- lepkim palcowaniem. Ten podstawowy, hydrodynamiczny przykład wzrostu Laplace'a został sformułowany przez Muskata w 1937 r. \cite{muskat1937flow} i opisuje ewolucję granicy faz między dwiema fazami -- na przykład dwoma płynami, gdzie jedna najeżdża i wypycha drugą. W tym konkretnym przypadku pole $\phi$ to ciśnienie, a $\kappa$ to współczynnik ruchliwości. Pomijając ruchliwości fazy inwazyjnej prowadzi do uproszczonej jednofazowej wersji tego problemu z warunkiem brzegowym Dirichleta na rosnącej powierzchni międzyfazowej. Zatem front ruchomy jest izolinią pola ciśnienia ($\phi = 0$). Front rośnie wzdłuż linii pola z prędkością ($\vec{v}$) proporcjonalną do gradientu pola ciśnienia:
       
       \begin{equation}
         \vec{v} \propto \nabla \phi
@@ -171,9 +172,9 @@
 
       W niektórych przypadkach front inwazyjny staje się niestabilny, co prowadzi do powstania tzw. palców. Niestabilności pojawiające się w takim układzie zostały przeanalizowane przez Hilla w 1952 roku w swojej pracy na temat wypierania cieczy cukrowej przez wodę w procesie rafinacji cukru \cite{hill1952channeling}. Jednak prawdziwe zainteresowanie zjawiskiem lepkiego palcowania pojawiło się w 1958 r. wraz z przełomowym artykułem Saffmana i Taylora \cite{saffman1958penetration}, w którym systematycznie badali pojawianie się wzorców w komórkach Hele-Shaw. Badana przez nich niestabilność stała się później znana jako niestabilność Saffmana-Taylora.
 
-      Istnieje wiele zastosowań tego czysto hydrodynamicznego zjawiska i stojącej za nim matematyki w innych dziedzinach, takich jak tworzenie płuc \cite{clement2012branching,lubkin1995mechanism}, tworzenie jaskiń \cite{szymczak2011initial}, wzrost kolonii bakterii \cite{matsushita1990diffusion}, metaliczne dendryty rosną przez osadzanie elektrochemiczne \cite{brady1984fractal}, palcy spalania \cite{zik1999fingering}, przebudowę naczyń krwionośnych w woreczku żółtkowym podczas rozwoju zarodka kurczaka \cite{nguyen2006dynamics} lub naczynia krwionośne w nas \cite{schneider2012tissue}. Systemy te są zwykle opisywane jako ewolucja ciągłego interfejsu między dwiema fazami (rys. \ref{continuous_to_thin}) z pewnym mechanizmem regularyzacji na małą skalę, takim jak napięcie powierzchniowe. Bez tej regularyzacji strumień pola skoncentrowany na końcach faworyzuje bardzo cienkie palce i prowadzi do ich nieskończenie szybkiego wzrostu - tak zwanej katastrofy ultrafioletowej \cite{shraiman1988singularities}.
+      Istnieje wiele zastosowań tego czysto hydrodynamicznego zjawiska i stojącej za nim matematyki w innych dziedzinach, takich jak tworzenie płuc \cite{clement2012branching,lubkin1995mechanism}, tworzenie jaskiń \cite{szymczak2011initial}, wzrost kolonii bakterii \cite{matsushita1990diffusion}, metaliczne dendryty rosną przez osadzanie elektrochemiczne \cite{brady1984fractal}, palcy spalania \cite{zik1999fingering}, przebudowę naczyń krwionośnych w woreczku żółtkowym podczas rozwoju zarodka kurczaka \cite{nguyen2006dynamics} lub naczynia krwionośne w nas \cite{schneider2012tissue}. Systemy te są zwykle opisywane jako ewolucja ciągłego interfejsu między dwiema fazami (rys. \ref{continuous_to_thin}) z pewnym mechanizmem regularyzacji na małą skalę, takim jak napięcie powierzchniowe. Bez tej regularyzacji strumień pola skoncentrowany na końcach faworyzuje bardzo cienkie palce i prowadzi do ich nieskończenie szybkiego wzrostu -- tak zwanej katastrofy ultrafioletowej \cite{shraiman1988singularities}.
 
-      Istnieje jednak również inny sposób na uniknięcie katastrofy ultrafioletowej, który nie wiąże się z napięciem powierzchniowym. Dokładnie jak piorunochron chroniący budynki przyciąga pioruny, końcówki palców w sieciach skupiają strumień pola. Struktury podobne do sieci we wzroście Laplace'a pojawiają się w wyniku tej koncentracji strumienia. Największy gradient pola występuje na czubkach palców, co sprawia, że są one obszarami najintensywniejszego wzrostu, stąd palce z czasem ulegają stopniowemu wydłużeniu. Jeśli jednocześnie odległości między palcami są znacznie większe niż ich szerokość, można przybliżyć palce cienkimi liniami, rozciągającymi się tylko na długości \cite{peterson1998singular,carleson2002laplacian,gubiec2008fingered} (rys. \ref{continuous_to_thin}). To przybliżenie nazywa się modelem cienkiego palca - zamiast śledzić ciągłą granicę, zakłada się, że wzrost ma miejsce tylko w dyskretnej liczbie punktów - czubkach palców. Końcówki również mogą się rozgałęziać, dzieląc się na dwa palce potomne.
+      Istnieje jednak również inny sposób na uniknięcie katastrofy ultrafioletowej, który nie wiąże się z napięciem powierzchniowym. Dokładnie jak piorunochron chroniący budynki przyciąga pioruny, końcówki palców w sieciach skupiają strumień pola. Struktury podobne do sieci we wzroście Laplace'a pojawiają się w wyniku tej koncentracji strumienia. Największy gradient pola występuje na czubkach palców, co sprawia, że są one obszarami najintensywniejszego wzrostu, stąd palce z czasem ulegają stopniowemu wydłużeniu. Jeśli jednocześnie odległości między palcami są znacznie większe niż ich szerokość, można przybliżyć palce cienkimi liniami, rozciągającymi się tylko na długości \cite{peterson1998singular,carleson2002laplacian,gubiec2008fingered} (rys. \ref{continuous_to_thin}). To przybliżenie nazywa się modelem cienkiego palca -- zamiast śledzić ciągłą granicę, zakłada się, że wzrost ma miejsce tylko w dyskretnej liczbie punktów -- czubkach palców. Końcówki również mogą się rozgałęziać, dzieląc się na dwa palce potomne.
 
       \begin{figure}[h]
         \centering
@@ -197,7 +198,7 @@
         \centering
         \includegraphics[width=0.45\textwidth]{figs/klimat_katy.png}
         % \vspace{-15pt}
-        \caption{Porównanie średnich kątów rozgałęzień w sieciach rzecznych (a) z wilgotnością regionu (AI - wskaźnik suchości) (b)}
+        \caption{Porównanie średnich kątów rozgałęzień w sieciach rzecznych (a) z wilgotnością regionu (AI -- wskaźnik suchości) (b)}
         % \vspace{-5pt}
         \label{klimat_katy}
       \end{figure}
@@ -272,15 +273,18 @@
 
     Aby otrzymać współczynniki $a_i$, możemy po prostu rozwiązać odpowiednie równanie dla pola (Laplace'a lub Poissona) metodą elementów skończonych, a następnie korzystając z postaci całkowej współczynników:
     
-    \begin{equation}\label{a1}
+    \begin{equation}
+      \label{a1}
       a_1 = \frac{1}{\pi r_0^{1/2}}\int^{\pi}_{-\pi} \phi(r_0,\theta)\cos\frac{\theta}{2}\textrm{d}\theta \,,
     \end{equation} 
     
-    \begin{equation}\label{a2}
+    \begin{equation}
+      \label{a2}
       a_2 = \frac{1}{\pi r_0}\int^{\pi}_{-\pi} \phi(r_0,\theta)\sin\theta \textrm{d}\theta \,,
     \end{equation}
     
-    \begin{equation}\label{a3}
+    \begin{equation}
+      \label{a3}
       a_3 = \frac{1}{\pi r_0^{3/2}}\int^{\pi}_{-\pi} \phi(r_0,\theta)\cos\frac{3\theta}{2}\textrm{d}\theta
     \end{equation}	
     
@@ -360,15 +364,42 @@
       Aby uniknąć problemów ze znacznymi różnicami w krokach przestrzennych ze zmiennymi gradientami pola podczas ewolucji sieci, dostosowujemy wartość $\textrm{d}t$ w każdym kroku czasowym, aby zachować $\textrm{d}s$ najszybsza stała gałęzi.
 
   \chapter{Rozwiązanie numeryczne i struktura oprogramowania}
+
+      Z matematycznego modelu dla opisu sieci rzecznych otrzymujemy rownania dla opisu wód podziemnych w postaci równania Laplacea \ref{laplace}(lub Poissona \ref{poisson}). W ogólnym przypadku równanie Laplace można rozwiązać metodami numerycznymi, a w szczegolności w tej pracy skorzystano z metody skończonych elementów.\par
+
+      Pole wód podziemnych, którę kształtuję erozje w oklicy żródła i jak skutek dynamikę i rozwój sięci, jest uproszczane do współcznynników $a_i$ (\ref{a1} \ref{a2} \ref{a3}) całkowanie których też w swoją kolej wymaga metod numerycznych.\par
+      
+      Jednem z celów projektu było otrzymanie oprogramowania które by było szybkim w wyliczaniu powyższych zagadnień, a tak że szybkim w prototypowaniu. Wybór padł na C++\cite{Stroustrup1997} i Python. C++ -- z jednej strony jest bardzo szybkim, ale wymagający do napisania, w nim realizowano części programu które są czasochłonne. Python -- ma mniejsża wydajnoś oblicznenia,  ale o wiele szybszy w rozwoju oprogramowaniu. TODO: \cite{skjdfkjdsfh}   
+      
+      Deal.II\cite{dealII94} to biblioteka programu C++ przeznaczona do obliczeniowego rozwiązywania równań różniczkowych cząstkowych przy użyciu adaptacyjnych elementów skończonych. Wykorzystuje najnowocześniejsze techniki programowania, aby zaoferować nowoczesny interfejs do złożonych struktur danych i algorytmów.
+
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{figs/ProgramWorkflow.jpg}
+        \caption {Schemat działania programu RiverSim.}
+        \label{program_workflow}
+      \end{figure}
+
+      
+    
+
+    
     
     \cite{szewczuk1996triangle}
-    \cite{dealII94}
+    
     \cite{tethex}
     \cite{boost}
     \cite{riversim}
     \cite{riversimpy}
 
     \section{Dyzajn i główne cele oprogromawonia. Szybkość działania a szybkość prototypowenia.}
+      
+      Metoda FEM na początku wymaga zdefiniowanie domeny, potem jej descrtetyzacji, tworzenie równań liniowych, rozwiązanie równań i po otrzymaniu wyniku możemy kontynuować obliczenie, na przykład całkowanie współcznynników $a_i$. Powyższe kroki i kształtują strukturę oprogramowania. 
+
+
+
+      
+
       \subsection{Geometria}
       \subsection{Warunki brzegowe}
       \subsection{Generacja meshu}
