@@ -1,7 +1,9 @@
 \documentclass[]{pracamgr}
 
-\usepackage{tcolorbox}
+\usepackage{tcolorbox} 
+
 \tcbuselibrary{minted,breakable,xparse,skins}
+\tcbuselibrary{minted, breakable, xparse, skins}
 \definecolor{bg}{gray}{0.95}
 \DeclareTCBListing{mintedbox}{O{}m!O{}}{%
   breakable=true,
@@ -38,6 +40,7 @@
     \end{tcbclipinterior}},
   #3}
 
+\usepackage[utf8]{inputenc}
 \usepackage{wrapfig}
 \usepackage{graphicx}
 \usepackage{subfig}
@@ -112,7 +115,7 @@
       \label{pow_wsiakanie}
     \end{figure}
 
-    Jednak zawsze, gdy grunt jest wystarczająco przepuszczalny, woda może zatopić się w ziemi zamiast spływać w dół (ciemnoniebieskie strzałki na rys.~\ref{pow_wsiakanie}). Woda najpierw gromadzi się w zbiorniku wód podziemnych, a następnie pod wpływem ciśnienia hydrodynamicznego wypływa ze źródła rzeki. Proces ten powoduje erozję źródła, ponieważ woda przeciera materiał, z którego składa się ziemia wokół źródła (np. piasek).
+    Jednak zawsze, gdy grunt jest wystarczająco przepuszczalny, woda może zatopić się w ziemi zamiast spływać w dół (ciemnoniebieskie strzałki na rys. \ref{pow_wsiakanie}). Woda najpierw gromadzi się w zbiorniku wód podziemnych, a następnie pod wpływem ciśnienia hydrodynamicznego wypływa ze źródła rzeki. Proces ten powoduje erozję źródła, ponieważ woda przeciera materiał, z którego składa się ziemia wokół źródła (np. piasek).
 
     \begin{wrapfigure}{r}{0.5\textwidth}
       \begin{center}
@@ -408,118 +411,262 @@
 
       Aby uniknąć problemów ze znacznymi różnicami w krokach przestrzennych ze zmiennymi gradientami pola podczas ewolucji sieci, dostosowujemy wartość $\textrm{d}t$ w każdym kroku czasowym, aby zachować $\textrm{d}s$ najszybsza stała gałęzi.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   \chapter{Rozwiązanie numeryczne i struktura oprogramowania}
 
-    \hspace{1em} \= Pole wód podziemnych kształtuję erozje w oklicy żródła i jak skutek dynamikę i rozwój sięci. Z matematycznego modelu dla opisu sieci rzecznych otrzymujemy równania dla opisu wód podziemnych w postaci równania Laplacea \ref{laplace}(lub Poissona \ref{poisson}). Pole w okolicy źródła jest aproxymowane współcznynnikami $a_i$ (\ref{a1} \ref{a2} \ref{a3}). Całkowanie współcznynników jak i rozwiązywanie też w swoją kolej wymaga metod numerycznych. W ogólnym przypadku równanie Laplace można rozwiązać metodami numerycznymi, a w szczegolności w tej pracy skorzystano z metody skończonych elementów. \\ \indent
-    %В попередніх проектах вже було представлені рішення для задачі еволюції мережі річки. Один з розв'язків був написаний з використанням Фреефем++ і Матлаб. Однак для отримання і ще більших мереж річок потрібен був оптимальніший розв'язок. Другою вимогою було використання тільки технологій із відкритим вихідним кодом, адже не кожен має можливість придбати Матлаб. Вибір припав на C++\cite{Stroustrup1997} та Python. Адже ці мови програмування є одними з найбілш росповсюдженних, а також містять в собі багато бібліотек із відкритим кодом, що полегшує написання програм. C++ -- з одного боку, він дуже швидкий, але вимогливий до написання. С++ містить реалізацію частини програми, яка займає є складною в обчисленнях, такі як алгоритми для роботи із геометрією, генерацією сітки, розязок диференціальних рівняннь. Python\cite{python3} -- має меншу обчислювальну ефективність, але набагато швидший у розробці програмного забезпечення і надає інтерактивний інструмент для написання скрипту -- Jupyter.  
-    W poprzednich projektach prezentowano już rozwiązania problemu ewolucji sieci rzecznej. Jedno z rozwiązań zostało napisane przy użyciu Freefem++ i Matlaba. Jednak aby uzyskać jeszcze większe sieci rzeczne, potrzebne było bardziej optymalne rozwiązanie. Drugim wymogiem było korzystanie wyłącznie z technologii z otwartym kodem źródłowym, ponieważ nie każdy ma możliwość zakupu Matlaba. Wybór padł na C++\cite{Stroustrup1997} i Python\cite{python3}. W końcu te języki programowania należą do najbardziej rozpowszechnionych, a także zawierają wiele bibliotek open source, co ułatwia pisanie programów. C++ - z jednej strony jest bardzo szybki, ale wymagający w pisaniu. C++ zawiera implementację części programu, która jest złożona w obliczeniach, takich jak algorytmy pracy z geometrią, generowanie siatki i rozwiązywanie równań różniczkowych. Python — ma mniejszą wydajność obliczeniową, ale jest znacznie szybszy w tworzeniu oprogramowania i zapewnia interaktywne narzędzie do tworzenia skryptów — Jupyter.
+    \hspace{1em} \= 
+    Pole wód podziemnych kształtuję erozje w oklicy żródła i jak skutek dynamikę i rozwój sięci. Z matematycznego modelu dla opisu sieci rzecznych otrzymujemy równania dla opisu wód podziemnych w postaci równania Laplacea \ref{laplace}(lub Poissona \ref{poisson}). Pole w okolicy źródła jest aproxymowane współcznynnikami $a_i$ (\ref{a1} \ref{a2} \ref{a3}). Całkowanie współcznynników jak i rozwiązywanie też w swoją kolej wymaga metod numerycznych. W ogólnym przypadku równanie Laplace można rozwiązać metodami numerycznymi, a w szczegolności w tej pracy skorzystano z metody skończonych elementów. \\ \indent
+    %В попередніх проектах вже було представлені рішення для задачі еволюції мережі річки. Один з розв'язків був написаний з використанням Фреефем++ і Матлаб. Інший, з допомогою конформних перетворень. Однак для отримання і ще більших мереж річок потрібен був оптимальніший розв'язок. Другою вимогою було використання тільки технологій із відкритим вихідним кодом, адже не кожен має можливість придбати Матлаб. Вибір припав на C++\cite{Stroustrup1997} та Python. Адже ці мови програмування є одними з найбілш росповсюдженних, а також містять в собі багато бібліотек із відкритим кодом, що полегшує написання програм. C++ -- з одного боку, він дуже швидкий, але вимогливий до написання. С++ містить реалізацію частини програми, яка займає є складною в обчисленнях, такі як алгоритми для роботи із геометрією, генерацією сітки, розязок диференціальних рівняннь. Python\cite{python3} -- має меншу обчислювальну ефективність, але набагато швидший у розробці програмного забезпечення і надає інтерактивний інструмент для написання скрипту -- Jupyter.  
+    W poprzednich projektach prezentowano już rozwiązania problemu ewolucji sieci rzecznej. Jedno z rozwiązań zostało napisane przy użyciu Freefem++ i Matlaba. Inny, za pomocą przekształceń konforemnych. Jednak aby uzyskać jeszcze większe sieci rzeczne, potrzebne było bardziej optymalne rozwiązanie. Drugim wymogiem było korzystanie wyłącznie z technologii z otwartym kodem źródłowym, ponieważ nie każdy ma możliwość zakupu Matlaba. Wybór padł na C++\cite{Stroustrup1997} i Python\cite{python3}. W końcu te języki programowania należą do najbardziej rozpowszechnionych, a także zawierają wiele bibliotek z otwartym źródłołem kodem, co ułatwia pisanie programów. C++ -- z jednej strony jest bardzo szybki, ale wymagający w pisaniu. C++ zawiera implementację części programu, która jest złożona w obliczeniach, takich jak algorytmy pracy z geometrią, generowanie siatki i rozwiązywanie równań różniczkowych. Python — ma mniejszą wydajność obliczeniową, ale jest znacznie szybszy w tworzeniu oprogramowania i zapewnia interaktywne narzędzie do tworzenia skryptów — Jupyter.
 
     \begin{figure}[H]
       \centering
       \includegraphics[width=1\textwidth]{figs/ProgramWorkflowMainIllustration.png}
       %(1) Початкова геометрія, задавання місць на границі звідки буде рости річка, граничні умови. (2) Початкова мережа річки(можна не задавати). (3) Спрощення геометрії річки. (4) Генерація дрібнозернистого мешу. (5) Розв'язок диференційних рівнянь. (6) Визначення параметрів ряду довкола джерел. (2) Ріст мережі річки.
-      \caption {(1) Geometria początkowa, ustalenie miejsc na granicy, z których rzeka będzie wypływać i warunki brzegowe. (2) Początkowa sieć rzeki (opcjonalnie). (3) Uproszczenie geometrii rzeki. (4) Generowanie drobnoziarnistej siatki. (5) Rozwiązywanie równań różniczkowych. (6) Wyznaczanie parametrów szeregu wokół źródeł. (2) Wzrost sieci rzecznej.}
+      %Метод конечних елементів вимагає визначення геометрії області, потім її дискретизація, створення лінійних рівнянь, розв’язування рівнянь, інтегрування коефіцієнти $a_i$ розкладу в ряд. Наведені вище кроки формують структуру програмного забезпечення \ref{program_workflow}.
+      \caption {Metoda elementów skończonych wymaga wyznaczenia geometrii obszaru, następnie jej dyskretyzacji, utworzenia równań liniowych, rozwiązania równań, zintegrowania współczynników rozszerzenia $a_i$ w szereg. Powyższe kroki tworzą strukturę oprogramowania. (1) Geometria początkowa, ustalenie miejsc na granicy, z których rzeka będzie wypływać i warunki brzegowe. (2) Początkowa sieć rzeki (opcjonalnie). (3) Uproszczenie geometrii rzeki. (4) Generowanie drobnoziarnistej siatki. (5) Rozwiązywanie równań różniczkowych. (6) Wyznaczanie parametrów szeregu wokół źródeł. (2) Wzrost sieci rzecznej.}
       \label{program_workflow}
     \end{figure}
-
-    %Метод конечних елементів вимагає визначення геометрії області, потім її дискретизація, створення лінійних рівнянь, розв’язування рівнянь, інтегрування коефіцієнти $a_i$ розкладу в ряд. Наведені вище кроки формують структуру програмного забезпечення \ref{program_workflow}.
-    Metoda elementów skończonych wymaga wyznaczenia geometrii obszaru, następnie jej dyskretyzacji, utworzenia równań liniowych, rozwiązania równań, zintegrowania współczynników rozszerzenia $a_i$ w szereg. Powyższe kroki tworzą strukturę oprogramowania \ref{program_workflow}.
       
     W trakcie tworzenia oprogramowania było stworzono dwa rzowiązania: RiverSim\cite{riversim} - program który zawiera wszystkie algorytmy dla generacji sieci rzecznych, riversimpy\cite{riversimpy} - biblioteka w Pythonie które zawiera algorytmy ułatwiające tworzenie skryptów dla symulacji wzrostu sieci w polu Laplasowskim. 
     RiverSim zawiera niektórę dodatkowe algorytmy dla odwracalnej ewolucji wsztecznej i do przodu, a poza tym RiverSim i riversimpy zawierają tę same algorytmy, w podalszym opisie głównie skupimysię na riversimpy. 
 
     \section{Geometria}
       
-    % В реальних середовищах еволюції русла річок даного типу, ми можемо зустріти цілий ряд чинників, котрі мають вплив на поле підземних вод. Наприклад, це можуть бути гори звідки регулярно надходить потік води, озеро котре може слугувати кінцевою точкою або початком річки. Мережа річки теж має вплив на поле підземних вод і багато інших чинників. Ця довільність геометрії продемонстрована на малюнку \ref{border_examples}. І що б охопити всю цю довільність геометрії, було створено цілий ряд класів і функцій. Деякі найголовніші класи і функції: Point, Polar, Line, Boundary, BoundaryConditions, Sources, Branch, Rivers, Region і функція BoundaryGenerator.
-      W rzeczywistych środowiskach ewolucji tego typu koryt rzecznych możemy napotkać szereg czynników, które mają wpływ na pole wód gruntowych. Na przykład mogą to być góry, z których regularnie wypływa strumień wody, jezioro, które może służyć jako punkt końcowy lub początek rzeki. Sieć rzeczna ma również wpływ na pole wód gruntowych i wiele innych czynników. Ta arbitralność geometrii jest pokazana na rysunku \ref{border_examples}.
+      % В реальних середовищах еволюції русла річок даного типу, ми можемо зустріти цілий ряд чинників, котрі мають вплив на поле підземних вод. Наприклад, це можуть бути гори звідки регулярно надходить потік води, озеро котре може слугувати кінцевою точкою або початком річки. Мережа річки теж має вплив на поле підземних вод і багато інших чинників. Ця довільність геометрії продемонстрована на малюнку \ref{geometry_examples}.
+      W rzeczywistych środowiskach ewolucji koryt rzecznych możemy napotkać szereg czynników, które mają wpływ na pole wód gruntowych. Na przykład mogą to być góry, z których regularnie wypływa strumień wody, jezioro, które może służyć jako punkt końcowy lub początek rzeki. Sieć rzeczna ma również wpływ na pole wód gruntowych i wiele innych czynników. Ta arbitralność geometrii jest pokazana na rysunku \ref{geometry_examples}.
       
       \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{figs/geometry_examples.png}
         \caption {Szereg przykładów granicy:  prostokąt (1),  basen rzeki aproksymoway łamą linią (2), granica zawierająca granicę(3), brzegi nie powiązane topologicznie (4), sieć rzeki (5).}
-        \label{border_examples}
+        \label{geometry_examples}
       \end{figure}
-
-      Aby pokryć całą tę arbitralność geometrii, stworzono szereg klas i funkcji\ref{geometria}. Niektóre z najważniejszych klas i funkcji to Point, Polar, Line, Boundary, BoundaryConditions, Sources, Branch, Rivers, Region i funkcja BoundaryGenerator.
+      
+      %І що б охопити всю цю довільність геометрії, було створено цілий ряд класів і функцій. Деякі найголовніші класи і функції: Point, Polar, Line, Boundary, BoundaryConditions, Sources, Branch, Rivers, Region і функція BoundaryGenerator. Приклади використання даних функцій розглянемо далі.
+      Aby pokryć całą tę arbitralność geometrii, stworzono szereg klas i funkcji\ref{GeometryClasses}. Niektóre z najważniejszych klas i funkcji to Point, Polar, Line, Boundary, BoundaryConditions, Sources, Branch, Rivers, Region i funkcja BoundaryGenerator. Poniżej rozważymy przykłady użycia tych funkcji.
       
       \begin{figure}[H]
         \centering
         \includegraphics[width=0.9\textwidth]{figs/GeometryClasses.png}
         \caption {Geometria.}
-        \label{geometria}
+        \label{GeometryClasses}
       \end{figure}
 
-      Najpierw jest zadawany szereg
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      Głównie geometrie możemy podzielić
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{figs/region_workflow.png}
+        \caption {Geometria.}
+        \label{region_workflow}
+      \end{figure}
 
-      
+      %Спочатку задаємо впорядковану множину координат з допомогою класу Point і ліній з допомогою класу Line для визначення границі. В програмі границя репрезентується класом Boundary. Таких границь може бути декілька. Група границь котрим присвоєний унікальний індекс утворює регіон який репрезентується класом Region. Границя - це замкнута лінія, іншими словами полігон. В регіоні немає обмежень на кількість границь. Границя також може містити цілковито іншу границю, проте перетин ліній не допускається. Щоб утворити дірку в границі потрібно визначити координату в межах цієї границі і присвоїти до списку дір який зберігається в класі Region. Наступним кроком є визначення місць звідки буде відбуватися ріст мережі річки. Такими місцями може бути кожна  точка границі і джерел може бути необмежена кількість(практично обмежена сумарної кількістю координат границь). Для зберігання інформації про початкові координати джерел створено клас Source. Цей клас зберігає унікальний номер кожного джерела, номер границі на котрій розташовується і номер координати на даній границі.
+      Najpierw określamy uporządkowany zestaw współrzędnych za pomocą klasy Point i linii za pomocą klasy Line, aby określić granicę. W programie granica jest reprezentowana przez klasę Boundary. Takich granic może być kilka. Grupa granic, którym przypisano unikalny indeks, tworzy region reprezentowany przez klasę Region. Granica jest zamkniętą linią, innymi słowy wielokątem. W regionie nie ma ograniczeń co do liczby granic. Jedna granica może również zawierać inną granicę, ale przecięcie linii jest niedozwolone. Aby utworzyć otwór w granicy, należy zdefiniować współrzędną w obrębie tej granicy i przypisać ją do listy otworów przechowywanej w klasie Region. Kolejnym krokiem jest określenie miejsc, z których nastąpi rozwój sieci rzecznej. Takimi miejscami może być każdy punkt granicy, a źródeł może być nieograniczona (praktycznie ograniczona całkowitą liczbą współrzędnych granic). Klasa Source została stworzona do przechowywania informacji o początkowych współrzędnych źródeł. Ta klasa przechowuje unikalny numer każdego źródła, numer granicy, na której się znajduje, oraz numer współrzędnej na tej granicy.
 
-      
-        \begin{wrapfigure}{r}{0.5\textwidth}
-          \begin{center}
-            \vspace{-20pt}
-            \includegraphics[width=0.45\textwidth]{figs/descritization_reducing.jpg}
-          \end{center}
-          \caption {Ilustracja algorytmu wygładzenie brzegu.}
-          \label{descritization_reducing}
-        \end{wrapfigure}
-        
-        Najbardziej dynamiczną cześcią granicy jest sieć rzeczna. Z każdym krokiem symulacji sięć rośnie o krok proporcionalny do $a_1^{\eta}$. Przy małych współczynnikach $a_1$ i $a_2$ otrzymamy prosty brzeg z mała krzywizną, a nadmiarową deskretyzacje co w swoją kolej zwiekszy czas rozwiązywani. Dla tego była wrpowadzony algorytm wygładzenie linii.
+      \begin{mintedbox}{python} import riversim \end{mintedbox}
 
-        Dany algorytm iteruję po punktach brzegu  zaczynając od pewnej długości zdefiniowaną parameterem \textit{ignored distance}. Dalej są wyliczane i sumowanę kąty pomiędzy sąsiednimi segmentami. Dopóki sumaryczny kąt jest poniżej kątu definiowanego przez parameter \textit{min degree}.\par
+      %Після визначення регіону і розташування джерел, тепер можемо перейти до побудови геометрії річки. Всі дані про геометрію річок і алгоритми містяться в класі Rivers. Rivers містить унікальний номер для кожної річки, котрий має теж саме значення,  що й номер джерела в Sources. Для ініціалізації класу Rivers, потрібно конвертувати дані з класу Sources в координати і напрямок. Для цього служить функція GetSourcesIdsPointsAndAngles класу Region аргументом котрої є Sources. В результаті ми отримаємо набір індексів річок і відповідні їм координати і напрямок перпендикулярний до границі. Для визначення точного напрямку перпендикуляру, має значення напрямок координати при задаванні границі. Прийнято, що перпендикуляр буде з лівої сторони від напрямку координат. Тому якщо звернути увагу на регіон де є дірка по центрі, то зовнішня границя має протилежний напрямок нумерації координат відносно внутрішньої.
+      Po określeniu regionu i lokalizacji źródeł możemy przystąpić do konstruowania geometrii rzeki. Wszystkie dane geometrii rzeki i algorytmy są zawarte w klasie Rivers. Rzeki zawierają unikalny numer dla każdej rzeki, który ma takie samo znaczenie jak numer źródła w Źródłach. Aby zainicjować klasę Rivers, należy przekonwertować dane z klasy Sources na współrzędne i kierunek. W tym celu jako argument służy funkcja GetSourcesIdsPointsAndAngles klasy Region, której argumentem jest Sources. W rezultacie otrzymamy zestaw indeksów rzecznych i odpowiadających im współrzędnych oraz kierunek prostopadły do granicy. Aby określić dokładny kierunek prostopadłej, podczas wyznaczania granicy ważny jest kierunek współrzędnych. Zakłada się, że prostopadła będzie po lewej stronie kierunku współrzędnych. Dlatego jeśli zwrócisz uwagę na obszar, w którym znajduje się dziura w środku, wówczas zewnętrzna granica ma przeciwny kierunek numeracji współrzędnych w stosunku do wewnętrznej.
 
-        Każdy punk brzegu może być początkiem rozwoju sieci rzecznej. Współrżędne źródeł są zadawne przez strukturę danych \textit{Source}. \textit{Source} zawiera informacje o nazwie źródła, o konkretnym brzegu(o ile brzeg może składać się z dowolnej ilości poligonów) i o pozycji współrzędnej na brzegu(zaczynając od zera). 
+      %Вище вказувалося, що в більшості випадків біфуркація річки відбувається на дві частини. А якщо поділів відбувається більше, ми можемо вважати це двома послідовними достатньо близько розташованими між собою біфуркаціями. Поміж біфуркаціями річка апроксимується ламаною лінією. Інформація  про цю лінію криється в класі Branch. А інформація про те котрі частини річки з'єднуються з іншими частинами річки в пунктах біфуркації міститься в графі котрий в свою чергу міститься в класі Rivers. Класс Rivers надає можливості для легкого способу працювати із геометрією річки, а саме: отримання інформації про поточний стан річок(довжини, відношення між частинами річками, визначення кривизни, координати джерел і тд), розвиток мережі річки(додавання нових координат до річки при рості, згладжування кривизни, створення нових річок, додавання нових пунктів біфуркації), зменшення довжини річки і  видалення пунктів біфуркації для полегшення обрахунків при оберненій еволюції. 
+      Powyżej zaznaczono, że w większości przypadków rzeka rozdziela się na dwie części. A jeśli podziałów jest więcej, możemy to uznać za dwa kolejne bifurkacje dostatecznie blisko siebie. Pomiędzy punktami bifurkacji rzeka jest aproksymowana linią przerywaną. Informacje o tej linii znajdują się w klasie Branch. A informacja o tym, które odcinki rzeki łączą się z innymi odcinkami rzeki w punktach rozwidlenia, zawarta jest w grafie, który z kolei jest zawarty w klasie Rivers. Klasa Rivers daje możliwość łatwej pracy z geometrią rzek, a mianowicie: uzyskiwania informacji o aktualnym stanie rzek (długości, relacje między odcinkami rzek, określanie krzywizny, współrzędne źródeł itp.), opracowywania sieci rzecznej ( dodawanie nowych współrzędnych do rzeki podczas wzrostu, wygładzanie krzywizny, tworzenie nowych rzek, dodawanie nowych punktów bifurkacji), zmniejszanie długości rzeki i usuwanie punktów bifurkacji w celu ułatwienia obliczeń podczas ewolucji odwrotnej.
 
-        Wzrost rzeki zaczyna sie od brzegu i jest perpendycularny  
+      %Оскільки мережа річки котра міститься в класі Rivers опирається в своїй реалізації на клас Boundary, то для кожного сегменту річки ми можемо задати унікальні граничні умови. Наприклад, можна врахувати "опір" русла ріки і збільшення висоти підземних вод вздовж.
+      Ponieważ sieć rzeczna zawarta w klasie Rivers opiera się w swojej implementacji na klasie Boundary, możemy ustawić unikalne warunki brzegowe dla każdego odcinka rzeki. Naprzykład, możemy uwzględnić „opór” koryta rzeki i wzrost wysokości wód gruntowych wzdłuż niego.
 
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=1\textwidth]{figs/source_dirrection.jpg}
-          % Демонстрація впливу напрямку лінії на напрям перпендикуляра. У випадку напрямку за годинниковою стрілкою(1), напрямок буде назовні. Проти годинникової стрілки(2) - до середини. 
-          \caption {Wykazanie wpływu kierunku linii na kierunek prostopadłej. W przypadku kierunku zgodnego z ruchem wskazówek zegara (1) kierunek będzie na zewnątrz. Przeciwnie do ruchu wskazówek zegara (2) - do środka.}
-          \label{source_dirrection}
-        \end{figure}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{figs/tree_coarsening.png}        
+        \caption {Geometria.}
+        \label{tree_coarsening}
+      \end{figure}
 
-        %При задаванні початкової координати джерелла не вказується його напрямок, лише позиція. В даному випадку ріст русла річки починається з ерозії при самому березі і є перпендикулярним до лінії берегу в даному пункті. Кут перпендикулярної лінії в даній точці границі визначається автоматично з точність до $\pi$. Щоб позбутися цієї не точності $\pi$ при задаванні границі теж врахомується напрям пунктів, а саме напрям вибирається з лівою сторони від напрямку заданого пунктами на границі.
-        Przy określaniu początkowej współrzędnej źródła nie jest wskazywany jego kierunek, a jedynie jego położenie. W tym przypadku rozrost koryta zaczyna się od erozji na samym brzegu i jest w tym miejscu prostopadły do linii brzegowej. Kąt prostej prostopadłej w danym punkcie granicy wyznaczany jest automatycznie z dokładnością $\pi$. Aby pozbyć się tej $\pi$ niedokładności, kierunek punktów jest również brany pod uwagę podczas ustawiania granicy, a mianowicie kierunek jest wybierany od lewej strony kierunku określonego przez punkty na granicy.
-        
-        %\begin{lstlisting}
-        %  class Boundary
-        %  {
-        %      public:
-        %          Boundary(){};
-        %          Boundary(t_PointList v, t_LineList l): vertices{v}, lines{l} {};
-        %          t_PointList vertices;
-        %          t_LineList lines;
-        %          void Append(Boundary& boundary);
-        %          void ReplaceElement(t_vert_pos vertice_pos, Boundary& boundary);
-        %          void FixLinesIndices(bool is_closed_boundary = false);
-        %          Boundary generateSmoothBoundary(double min_degree, double ignored_distance);
-        %          bool operator==(Boundary& simple_boundary) const;
-        %  };
-        %\end{lstlisting}
+      \begin{wrapfigure}{r}{0.5\textwidth}
+        \begin{center}
+          \vspace{-20pt}
+          \includegraphics[width=0.45\textwidth]{figs/descritization_reducing.jpg}
+        \end{center}
+        \caption {Ilustracja algorytmu wygładzenie brzegu.}
+        \label{descritization_reducing}
+      \end{wrapfigure}
 
-        Brzeg jest zdefiniowany przez 
+      %Кількість елементів сітки на котру ми розділюємо регіон має прямий вплив на розмір матриці лінійних рівняння, а тому на час знаходження розв'язку диференційного рівняння. Щоб зменшити час обчистленнь, ми можемо зменшити густини координат границі річки, при цьому не втрачаючи на точності. Для цього ми робимо процедуру огрублення границь частин річки. Тепер нам потрібно класи  Sources, Region та Rivers вкласти в границю Boundary, оскільки генератор сітки вимагає тільки  границю як аргумент. Другою проблемою, котра згадувалася вище є те, що немає можливості задати граничні умови в середині регіону, а тільки на границі. Для цього лінії з котрих складається мережа річки розділяються на дві лінії котрі знаходяться дуже близько одна до одної.
+      Liczba elementów siatki, na jakie dzielimy obszar, ma bezpośredni wpływ na wielkość macierzy równań liniowych, a więc na czas znalezienia rozwiązania równania różniczkowego. Aby skrócić czas obliczeń, możemy zmniejszyć gęstość współrzędnych granicy rzeki bez utraty dokładności. Zmniejszenie zagęszczenia współrzędnych na granicy opiera się na następującej idei: każda kolejna współrzędna zmienia kierunek linii o pewien kąt. Jeśli kąt jest bardzo mały, możemy założyć, że współrzędne leżą praktycznie na tej samej linii. Dlatego możemy usunąć wszystkie współrzędne pośrednie i pozostawić tylko te skrajne. Aby znaleźć „skrajne” współrzędne linii, iterujemy po wszystkich współrzędnych i obliczamy całkowity kąt odchylenia, gdy tylko ten kąt stanie się większy niż wartość krytyczna, traktujemy tę współrzędną jako skrajną.
 
-      \subsection{Warunki brzegowe}
-      \subsection{Generacja meshu}
-      \subsection{Rozwiazanie}
+    \section{Generacja siatki}
+
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{figs/mesh_generation.png}        
+        \caption {Geometria.}
+        \label{mesh_generation}
+      \end{figure}
+
+      %Для генерації сітки нам потрібна замкнута границя Boundary. Для цього існує функція BoundaryGenerator, котра об'єднує класи  Sources, Region та Rivers в одну границю Boundary. Другою проблемою, котра згадувалася вище є те, що немає можливості задати граничні умови в середині регіону, а тільки на границі. Для цього лінії з котрих складається мережа річки розділяються на дві лінії котрі знаходяться достатньо близько одна до одної.
+      Aby wygenerować siatkę, potrzebujemy zamkniętej granicy Boundary. W tym celu dostępna jest funkcja BoundaryGenerator, która łączy klasy Sources, Region i Rivers w jedną granicę Boundary. Drugi problem, o którym była mowa powyżej, polega na tym, że nie ma możliwości ustalenia warunków brzegowych w środku regionu, a jedynie na granicy. W tym celu linie tworzące sieć rzeczną są podzielone na dwie linie, które są wystarczająco blisko siebie.
+
+      %Коли є замкнута границя можна згенерувати сітку. Для цього була використана C++ бібліотека \cite{szewczuk1996triangle}. Методи і алгоритми бібліотеки Traingle містяться в однойменному класі. Triangle генерує Деланау сітку. Triangle дає можливість задати значення мінімального кута трикутника, мінімальної і максимальної довжини сторони трикутника, мінімальної і максимальної площі трикутника, співвідношення сторін трикутника та інше. Другим важливим аспектом є генерація достатньо малої сітки в місцях, де поле підземних вод змінюється найшвидше -- довкола джерел. Для цього можна задати множину координат(а саме координат джерел), де буде обмежена радіально площа трикутника відносно даних точок. Функція котра обмежує площу трикутника виглядає наступним чином:
+      Gdy istnieje zamknięta granica, można wygenerować siatkę. W tym celu wykorzystano bibliotekę C++ Triangle\cite{szewczuk1996triangle}. Metody i algorytmy biblioteki Traingle są zawarte w klasie o tej samej nazwie. Trójkąt generuje siatkę Delaunaya. Trójkąt pozwala ustawić wartość minimalnego kąta trójkąta, minimalną i maksymalną długość boku trójkąta, minimalną i maksymalną powierzchnię trójkąta, stosunek boków trójkąta itp. Drugim ważnym aspektem jest generowanie odpowiednio małej siatki w miejscach, w których pole wód podziemnych zmienia się najszybciej - w okolicach źródeł. Aby to zrobić, możesz określić zestaw współrzędnych (czyli współrzędne źródeł), w których obszar trójkąta względem danych punktów będzie ograniczony promieniowo. Funkcja ograniczająca pole trójkąta wygląda następująco:
+      \begin{equation}
+        f(x) = x^{2}
+      \end{equation}
+
+      %Розв'язувач Deal.II\cite{dealII94} вимагає сітки із квадратними елементами. Для цього ми використовуємо бібліотеку C++  Tethex \cite{tethex}  котра конвертує трикутні елементи сітки у чотирикутники, розбиваючи один трикутний елемент на три квадратних, чим збільшуючи кількість елементів сітки у три рази.
+      Solver Deal.II\cite{dealII94} wymaga siatki z elementami kwadratowymi. W tym celu używamy biblioteki Tethex \cite{tethex} C++, która konwertuje trójkątne elementy siatki na czworoboki, dzieląc jeden trójkątny element na trzy kwadratowe, zwiększając w ten sposób liczbę elementów siatki trzykrotnie.
+
+    \section{Warunki brzegowe}
+
+      %Кожна лінія містить також номер(посилання) граничної умови. Boundaries -- клас котрий містить набір пар із унікальним номером і відповідною йому граничною умовою котра може бути двох типів: Діріхлет і Ноймана. Граничну умову можна задати тільки на граничній лінії, іншими словами задати лінію посеред регіону і граничну умову на ній не можна. Проте лінію завжди можна апроксимувати дуже тонким прямокутником, тож за потреби це не є проблемою.
+      Każda linia zawiera również numer (odniesienie) warunku brzegowego. Boundaries -- klasa zawierająca zbiór par o unikalnym numerze i odpowiadającym mu warunku brzegowym, który może być dwojakiego rodzaju: Dirichlet i Neumann. Warunek brzegowy można ustawić tylko na linii granicznej, innymi słowy, nie można ustawić linii pośrodku regionu i warunku brzegowego na nim. Jednak linię zawsze można przybliżyć bardzo cienkim prostokątem, więc w razie potrzeby nie stanowi to problemu.
+
+    \section{Rozwiazanie pola wód podziemnych}
 
       Deal.II\cite{dealII94} to biblioteka programu C++ przeznaczona do obliczeniowego rozwiązywania równań różniczkowych cząstkowych przy użyciu adaptacyjnych elementów skończonych. Wykorzystuje najnowocześniejsze techniki programowania, aby zaoferować nowoczesny interfejs do złożonych struktur danych i algorytmów.
 
-      \subsection{Calkowanie parametrow szeregu}
-      \subsection{IO i inne}
+      Rozwiążemy prostą wersję równania Poissona na naszym obszarze z niezerową prawą stroną.
+      
+      \begin{align*}
+        -\Delta u &= f \qquad\qquad & \text{in}\ \Omega,
+        \\
+        u &= 0 \qquad\qquad & \text{on}\ \partial\Omega.
+      \end{align*}
+      
+      Rozważymy tylko szczególny przypadek $f(x)=1$.
+
+      Od podstaw metody elementów skończonych potrzebne są kolejne kroki, aby przybliżyć rozwiązanie $u$ przybliżeniem skończonych wymiarów. Konkretnie, najpierw musimy wyprowadzić słabą postać powyższego równania, którą otrzymujemy mnożąc równanie przez funkcję testową $\varphi$ z lewej strony (wrócimy do powodu mnożenia z lewej, a nie z prawej poniżej) i całkując po domenie $\Omega$:
+      
+      \begin{align*}
+        -\int_\Omega \varphi \Delta u = \int_\Omega \varphi f.
+      \end{align*}
+      
+      Można to zcałkować przez części:
+      
+      \begin{align*}
+        \int_\Omega \nabla\varphi \cdot \nabla u
+        -
+        \int_{\partial\Omega} \varphi \mathbf{n}\cdot \nabla u
+         = \int_\Omega \varphi f.
+      \end{align*}
+      
+      Funkcja testowa $\varphi$ musi spełniać ten sam rodzaj warunków brzegowych (w sensie matematycznym: musi pochodzić z przestrzeni stycznej zbioru, w którym szukamy rozwiązania), więc na granicy $\varphi=0$ iw konsekwencji otrzymujemy następny wygląd słabej:
+      
+      \begin{align*}
+        (\nabla\varphi, \nabla u)
+         = (\varphi, f),
+      \end{align*}
+
+      gdzie zastosowaliśmy powszechną notację $(a,b)=\int_\Omega a\; b$. Następnie problem pyta o funkcję $u$, dla której to stwierdzenie jest prawdziwe dla wszystkich funkcji testowych $\varphi$ z odpowiedniej przestrzeni (która tutaj jest przestrzenią $H^1$).
+
+      Oczywiście nie możemy znaleźć takiej funkcji na komputerze w ogólnym przypadku i zamiast tego szukamy przybliżenia $u_h(\mathbf x)=\sum_j U_j \varphi_j(\mathbf x)$, gdzie $U_j$ to nieznane współczynniki rozszerzalności, które musimy wyznaczyć („stopnie swobody” tego problemu), a $\varphi_i(\mathbf x)$ to funkcje kształtu elementów skończonych, których będziemy używać. Aby zdefiniować te funkcje kształtu, potrzebujemy:
+      
+      \begin{itemize}
+        \item Siatka, na której można zdefiniować funkcje kształtu.
+        \item Element skończony opisujący funkcje kształtu, których chcemy użyć w komórce odniesienia (kwadrat jednostkowy $[0,1]^2$). W użyliśmy zwykłe elementy Lagrange'a definiujące funkcje kształtu poprzez interpolację punktów podparcia.
+        \item Numeracja wszystkich stopni swobody w siatce.
+        \item Odwzorowanie, które mówi, w jaki sposób funkcje kształtu w rzeczywistej komórce są uzyskiwane z funkcji kształtu zdefiniowanych przez klasę elementów skończonych w komórce odniesienia. Domyślnie  deal.II użyje do biliniowego mapowania.
+      \end{itemize}
+
+      Dzięki tym krokom mamy teraz zbiór funkcji $\varphi_i$ i możemy zdefiniować słabą postać problemu dyskretnego: Znajdź funkcję $u_h$, czyli znajdź wspomniane wyżej współczynniki rozszerzalności $U_j$, tak aby
+
+      \begin{align*}
+        (\nabla\varphi_i, \nabla u_h)
+         = (\varphi_i, f),
+         \qquad\qquad
+         i=0\ldots N-1.
+      \end{align*}
+
+      Zauważ, że przestrzegamy tutaj konwencji, że wszystko jest liczone od zera, co jest powszechne w C i C++. To równanie można zapisać jako układ liniowy, jeśli wstawi się reprezentację $u_h(\mathbf x)=\sum_j U_j \varphi_j(\mathbf x)$, a następnie zaobserwuje, że
+
+      \begin{align*}
+        (\nabla\varphi_i, \nabla u_h)
+        &= \left(\nabla\varphi_i, \nabla \Bigl[\sum_j U_j \varphi_j\Bigr]\right)
+        \\
+        &= \sum_j \left(\nabla\varphi_i, \nabla \left[U_j \varphi_j\right]\right)
+        \\
+        &= \sum_j \left(\nabla\varphi_i, \nabla \varphi_j \right) U_j.
+      \end{align*}
+
+      W tym przypadku problem brzmi: Znajdź taki wektor $U$, aby
+      
+      \begin{align*}
+        A U = F,
+      \end{align*}
+
+      where the matrix $A$ and the right hand side $F$ are defined as
+
+      \begin{align*}
+        A_{ij} &= (\nabla\varphi_i, \nabla \varphi_j),
+        \\
+        F_i &= (\varphi_i, f).
+      \end{align*}
+
+      \paragraph{Czy powinniśmy pomnożyć przez funkcję testową z lewej czy z prawej strony?}
+
+        Zanim przejdziemy do opisu, w jaki sposób można obliczyć te wielkości, zauważmy, że gdybyśmy pomnożyli pierwotne równanie z prawej strony przez funkcję testową, a nie z lewej, otrzymalibyśmy układ liniowy postaci
+
+        \begin{align*}
+          U^T A = F^T
+        \end{align*}
+
+        with a row vector $F^T$. By transposing this system, this is of course equivalent to solving
+
+        \begin{align*}
+          A^T U = F
+        \end{align*}
+
+        co tutaj jest takie samo jak powyżej, ponieważ A=AT. Ale generalnie tak nie jest i aby uniknąć wszelkiego rodzaju nieporozumień, doświadczenie pokazało, że po prostu nawyk mnożenia równania od lewej strony, a nie od prawej (jak to często ma miejsce w literaturze matematycznej), pozwala uniknąć wspólnej klasy błędów, ponieważ macierz jest automatycznie poprawna i nie trzeba jej transponować przy porównywaniu teorii i implementacji.
+      
+      \paragraph{Siatka adaptacyjna}
+
+        Istnieje wiele sposobów adaptacyjnego udoskonalania siatek. Podstawowa struktura całego algorytmu jest zawsze taka sama i składa się z pętli obejmującej następujące kroki:
+
+        \begin{itemize}
+          \item Rozwiąż równanie różniczkowe cząstkowe na bieżącej siatce;
+          \item Oszacuj błąd w każdej komórce za pomocą pewnego kryterium wskazującego na błąd;
+          \item Zaznacz te komórki, które mają duże błędy do udoskonalania, zaznacz te, które mają szczególnie małe błędy do zgrubnego, a resztę zostaw w spokoju;
+          \item Podziel lub połącz zaznaczone komórki, aby uzyskać nową siatkę;
+        \end{itemize}
+
+        Poza tą strukturą istnieje jednak wiele sposobów osiągnięcia tego celu. Zasadniczo różnią się tym, jak dokładnie generuje się jedną siatkę z poprzedniej. Dla siatki z trójkątów, trójkąt zaznaczony do udoskonalenia jest dzielony na dwie części poprzez wprowadzenie jednej nowej krawędzi od środka najdłuższej krawędzi do przeciwległego wierzchołka. Oczywiście punkt środkowy od najdłuższej krawędzi musi być w jakiś sposób zrównoważony poprzez udoskonalenie komórki po drugiej stronie tej krawędzi (jeśli taka istnieje). Ta metoda nie działa w przypadku czworokątów, a przynajmniej nie jest łatwa. Powodem jest to, że elementy przejściowe utworzone z czworobocznych sąsiadów czworobocznej komórki, która ma zostać udoskonalona, byłyby trójkątami, a tego nie chcemy. W związku z tym podejście do adaptacyjności wybrane w Deal.II polega na wykorzystaniu siatek, w których sąsiednie komórki mogą różnić się poziomem udoskonalenia o jeden. Powoduje to, że węzły na interfejsach komórek należą do jednej strony, ale są niezrównoważone po drugiej. Powszechnym terminem dla nich są „wiszące węzły”. Jeśli udoskonalimy siatkę globalnie, błąd spadnie do zera jako
+
+        \begin{align*}
+          \|\nabla(u-u_h)\|_{\Omega} \le C h_\text{max}^p \| \nabla^{p+1} u \|_{\Omega},
+        \end{align*}
+
+        gdzie $C$ jest pewną stałą niezależną od $h$ i $u$, $p$ jest stopniem wielomianu używanego elementu skończonego, a $h_{max}$ jest średnicą największej komórki. Jeśli więc ważna jest największa komórka, to dlaczego mielibyśmy chcieć, aby siatka była drobna w niektórych częściach domeny, ale nie we wszystkich? Odpowiedź tkwi w spostrzeżeniu, że powyższy wzór nie jest optymalny. W rzeczywistości poniższe wzór jest lepszym oszacowaniem:
+
+        \begin{align*}
+          \|\nabla(u-u_h)\|_{\Omega}^2 \le C \sum_K h_K^{2p} \| \nabla^{p+1} u \|^2_K.
+        \end{align*}
+
+        (Ponieważ $h_K\le h_\text{max}$, ta formuła natychmiast implikuje poprzednią, jeśli po prostu wyciągniesz rozmiar oczek z sumy.) Ta formuła sugeruje, że nie jest konieczne, aby największa komórka była mała, ale komórki tak naprawdę potrzebują tylko być małym, gdzie $\| \nabla^{p+1} u \|_K$ jest duże! Innymi słowy: Siatka naprawdę musi być dokładna tylko wtedy, gdy rozwiązanie ma duże zmiany, na co wskazuje pochodna $p+1$ty.
+        
+
+
+    \section{Calkowanie parametrow szeregu}
+    \section{IO i inne}
     \section{RiverSim}
     \section{pyriversim}
 
