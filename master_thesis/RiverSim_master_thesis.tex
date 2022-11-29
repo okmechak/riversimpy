@@ -22,7 +22,7 @@
   boxsep=0pt,
   left skip=0pt,
   right skip=0pt,
-  left=25pt,
+  left=10pt,
   right=0pt,
   top=3pt,
   bottom=3pt,
@@ -32,11 +32,11 @@
   bottomrule=2pt,
   toprule=2pt,
   colback=bg,
-  colframe=orange!70,
+  colframe=white!10,
   enhanced,
   overlay={%
     \begin{tcbclipinterior}
-    \fill[orange!20!white] (frame.south west) rectangle ([xshift=20pt]frame.north west);
+    \fill[white!10!white] (frame.south west) rectangle ([xshift=20pt]frame.north west);
     \end{tcbclipinterior}},
   #3}
 
@@ -61,12 +61,14 @@
 
   %tu idzie streszczenie na strone poczatkowa
   \begin{abstract}
+    %Мережі в натуральний спосіб з'являються повсюдно в природі. Електростатичний розряд між двома зарядженими областями породжує струм котрий утворює мережу каналів. Дерево зростаючи утворює розгалужену мережу гілок для збору сонячної енергії в ефективний спосіб на протязі багатьох років. Також розвиток мережі судин є керований концентрацією кисню в тканині. 
+    Sieci naturalnie pojawiają się wszędzie w przyrodzie. Wyładowanie elektrostatyczne między dwoma naładowanymi obszarami generuje prąd, który tworzy sieć kanałów. W miarę wzrostu drzewo tworzy rozległą sieć gałęzi, które efektywnie gromadzą energię słoneczną przez wiele lat. Również rozwój sieci naczyniowej jest kontrolowany przez stężenie tlenu w tkance.\par
 
-    Modele rozwoju sieci mogą być wykorzystane do opisu problemów w szerokim zakresie obszarów -- rozwoju sieci rzecznych, awarii elektrycznych, tworzenia naczyń krwionośnych lub żył liściowych. Mechanizmy mikroskopowe napędzające wzrost takich sieci różnią się od procesów erozji w tworzeniu rzek, oddziaływanie pola elektrycznego z materią w przypadku wyładowyłania elektrycznego do procesów biologicznych w żywych tkankach. \par
+    %На цьому етапі вже можна побачити деяку спільну рису між всіма процесами, а саме наявність взаємозалежних поля і матерії на котра переміщається в локальному напрямку максимального поля. Тому багато процесів із розвитку мережі можна звести до одного математичного формалізму. 
+    Na tym etapie można już dostrzec pewną wspólną cechę wszystkich procesów, a mianowicie obecność współzależnych pól i materii poruszającej się w lokalnym kierunku maksymalnego pola. Dlatego wiele procesów rozwoju sieci można sprowadzić do jednego formalizmu matematycznego.\par
 
-    Co ciekawe, matematyczny formalizm opisujący rozwój sieci może być bardzo podobny w każdym problemie, chociaż fizyczne pola napędzające wzrost są bardzo różne. W naszym badaniu koncentrujemy się na wzroście cienkich palców w polu harmonicznym, z tempem i kierunkiem wzrostu wyznaczonym przez pole w pobliżu źródła. Uzasadniamy to podejście do przypadku sieci rzecznych i symulujemy wzrost takich sieci w celu zbadania wpływu zasad wzrostu na geometrie sieci rzeki. Symulacja jest przeprowadzana w oprogramowaniu stworzonym w ramach danej pracy.\par
-
-    RiverSim to oprogramowanie z otwartym źródłołym kodem stworzone dla symulacji ewolucji sieci rzecznych w polu Laplasowskim. Celem projektowym jest stworzenie szybkiego w obliczaniach i szybkiego w korzystaniu, prototypowaniu narzędzia dla symulacji ewolucji sieci rzecznych. Praca prezentuję opis problemu, model teoretyczny, strukturę i szczegóły oprogramowania, a także walidacje i przykładowe obliczenia.\par
+    %В даній праці ми фокусуємося на створенні Python бібліотеки котра помагає досліджувати розвиток мережі в полі Лапласа на прикладі розвитку мережі річки. Спочатку ми описуємо математичну модель розвитку мережі річки в полі Лапласа. Тоді описуємо бібліотеку riversim, її алгоритми і показуємо простий спосіб застосування програми крок по кроку. Тоді наводимо приклади збіжності розв'язку і покажемо кілька результатів.
+    W tej pracy skupiamy się na stworzeniu biblioteki Pythona, która pomaga badać rozwój sieci w polu Laplace'a na przykładzie rozwoju sieci rzecznej. Najpierw opisujemy matematyczny model rozwoju sieci rzecznej w polu Laplace'a. Następnie opisujemy bibliotekę riversim, jej algorytmy i pokazujemy prosty sposób korzystania z programu krok po kroku. Następnie podajemy przykłady zbieżności rozwiązania i pokazujemy kilka wyników.\par
 
   \end{abstract}
 
@@ -434,6 +436,33 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   \chapter{Rozwiązanie numeryczne i struktura oprogramowania}
 
     \hspace{1em} \= 
@@ -485,13 +514,51 @@
       %Спочатку задаємо впорядковану множину координат з допомогою класу Point і ліній з допомогою класу Line для визначення границі. В програмі границя репрезентується класом Boundary. Таких границь може бути декілька. Група границь котрим присвоєний унікальний індекс утворює регіон який репрезентується класом Region. Границя - це замкнута лінія, іншими словами полігон. В регіоні немає обмежень на кількість границь. Границя також може містити цілковито іншу границю, проте перетин ліній не допускається. Щоб утворити дірку в границі потрібно визначити координату в межах цієї границі і присвоїти до списку дір який зберігається в класі Region. Наступним кроком є визначення місць звідки буде відбуватися ріст мережі річки. Такими місцями може бути кожна  точка границі і джерел може бути необмежена кількість(практично обмежена сумарної кількістю координат границь). Для зберігання інформації про початкові координати джерел створено клас Source. Цей клас зберігає унікальний номер кожного джерела, номер границі на котрій розташовується і номер координати на даній границі.
       Najpierw określamy uporządkowany zestaw współrzędnych za pomocą klasy Point i linii za pomocą klasy Line, aby określić granicę. W programie granica jest reprezentowana przez klasę Boundary. Takich granic może być kilka. Grupa granic, którym przypisano unikalny indeks, tworzy region reprezentowany przez klasę Region. Granica jest zamkniętą linią, innymi słowy wielokątem. W regionie nie ma ograniczeń co do liczby granic. Jedna granica może również zawierać inną granicę, ale przecięcie linii jest niedozwolone. Aby utworzyć otwór w granicy, należy zdefiniować współrzędną w obrębie tej granicy i przypisać ją do listy otworów przechowywanej w klasie Region. Kolejnym krokiem jest określenie miejsc, z których nastąpi rozwój sieci rzecznej. Takimi miejscami może być każdy punkt granicy, a źródeł może być nieograniczona (praktycznie ograniczona całkowitą liczbą współrzędnych granic). Klasa Source została stworzona do przechowywania informacji o początkowych współrzędnych źródeł. Ta klasa przechowuje unikalny numer każdego źródła, numer granicy, na której się znajduje, oraz numer współrzędnej na tej granicy.
 
-      \begin{mintedbox}{python} import riversim \end{mintedbox}
+      \begin{mintedbox}{python}
+        from riversim import *
+
+        outer_boundary = Boundary()
+        outer_boundary.vertices.extend([Point(0.13, 0.011), Point(0.31, 0), Point(0.74, 0.15), Point(0.95, 0.35), Point(0.8, 0.75), Point(0.47, 0.85), Point(0.152, 0.76), Point(0, 0.5), Point(0.025, 0.3)])
+        outer_boundary.lines.extend([Line(0, 1, 1), Line(1, 2, 1), Line(2, 3, 1), Line(3, 4, 1), Line(4, 5, 2), Line(5, 6, 2), Line(6, 7, 1), Line(7, 8, 1), Line(8, 0, 1)])
+
+        inner_boundary = Boundary()
+        inner_boundary.vertices.extend([Point(0.3, 0.7), Point(0.5, 0.76), Point(0.65, 0.7), Point(0.66, 0.59)])
+        inner_boundary.lines.extend([Line(0, 1, 1), Line(1, 2, 3), Line(2, 3, 3), Line(3, 0, 1)])
+
+        region = Region()
+        region[1] = outer_boundary; region[2] = inner_boundary
+        region.holes.append(Point(0.4, 0.7))
+
+        sources = Sources()
+        sources[1] = t_source_coord(1, 1) 
+        sources[2] = t_source_coord(1, 8) 
+        sources[3] = t_source_coord(2, 3)\end{mintedbox}
 
       %Після визначення регіону і розташування джерел, тепер можемо перейти до побудови геометрії річки. Всі дані про геометрію річок і алгоритми містяться в класі Rivers. Rivers містить унікальний номер для кожної річки, котрий має теж саме значення,  що й номер джерела в Sources. Для ініціалізації класу Rivers, потрібно конвертувати дані з класу Sources в координати і напрямок. Для цього служить функція GetSourcesIdsPointsAndAngles класу Region аргументом котрої є Sources. В результаті ми отримаємо набір індексів річок і відповідні їм координати і напрямок перпендикулярний до границі. Для визначення точного напрямку перпендикуляру, має значення напрямок координати при задаванні границі. Прийнято, що перпендикуляр буде з лівої сторони від напрямку координат. Тому якщо звернути увагу на регіон де є дірка по центрі, то зовнішня границя має протилежний напрямок нумерації координат відносно внутрішньої.
       Po określeniu regionu i lokalizacji źródeł możemy przystąpić do konstruowania geometrii rzeki. Wszystkie dane geometrii rzeki i algorytmy są zawarte w klasie Rivers. Rzeki zawierają unikalny numer dla każdej rzeki, który ma takie samo znaczenie jak numer źródła w Źródłach. Aby zainicjować klasę Rivers, należy przekonwertować dane z klasy Sources na współrzędne i kierunek. W tym celu jako argument służy funkcja GetSourcesIdsPointsAndAngles klasy Region, której argumentem jest Sources. W rezultacie otrzymamy zestaw indeksów rzecznych i odpowiadających im współrzędnych oraz kierunek prostopadły do granicy. Aby określić dokładny kierunek prostopadłej, podczas wyznaczania granicy ważny jest kierunek współrzędnych. Zakłada się, że prostopadła będzie po lewej stronie kierunku współrzędnych. Dlatego jeśli zwrócisz uwagę na obszar, w którym znajduje się dziura w środku, wówczas zewnętrzna granica ma przeciwny kierunek numeracji współrzędnych w stosunku do wewnętrznej.
+      
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\textwidth]{figs/rivers_initialization.png}        
+        \caption {Geometria.}
+        \label{rivers_initialization}
+      \end{figure}
 
-      %Вище вказувалося, що в більшості випадків біфуркація річки відбувається на дві частини. А якщо поділів відбувається більше, ми можемо вважати це двома послідовними достатньо близько розташованими між собою біфуркаціями. Поміж біфуркаціями річка апроксимується ламаною лінією. Інформація  про цю лінію криється в класі Branch. А інформація про те котрі частини річки з'єднуються з іншими частинами річки в пунктах біфуркації міститься в графі котрий в свою чергу міститься в класі Rivers. Класс Rivers надає можливості для легкого способу працювати із геометрією річки, а саме: отримання інформації про поточний стан річок(довжини, відношення між частинами річками, визначення кривизни, координати джерел і тд), розвиток мережі річки(додавання нових координат до річки при рості, згладжування кривизни, створення нових річок, додавання нових пунктів біфуркації), зменшення довжини річки і  видалення пунктів біфуркації для полегшення обрахунків при оберненій еволюції. 
+      \begin{mintedbox}{python}
+        rivers = Rivers()
+        rivers.initialize(region.getSourcesIdsPointsAndAngles(sources))\end{mintedbox}
+      
+        %Вище вказувалося, що в більшості випадків біфуркація річки відбувається на дві частини. А якщо поділів відбувається більше, ми можемо вважати це двома послідовними достатньо близько розташованими між собою біфуркаціями. Поміж біфуркаціями річка апроксимується ламаною лінією. Інформація  про цю лінію криється в класі Branch. А інформація про те котрі частини річки з'єднуються з іншими частинами річки в пунктах біфуркації міститься в графі котрий в свою чергу міститься в класі Rivers. Класс Rivers надає можливості для легкого способу працювати із геометрією річки, а саме: отримання інформації про поточний стан річок(довжини, відношення між частинами річками, визначення кривизни, координати джерел і тд), розвиток мережі річки(додавання нових координат до річки при рості, згладжування кривизни, створення нових річок, додавання нових пунктів біфуркації), зменшення довжини річки і  видалення пунктів біфуркації для полегшення обрахунків при оберненій еволюції. 
       Powyżej zaznaczono, że w większości przypadków rzeka rozdziela się na dwie części. A jeśli podziałów jest więcej, możemy to uznać za dwa kolejne bifurkacje dostatecznie blisko siebie. Pomiędzy punktami bifurkacji rzeka jest aproksymowana linią przerywaną. Informacje o tej linii znajdują się w klasie Branch. A informacja o tym, które odcinki rzeki łączą się z innymi odcinkami rzeki w punktach rozwidlenia, zawarta jest w grafie, który z kolei jest zawarty w klasie Rivers. Klasa Rivers daje możliwość łatwej pracy z geometrią rzek, a mianowicie: uzyskiwania informacji o aktualnym stanie rzek (długości, relacje między odcinkami rzek, określanie krzywizny, współrzędne źródeł itp.), opracowywania sieci rzecznej ( dodawanie nowych współrzędnych do rzeki podczas wzrostu, wygładzanie krzywizny, tworzenie nowych rzek, dodawanie nowych punktów bifurkacji), zmniejszanie długości rzeki i usuwanie punktów bifurkacji w celu ułatwienia obliczeń podczas ewolucji odwrotnej.
+      
+      \begin{mintedbox}{python}
+        rivers_ids = t_sources_ids(); rivers_ids.extend([1, 2, 3])
+        ds = 0.01
+        tip_points = t_PolarList(); tip_points.extend([Polar(ds, 0), Polar(ds, 0), Polar(ds, 0)])
+        boundaries_ids = t_boundaries_ids(); boundaries_ids.extend([1, 2, 1])
+        rivers.addPolars(rivers_ids, tip_points, boundaries_ids)
+      
+        sub_branch_ids = rivers.createSubBranches(1, -3.1415/5, 3.1415/5)\end{mintedbox}
 
       %Оскільки мережа річки котра міститься в класі Rivers опирається в своїй реалізації на клас Boundary, то для кожного сегменту річки ми можемо задати унікальні граничні умови. Наприклад, можна врахувати "опір" русла ріки і збільшення висоти підземних вод вздовж.
       Ponieważ sieć rzeczna zawarta w klasie Rivers opiera się w swojej implementacji na klasie Boundary, możemy ustawić unikalne warunki brzegowe dla każdego odcinka rzeki. Naprzykład, możemy uwzględnić „opór” koryta rzeki i wzrost wysokości wód gruntowych wzdłuż niego.
@@ -527,6 +594,12 @@
       %Для генерації сітки нам потрібна замкнута границя Boundary. Для цього існує функція BoundaryGenerator, котра об'єднує класи  Sources, Region та Rivers в одну границю Boundary. Другою проблемою, котра згадувалася вище є те, що немає можливості задати граничні умови в середині регіону, а тільки на границі. Для цього лінії з котрих складається мережа річки розділяються на дві лінії котрі знаходяться достатньо близько одна до одної.
       Aby wygenerować siatkę, potrzebujemy zamkniętej granicy Boundary. W tym celu dostępna jest funkcja BoundaryGenerator, która łączy klasy Sources, Region i Rivers w jedną granicę Boundary. Drugi problem, o którym była mowa powyżej, polega na tym, że nie ma możliwości ustalenia warunków brzegowych w środku regionu, a jedynie na granicy. W tym celu linie tworzące sieć rzeczną są podzielone na dwie linie, które są wystarczająco blisko siebie.
 
+      \begin{mintedbox}{python}
+        region_params = RegionParams()
+        region_params.smoothness_degree = 0.2
+        region_params.river_width = 1e-8
+        boundary = BoundaryGenerator(sources, region, rivers, region_params)\end{mintedbox}
+
       %Коли є замкнута границя можна згенерувати сітку. Для цього була використана C++ бібліотека \cite{szewczuk1996triangle}. Методи і алгоритми бібліотеки Traingle містяться в однойменному класі. Triangle генерує Деланау сітку. Triangle дає можливість задати значення мінімального кута трикутника, мінімальної і максимальної довжини сторони трикутника, мінімальної і максимальної площі трикутника, співвідношення сторін трикутника та інше. Другим важливим аспектом є генерація достатньо малої сітки в місцях, де поле підземних вод змінюється найшвидше -- довкола джерел. Для цього можна задати множину координат(а саме координат джерел), де буде обмежена радіально площа трикутника відносно даних точок. Функція котра обмежує площу трикутника виглядає наступним чином:
       Gdy istnieje zamknięta granica, można wygenerować siatkę. W tym celu wykorzystano bibliotekę C++ Triangle\cite{szewczuk1996triangle}. Metody i algorytmy biblioteki Traingle są zawarte w klasie o tej samej nazwie. Trójkąt generuje siatkę Delaunaya. Trójkąt pozwala ustawić wartość minimalnego kąta trójkąta, minimalną i maksymalną długość boku trójkąta, minimalną i maksymalną powierzchnię trójkąta, stosunek boków trójkąta itp. Drugim ważnym aspektem jest generowanie odpowiednio małej siatki w miejscach, w których pole wód podziemnych zmienia się najszybciej - w okolicach źródeł. Aby to zrobić, możesz określić zestaw współrzędnych (czyli współrzędne źródeł), w których obszar trójkąta względem danych punktów będzie ograniczony promieniowo. Funkcja ograniczająca pole trójkąta wygląda następująco:
       \begin{equation}
@@ -536,12 +609,34 @@
       %Розв'язувач Deal.II\cite{dealII94} вимагає сітки із квадратними елементами. Для цього ми використовуємо бібліотеку C++  Tethex \cite{tethex}  котра конвертує трикутні елементи сітки у чотирикутники, розбиваючи один трикутний елемент на три квадратних, чим збільшуючи кількість елементів сітки у три рази.
       Solver Deal.II\cite{dealII94} wymaga siatki z elementami kwadratowymi. W tym celu używamy biblioteki Tethex \cite{tethex} C++, która konwertuje trójkątne elementy siatki na czworoboki, dzieląc jeden trójkątny element na trzy kwadratowe, zwiększając w ten sposób liczbę elementów siatki trzykrotnie.
 
+      \begin{mintedbox}{python}
+        mesh_params = MeshParams()
+        mesh_params.max_area = 1e6
+        mesh_params.min_area = 6e-7
+        mesh_params.max_edge = 1
+        mesh_params.min_edge = 8e-12
+        mesh_params.ratio = 2.3
+        mesh_params.refinment_radius = 5e-3
+        mesh_params.exponant = 1
+        mesh_params.sigma = 1.9
+      
+        triangle = Triangle(mesh_params)
+        triangle.mesh_params.tip_points = rivers.TipPoints()
+        mesh = triangle.generate(boundary, region.holes)\end{mintedbox}
+
     \section{Warunki brzegowe}
 
       %Кожна лінія містить також номер(посилання) граничної умови. Boundaries -- клас котрий містить набір пар із унікальним номером і відповідною йому граничною умовою котра може бути двох типів: Діріхлет і Ноймана. Граничну умову можна задати тільки на граничній лінії, іншими словами задати лінію посеред регіону і граничну умову на ній не можна. Проте лінію завжди можна апроксимувати дуже тонким прямокутником, тож за потреби це не є проблемою.
       Każda linia zawiera również numer (odniesienie) warunku brzegowego. Boundaries -- klasa zawierająca zbiór par o unikalnym numerze i odpowiadającym mu warunku brzegowym, który może być dwojakiego rodzaju: Dirichlet i Neumann. Warunek brzegowy można ustawić tylko na linii granicznej, innymi słowy, nie można ustawić linii pośrodku regionu i warunku brzegowego na nim. Jednak linię zawsze można przybliżyć bardzo cienkim prostokątem, więc w razie potrzeby nie stanowi to problemu.
 
     \section{Rozwiazanie pola wód podziemnych}
+
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{figs/solver.png}        
+        \caption {Geometria.}
+        \label{solver}
+      \end{figure}
 
       Deal.II\cite{dealII94} to biblioteka programu C++ przeznaczona do obliczeniowego rozwiązywania równań różniczkowych cząstkowych przy użyciu adaptacyjnych elementów skończonych. Wykorzystuje najnowocześniejsze techniki programowania, aby zaoferować nowoczesny interfejs do złożonych struktur danych i algorytmów.
 
@@ -640,6 +735,13 @@
       
       \paragraph{Siatka adaptacyjna}
 
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.9\textwidth]{figs/adaptive_refinment.png}        
+          \caption {Geometria.}
+          \label{adaptive_refinment}
+        \end{figure}
+
         Istnieje wiele sposobów adaptacyjnego udoskonalania siatek. Podstawowa struktura całego algorytmu jest zawsze taka sama i składa się z pętli obejmującej następujące kroki:
 
         \begin{itemize}
@@ -661,11 +763,19 @@
           \|\nabla(u-u_h)\|_{\Omega}^2 \le C \sum_K h_K^{2p} \| \nabla^{p+1} u \|^2_K.
         \end{align*}
 
-        (Ponieważ $h_K\le h_\text{max}$, ta formuła natychmiast implikuje poprzednią, jeśli po prostu wyciągniesz rozmiar oczek z sumy.) Ta formuła sugeruje, że nie jest konieczne, aby największa komórka była mała, ale komórki tak naprawdę potrzebują tylko być małym, gdzie $\| \nabla^{p+1} u \|_K$ jest duże! Innymi słowy: Siatka naprawdę musi być dokładna tylko wtedy, gdy rozwiązanie ma duże zmiany, na co wskazuje pochodna $p+1$ty.
+        (Ponieważ $h_K\le h_\text{max}$, ta formuła natychmiast implikuje poprzednią, jeśli po prostu wyciągniesz rozmiar oczek z sumy.) Ta formuła sugeruje, że nie jest konieczne, aby największa komórka była mała, ale komórki tak naprawdę potrzebują tylko być małym, gdzie $\| \nabla^{p+1} u \|_K$ jest duże! Innymi słowy: Siatka naprawdę musi być dokładna tylko wtedy, gdy rozwiązanie ma duże zmiany, na co wskazuje $p+1$ pochodna .
         
-
+        Oczywiście to oszacowanie a priori nie jest zbyt przydatne w praktyce, ponieważ nie znamy dokładnego rozwiązania $u$, a co za tym idzie, nie możemy obliczyć $\nabla^{p+1}u$. Ale, i jest to powszechnie przyjmowane podejście, możemy obliczyć numeryczne przybliżenia $\nabla^{p+1}u$ bazując tylko na dyskretnym rozwiązaniu $u_h$, które obliczyliśmy wcześniej. Omówimy to nieco bardziej szczegółowo poniżej. Pomoże nam to określić, które komórki mają dużą pochodną $p+1$, a następnie są kandydatami do uściślenia siatki.
 
     \section{Calkowanie parametrow szeregu}
+      
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{figs/series_params_integration.png}        
+        \caption {Geometria.}
+        \label{series_params_integration}
+      \end{figure}
+
     \section{IO i inne}
     \section{RiverSim}
     \section{pyriversim}
@@ -693,6 +803,105 @@
   \appendix
 
   \chapter{Główna pętla programu}
+    \begin{mintedbox}{python} 
+      from riversim import *
+      import numpy as np
+
+      m = Model()
+      m.InitializeDirichlet()
+
+      solver = Solver(m.solver_params)
+      triangle = Triangle(m.mesh_params)
+      mesh = TethexMesh()
+
+      dynamic_river_ids = m.rivers.tipBranchesIds()
+
+      for i in range(m.number_of_steps):
+          m.boundary = BoundaryGenerator(\
+              m.sources, \
+              m.region, \
+              m.rivers, \
+              m.region_params)
+
+          num_of_intersects = NumOfBoundaryIntersection(m.boundary, m.rivers.tipBoundary())
+          if num_of_intersects > 0:
+              break
+
+          empt_rivers = Rivers()
+          empt_source = Sources()
+          only_boundary = BoundaryGenerator(empt_source, m.region, empt_rivers, m.region_params)
+          distance_to_boundary = DistanceFromPointsToBoundary(only_boundary, m.rivers.tipPoints())
+          if distance_to_boundary <= m.integr_params.integration_radius:
+              break
+
+          if len(m.boundary.vertices) == 0:
+              break 
+
+          # mesh will be refined aroud growing tip points
+          tip_points = t_PointList()
+          for id in dynamic_river_ids:
+              tip_points.append(m.rivers[id].tipPoint())
+          triangle.mesh_params.tip_points = tip_points
+          mesh = triangle.generate(m.boundary, m.region.holes)
+              
+          solver.openMesh(mesh)
+          for j in range(m.solver_params.adaptive_refinment_steps + 1):
+              if j > 0:
+                  solver.refineGrid()
+              solver.setupSystem()
+              solver.assembleSystem(m.boundary_conditions)
+              solver.solve()
+
+          id_series_params = t_ids_series_params()
+          max_a1 = 0
+          for id in dynamic_river_ids:
+              tip_point = m.rivers[id].tipPoint()
+              tip_angle = m.rivers[id].tipAngle()
+              id_series_params[id] = solver.integrate_new(m.integr_params, tip_point, tip_angle)
+              if id_series_params[id][0] > max_a1:
+                  max_a1 = id_series_params[id][0]
+
+          for id_series_param in id_series_params:
+              id = id_series_param.key()
+              series_param = id_series_param.data()
+              if m.qGrowth(series_param):
+                  l = m.rivers[id].lenght()
+                  if m.qBifurcate(series_param, l):
+                      tip_point = m.rivers[id].tipPoint()
+                      tip_angle = m.rivers[id].tipAngle()
+                      br_left = Branch(tip_point, tip_angle + m.bifurcation_angle)
+                      br_left.addPoint(Polar(m.ds, 0), m.region_params.river_boundary_id)
+                      br_right = Branch(tip_point, tip_angle - m.bifurcation_angle)
+                      br_right.addPoint(Polar(m.ds, 0), m.region_params.river_boundary_id)
+                      ids = m.rivers.addSubBranches(id, br_left, br_right)
+
+                      # add new branches
+                      dynamic_river_ids.append(ids.left)
+                      dynamic_river_ids.append(ids.right)
+
+                      # and remove parent from growth evaluation
+                      for f in range(len(dynamic_river_ids)):
+                          if dynamic_river_ids[f] == id:
+                              del dynamic_river_ids[f]
+                              break
+                  else: 
+                      m.rivers[id].addPoint(\
+                          m.nextPoint(series_param, l, max_a1),\
+                          m.region_params.river_boundary_id)
+              else:
+                  # remove river from growth evaluation
+                  for f in range(len(dynamic_river_ids)):
+                      if dynamic_river_ids[f] == id:
+                          del dynamic_river_ids[f]
+                          break
+
+          if debug:
+              save(m, "debug " + str(i) + ".json")
+
+          if not dynamic_river_ids:
+              break
+
+      \end{mintedbox}
 
   \chapter{Przykładowe dane wejściowe algorytmu}
 

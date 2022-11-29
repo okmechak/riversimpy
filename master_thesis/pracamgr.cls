@@ -81,9 +81,9 @@
 	\par
 	\vspace*{26pt}%
 	\begin{center} \bfseries\large Słowa kluczowe \end{center}
-  	FEM, Fizyka, Wody podziemne, Rownanie Laplacea, Erozja, Metody numeryczne\par
+  	FEM, Fizyka, Wody podziemne, Rownanie Laplace'a, Erozja, Metody numeryczne\par
   	
 	\vspace*{26pt}%
 	\begin{center} \bfseries\large Tytuł pracy w języku angielskim \end{center}
-  	Riversm: river network growth in laplacea field simulation program.\par
+  	Riversm: river network growth in Laplace'a field simulation program.\par
 }
