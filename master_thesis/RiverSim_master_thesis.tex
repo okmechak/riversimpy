@@ -59,7 +59,6 @@
   
   \maketitle
 
-  %tu idzie streszczenie na strone poczatkowa
   \begin{abstract}
     %Мережі в натуральний спосіб з'являються повсюдно в природі. Електростатичний розряд між двома зарядженими областями породжує струм котрий утворює мережу каналів. Дерево зростаючи утворює розгалужену мережу гілок для збору сонячної енергії в ефективний спосіб на протязі багатьох років. Також розвиток мережі судин є керований концентрацією кисню в тканині. 
     Sieci naturalnie pojawiają się wszędzie w przyrodzie. Wyładowanie elektrostatyczne między dwoma naładowanymi obszarami generuje prąd, który tworzy sieć kanałów. W miarę wzrostu drzewo tworzy rozległą sieć gałęzi, które efektywnie gromadzą energię słoneczną przez wiele lat. Również rozwój sieci naczyniowej jest kontrolowany przez stężenie tlenu w tkance.\par
@@ -114,7 +113,7 @@
     \begin{figure}[H]
       \centering
       \includegraphics[width=1\textwidth]{figs/basic_river_illustration.png}
-      \caption { TODO }
+      \caption { Dolina rzeki z jeziorem i ich przekrój. Po prawej stronie można widać jak wody podziemne są napędzane przez opady lub naprzykład przez spływ z gór.}
       \label{pow_wsiakanie}
     \end{figure}
 
@@ -127,7 +126,7 @@
         \includegraphics[width=0.45\textwidth]{figs/erosion_illustration.png}
       \end{center}
       \vspace{-20pt}
-      \caption{ TODO }
+      \caption{Ilustracja wzrostu rzeki poprzez procesy erozyjne zachodzącę w okolicy źródeł.}
       \vspace{0pt}
       \label{zrodlo}
     \end{wrapfigure}
@@ -372,7 +371,7 @@
       \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{figs/geometry_examples.png}
-        \caption {Szereg przykładów granicy:  prostokąt (1),  basen rzeki aproksymoway łamą linią (2), granica zawierająca granicę(3), brzegi nie powiązane topologicznie (4), sieć rzeki (5).}
+        \caption {Szereg przykładów granicy:  brzeg z dwoma zaznaczonymi źródłami (1), granica zawierająca granicę(na przykład jezioro) (2), basen rzeki aproksymowany łamą linią i częściowo odzwierciedloną rżeką (4), dwa prostokąty z różną szerokością nie powiązane topologicznie(5).}
         \label{geometry_examples}
       \end{figure}
       
@@ -381,15 +380,15 @@
       
       \begin{figure}[H]
         \centering
-        \includegraphics[width=0.9\textwidth]{figs/GeometryClasses.png}
-        \caption {TODO.}
+        \includegraphics[width=0.7\textwidth]{figs/GeometryClasses.png}
+        \caption {Ilustracja objektów zdefiniowanych w bibliotece riversim i ich relacje pomiędzy sobą przy konfigurowaniu geometrii.}
         \label{GeometryClasses}
       \end{figure}
 
       \begin{figure}[H]
         \centering
         \includegraphics[width=0.9\textwidth]{figs/region_workflow.png}
-        \caption {TODO.}
+        \caption{Ilustracja kolejności kroków przy definicji regionu. Definicja wszystkich punktów i zapisanie ich do obrednych list t\_PointList jeżęli należą do różnych brzegów (1). Definicja linij i indeksów i też przepisanie ich do obrędnych list t\_LineList (2). Definicja punktów źródłołych na granicy w klasie Source (3). Denicja warunków brzegowych (4).}
         \label{region_workflow}
       \end{figure}
 
@@ -422,7 +421,7 @@
       \begin{figure}[H]
         \centering
         \includegraphics[width=0.6\textwidth]{figs/rivers_initialization.png}        
-        \caption {TODO.}
+        \caption {Indeksy brzegów i odpowiednich współrzędnych, którę są przechowywane w klasie Source, są konwertowanę w wspówrzędne i kąt nornalnej linii w danym punkcie granicy. Te dane są wykorzystywane dla inicializacji struktury Rivers która przechowywuję dane o sieci rzecznej.}
         \label{rivers_initialization}
       \end{figure}
 
@@ -448,7 +447,7 @@
       \begin{figure}[H]
         \centering
         \includegraphics[width=0.9\textwidth]{figs/tree_coarsening.png}        
-        \caption {TODO.}
+        \caption {Ilustracja zmijszenia gęstości współrzędnych na granicy przy zachowaniu wystarczającej dokładności.}
         \label{tree_coarsening}
       \end{figure}
 
@@ -469,7 +468,7 @@
       \begin{figure}[H]
         \centering
         \includegraphics[width=0.9\textwidth]{figs/mesh_generation.png}        
-        \caption {TODO.}
+        \caption {Wszystkie brzegi które są zawierane w klasie Region, a także brzegi rzek w klasie Rivers łączą się w jeden zamnknięty brzeg (1). Z pomocą Triangle na bazie jednej zamnkiętej granicy jest generowana siatką trójkątowa (2). Siatka trójkątowa z pomoca biblioteki Tethex jest kowertowana w siatke prostokątów (3).}
         \label{mesh_generation}
       \end{figure}
 
@@ -485,7 +484,7 @@
       %Коли є замкнута границя можна згенерувати сітку. Для цього була використана C++ бібліотека \cite{szewczuk1996triangle}. Методи і алгоритми бібліотеки Traingle містяться в однойменному класі. Triangle генерує Деланау сітку. Triangle дає можливість задати значення мінімального кута трикутника, мінімальної і максимальної довжини сторони трикутника, мінімальної і максимальної площі трикутника, співвідношення сторін трикутника та інше. Другим важливим аспектом є генерація достатньо малої сітки в місцях, де поле підземних вод змінюється найшвидше -- довкола джерел. Для цього можна задати множину координат(а саме координат джерел), де буде обмежена радіально площа трикутника відносно даних точок. Функція котра обмежує площу трикутника виглядає наступним чином:
       Gdy istnieje zamknięta granica, można wygenerować siatkę. W tym celu wykorzystano bibliotekę C++ Triangle\cite{szewczuk1996triangle}. Metody i algorytmy biblioteki Traingle są zawarte w klasie o tej samej nazwie. Trójkąt generuje siatkę Delaunaya. Trójkąt pozwala ustawić wartość minimalnego kąta trójkąta, minimalną i maksymalną długość boku trójkąta, minimalną i maksymalną powierzchnię trójkąta, stosunek boków trójkąta itp. Drugim ważnym aspektem jest generowanie odpowiednio małej siatki w miejscach, w których pole wód podziemnych zmienia się najszybciej - w okolicach źródeł. Aby to zrobić, możesz określić zestaw współrzędnych (czyli współrzędne źródeł), w których obszar trójkąta względem danych punktów będzie ograniczony promieniowo. Funkcja ograniczająca pole trójkąta wygląda następująco:
       \begin{equation}
-        f(x) = x^{2}
+        A(r) = A_{min} + (A_{max} - A_{min}) \frac{1 - \exp{(\frac{-(\frac{r}{r_{ref}})^{exponant}}{2 \sigma^2})}}{1 + \exp{(\frac{-(\frac{r}{r_{ref}})^{exponant}}{2 \sigma^2})}} 
       \end{equation}
 
       %Розв'язувач Deal.II\cite{dealII94} вимагає сітки із квадратними елементами. Для цього ми використовуємо бібліотеку C++  Tethex \cite{tethex}  котра конвертує трикутні елементи сітки у чотирикутники, розбиваючи один трикутний елемент на три квадратних, чим збільшуючи кількість елементів сітки у три рази.
@@ -522,7 +521,7 @@
       \begin{figure}[H]
         \centering
         \includegraphics[width=0.9\textwidth]{figs/solver.png}        
-        \caption {TODO.}
+        \caption {Pole wód podziemnych.}
         \label{solver}
       \end{figure}
 
@@ -610,7 +609,7 @@
         \begin{figure}[H]
           \centering
           \includegraphics[width=0.9\textwidth]{figs/adaptive_refinment.png}        
-          \caption {TODO.}
+          \caption {Elementy siątki są dzielone w tych miejscach gdzie błąd rozwiązania jest najwiekszy. W okolicy źródła pole zachowuje się jako $\frac{1}{\sqrt[2]{r}}$.}
           \label{adaptive_refinment}
         \end{figure}
 
@@ -639,14 +638,66 @@
         
         Oczywiście to oszacowanie a priori nie jest zbyt przydatne w praktyce, ponieważ nie znamy dokładnego rozwiązania $\phi$, a za tym idzie, że nie możemy obliczyć $\nabla^{p+1} \phi$. Ale możemy obliczyć numeryczne przybliżenia $\nabla^{p+1} \phi$ bazując tylko na dyskretnym rozwiązaniu $\phi_h$.
 
+      \paragraph{riversim}
+        
+        Powyższe rozumuwania teoretyczne są zaimplementowane w bibliotece riversim w pliku `solver.hpp`:
+        
+        \begin{mintedbox}{python}
+          solver_params = SolverParams()
+          solver_params.field_value = 1
+          solver_params.quadrature_degree = 3
+          solver_params.renumbering_type = 0
+          solver_params.tollerance = 1e-12
+          solver_params.num_of_iterrations =  6000
+          solver_params.refinment_fraction = 0.1
+          adaptive_refinment_steps = 1
+        
+          solver = Solver(solver_params)
+          solver.openMesh(mesh)
+          
+          solver.openMesh(mesh)
+          for j in range(adaptive_refinment_steps + 1):
+              if j > 0:
+                  solver.refineGrid()
+              solver.setupSystem()
+              solver.assembleSystem(boundary_conditions)
+              solver.solve()\end{mintedbox}
+
     \section{Calkowanie parametrow szeregu}
       
       \begin{figure}[H]
         \centering
         \includegraphics[width=0.9\textwidth]{figs/series_params_integration.png}        
-        \caption {TODO.}
+        \caption {Ilustracja rozkładu pola w okolicy źródła na współczynniki $a_n$.}
         \label{series_params_integration}
       \end{figure}
+
+      Powyżej już było pokazano że erozja jest największa w miejscach gdzie gradient pola jest największy. Takim miejscem z największym gradientem są oklicy źródeł. We współrzędnych biegunowych pole w pobliżu wierzchołka można rozszerzyć z pomocą równania \ref{series_params_integration}. Gdzie kazdy parameter $a_n$, gdzie $n \epsilon [1, 3]$ ma fizyczną interpretację (\ref{circle}, \ref{a3a1}) i jest powiązany z regułami wzrostu (\ref{velocity}). Współczynniki $a_n$ są wylicznę z postaci całkowej \ref{a1}, \ref{a2} i \ref{a3}. Aby zmniejszyć szum numeryczny uśredniamy postaci całkowe wzdłuż promienia $r$ z wykorzystaniem funkcji wagi $\omega(r)$:
+      
+      \begin{equation}
+        \label{a1_num}
+        a_1 = \frac{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \phi(r, \theta) \cos \frac{\theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r}{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \cos^2 \frac{\theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r} \,,
+      \end{equation} 
+      
+      \begin{equation}
+        \label{a2_num}
+        a_2 = \frac{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \phi(r, \theta) \sin \theta \omega(r) \textrm{d} \theta \textrm{d} r}{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \sin^2 \theta \omega(r) \textrm{d} \theta \textrm{d} r} \,,
+      \end{equation}
+      
+      \begin{equation}
+        \label{a3_num}
+        a_3 = \frac{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \phi(r, \theta) \cos \frac{3 \theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r}{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \cos^2 \frac{3 \theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r}
+      \end{equation}	
+
+      Gdzie $\omega(r):$
+
+      \begin{equation}
+        \label{integration_weight}
+        \omega(r) = \exp(-{(\frac{r}{r_{ref}})}^e)
+      \end{equation}
+
+      Całka $\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} f(r, \theta) \textrm{d} \theta \textrm{d} r$ jak i równanie dla pola wód podziemnych całka jest wyliczana numerycznie. Chociaż mamy dyskretnę rozwiązania pola wód podziemnych ale otzrymanie wartości pola $\phi(x, y)$ w dowolnym punkcie nadal jest numerycznie skomplikowanym, o ile wymaga iterację po całej siatce regionu, a po znaleziniu odpowiedniego elementu -- interpolacje. Przez to przy aproksymówaniu całki skończoną sumą celem jest minimizacja ilości elementów.  
+
 
     \section{IO i inne}
     \section{RiverSim}
@@ -673,11 +724,13 @@
 
   \chapter{Główna pętla programu}
     
-    Instalacja biblioteki riversim w Python3 (tylko Linux).
+    Instalacja biblioteki riversim w Python3 (tylko Linux):
     
     \begin{mintedbox}{bash} 
       python3 -m pip install riversim\end{mintedbox}
     
+    Skrypt Python symulujący rozwój sieci rzecznej napisany w oparciu biblioteki riversm:
+
     \begin{mintedbox}{python} 
       from riversim import *
       import numpy as np
@@ -775,9 +828,8 @@
 
           if not dynamic_river_ids:
               break
-
       \end{mintedbox}
 
-  \chapter{Przykładowe dane wejściowe algorytmu}
+  %\chapter{Przykładowe dane wejściowe algorytmu}
 
 \end{document}
