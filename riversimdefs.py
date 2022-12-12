@@ -7,11 +7,8 @@ import numpy as np
 def plot(model, figsize = [40, 40], plot_limits = []):
 
     ax = plt.gca()
-
     ax.set_aspect('equal')
-
     plt.rcParams['figure.figsize'] = figsize
-    
     ax.cla()
 
     xmin = 0
@@ -31,7 +28,6 @@ def plot(model, figsize = [40, 40], plot_limits = []):
             ymin = min(y)
         if max(y) > ymax:
             ymax = max(y)
-
     
     for boundary_pr in model.region:
         x = ([v.x for v in boundary_pr.data().vertices])
@@ -47,7 +43,6 @@ def plot(model, figsize = [40, 40], plot_limits = []):
         if max(y) > ymax:
             ymax = max(y)
         ax.plot(x, y)
-
     
     if len(plot_limits) == 4:
         ax.set_xlim(plot_limits[0], plot_limits[1])
@@ -55,14 +50,6 @@ def plot(model, figsize = [40, 40], plot_limits = []):
     else:
         ax.set_xlim(xmin - 0.1, xmax + 0.1)
         ax.set_ylim(ymin - 0.1, ymax + 0.1)
-
-
-    #plt.xlim(xmin - 0.1, xmax + 0.1)
-    #plt.ylim(ymin - 0.1, ymax + 0.1)
-    #plt.show()
-    #display(fig)
-    #clear_output(wait = True)
-    #plt.pause(0.001)
 
 def growRiver(m, plot_period = 50, debug = False):
 
