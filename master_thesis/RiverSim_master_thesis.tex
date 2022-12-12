@@ -73,35 +73,6 @@
 
   \tableofcontents
 
-  %\chapter*{Wprowadzenie}
-
-  %  \addcontentsline{toc}{chapter}{Wprowadzenie}
-  %  \pagenumbering{arabic}
-  %  \setcounter{page}{1} 
-
-  %  Wiele naturalnych wzorców ma postać sieci rozgałęzionych: od sieci rzecznych lub kanałów jaskiniowych, dendrytów mineralnych i lepkich wzorców palców do systemów biologicznych, takich jak naczynia krwionośne lub żyłkowanie liści i wiele innych (Rys. \ref{networks_in_nature}). Siły fizyczne napędzające wzrost różni się w zależności od systemu: erozja, dyfuzja, przewodnictwo cieplne i in. Pomimo tych różnic istnieje wiele cech wspólnych dla tych sieci, to sugeruje wspólny podstawowy mechanizm wzrostu.\par
-
-  %  \begin{figure}[H]
-  %    \centering
-  %    \subfloat[]{\label{cracks}
-  %    \includegraphics[height=0.19\textheight]{figs/lichtenberg_figure.jpg}}
-  %    \quad
-  %    \subfloat[]{\label{chicken}
-  %    \includegraphics[height=0.19\textheight]{figs/dry_tug_fork_california.png}}
-  %    \quad
-  %    %\hspace{-10pt}
-  %    \subfloat[]{\label{leaf}
-  %    \includegraphics[height=0.19\textheight]{figs/chicken_yolk_sac.png}}
-  %    \caption{Przykłady rozgałęzionych sieci przestrzennych w przyrodzie: (a)~Figura Lichtenberga \cite{paulslab} (b)~Dorzecze Dry Tug Fork w Kalifornii \cite{ball2009branches} (c)~Naczynia krwionośne na worku żółtkowym \cite{Clement2017tissue} (podziękowania dla Annemiek JM Cornelissen)}
-  %    \label{networks_in_nature}
-  %  \end{figure}
- 
-  %    Istotną cechą rozwoju sieci jest ścisłe sprzężenie pomiędzy geometrią a dynamiką. Środowisko napędzające wzrost i sieć współewoluują w czasie, w miarę ewolucji sieć zmienia warunki brzegowe dla pola. Rozwój sieci w odpowiedzi na otaczające pole składa się z dwóch głównych procesów: (i) rozszerzenie gałęzi oraz (ii) rozwidlenie końcówki na dwie (lub więcej) gałęzie. Aby zrozumieć koewolucja sieci i pola, ważne jest  zrozumieć w jaki sposób wzrost i procesy bifurkacyjne są powiązane z charakterystyką pól napędowych, takich jak na przykład gradient pola w okolicy czubka. Gdy poznamy \textit{zasady wzrostu}, możemy przewidzieć ewolucję geometrii sieci na podstawie jej wcześniejszej konfiguracji. \par
-      
-  %    Taką procedurę zastosowano do sieci rzecznych \cite{devauchelle2012ramification, petroff2013bifurcation, cohen2015path, yi2017symmetric, devauchelle2017laplacian}, lepkich palców \cite{pecelerowicz2016stabilizing} lub wzrost koralowców \cite{kaandorp2001algorithmic_Chapter4.4}, co prowadzi do jakościowo i ilościowo zbliżonych geometrii sieci do tych obserwowanych w przyrodzie. Jednak w wielu praktycznych przypadkach szczegóły reguł wzrostu są: nieznany, a czasową ewolucję wzorca można zaobserwować tylko w jednym przypadku czasu, ponieważ dynamika wzrostu może być po prostu zbyt wolna, jak np. w przypadku rzeki sieci, w których końcówki kanałów mogą poruszać się z prędkością mniejszą niż kilka milimetrów rocznie. Rodzi to następujące pytanie: czy możemy wydedukować regułę wzrostu z chwilowego 1 migawka konfiguracji sieci i opis ewolucji otaczającego środowiska w odpowiedzi na geometrię sieci? Rzeczywiście, geometria sieci ukrywa informacje o jego przeszłej konfiguracji, która jest nieodłącznie związana z dynamiką wzrostu.
-
-  %    TODO: tutaj trzeba opisać mój przypadek.
-
   \chapter{Model teoretyczny}
     
     %Model wzrostu rzeki jest przykładem wzrostu w odpowiedzi na pole dyfuzji. Pole jest połączone z siecią rzeczną za pomocą warunków brzegowych. Taki połączony układ pól i sieci może opisywać wiele innych naturalnych procesów wzrostu, takich jak wyładowania elektryczne \cite{niemeyer1984fractal}, tworzenie naczyń krwionośnych \cite{nguyen2006dynamics}, wzorce rozpuszczania w ośrodkach porowatych \cite{szymczak2011initial} i inne. W przypadku sieci rzecznych pole opisuje wysokość poziomu wód gruntowych.
@@ -203,79 +174,6 @@
       
       W ten sposób udało nam się zredukować trójwymiarowy problem przepływu płynów do obliczenia dwuwymiarowego potencjału, który niesie pełną informację o dynamice wód gruntowych.
 
-    %\section{Przybliżenie rzeki cienkim palcem}
-
-    %  Aby wyjaśnić przejście od dwuwymiarowych rzek do jednowymiarowych obiektów je reprezentujących, tak zwanych cienkich palców, posłużymy się innym przykładem procesu wzrostu w odpowiedzi na pole Laplace'a -- lepkim palcowaniem. Ten podstawowy, hydrodynamiczny przykład wzrostu Laplace'a został sformułowany przez Muskata w 1937 r. \cite{muskat1937flow} i opisuje ewolucję granicy faz między dwiema fazami -- na przykład dwoma płynami, gdzie jedna najeżdża i wypycha drugą. W tym konkretnym przypadku pole $\phi$ to ciśnienie, a $\kappa$ to współczynnik ruchliwości. Pomijając ruchliwości fazy inwazyjnej prowadzi do uproszczonej jednofazowej wersji tego problemu z warunkiem brzegowym Dirichleta na rosnącej powierzchni międzyfazowej. Zatem front ruchomy jest izolinią pola ciśnienia ($\phi = 0$). Front rośnie wzdłuż linii pola z prędkością ($\vec{v}$) proporcjonalną do gradientu pola ciśnienia:
-      
-    %  \begin{equation}
-    %    \vec{v} \propto \nabla \phi
-    %  \end{equation}
-
-    %  W niektórych przypadkach front inwazyjny staje się niestabilny, co prowadzi do powstania tzw. palców. Niestabilności pojawiające się w takim układzie zostały przeanalizowane przez Hilla w 1952 roku w swojej pracy na temat wypierania cieczy cukrowej przez wodę w procesie rafinacji cukru \cite{hill1952channeling}. Jednak prawdziwe zainteresowanie zjawiskiem lepkiego palcowania pojawiło się w 1958 r. wraz z przełomowym artykułem Saffmana i Taylora \cite{saffman1958penetration}, w którym systematycznie badali pojawianie się wzorców w komórkach Hele-Shaw. Badana przez nich niestabilność stała się później znana jako niestabilność Saffmana-Taylora.
-
-    %  Istnieje wiele zastosowań tego czysto hydrodynamicznego zjawiska i stojącej za nim matematyki w innych dziedzinach, takich jak tworzenie płuc \cite{clement2012branching,lubkin1995mechanism}, tworzenie jaskiń \cite{szymczak2011initial}, wzrost kolonii bakterii \cite{matsushita1990diffusion}, metaliczne dendryty rosną przez osadzanie elektrochemiczne \cite{brady1984fractal}, palcy spalania \cite{zik1999fingering}, przebudowę naczyń krwionośnych w woreczku żółtkowym podczas rozwoju zarodka kurczaka \cite{nguyen2006dynamics} lub naczynia krwionośne w nas \cite{schneider2012tissue}. Systemy te są zwykle opisywane jako ewolucja ciągłego interfejsu między dwiema fazami (rys. \ref{continuous_to_thin}) z pewnym mechanizmem regularyzacji na małą skalę, takim jak napięcie powierzchniowe. Bez tej regularyzacji strumień pola skoncentrowany na końcach faworyzuje bardzo cienkie palce i prowadzi do ich nieskończenie szybkiego wzrostu -- tak zwanej katastrofy ultrafioletowej \cite{shraiman1988singularities}.
-
-    %  Istnieje jednak również inny sposób na uniknięcie katastrofy ultrafioletowej, który nie wiąże się z napięciem powierzchniowym. Dokładnie jak piorunochron chroniący budynki przyciąga pioruny, końcówki palców w sieciach skupiają strumień pola. Struktury podobne do sieci we wzroście Laplace'a pojawiają się w wyniku tej koncentracji strumienia. Największy gradient pola występuje na czubkach palców, co sprawia, że są one obszarami najintensywniejszego wzrostu, stąd palce z czasem ulegają stopniowemu wydłużeniu. Jeśli jednocześnie odległości między palcami są znacznie większe niż ich szerokość, można przybliżyć palce cienkimi liniami, rozciągającymi się tylko na długości  (rys. \ref{continuous_to_thin}). To przybliżenie nazywa się modelem cienkiego palca -- zamiast śledzić ciągłą granicę, zakłada się, że wzrost ma miejsce tylko w dyskretnej liczbie punktów -- czubkach palców. Końcówki również mogą się rozgałęziać, dzieląc się na dwa palce potomne.
-
-    %  \begin{figure}[h]
-    %    \centering
-    %    \includegraphics[width=0.9\textwidth]{figs/continuous_to_thin.png}
-    %    \caption {Przejście od problemu ciągłego interfejsu do modelu cienkiego palca. Strzałki wskazują prędkość wzrostu interfejsu.}
-    %    \label{continuous_to_thin}
-    %  \end{figure}
-
-    %  TODO: zdanie ponizej mozna wycofac imo.
-    %  Problem ten można przeanalizować np. za pomocą map konforemnych \cite{loewner1923untersuchungen, gubiec2008fingered}. Posłużymy się tutaj metodą rozwiązania równania Laplace'a poprzez rozwinięcie rozwiązania na szereg Taylora na płaszczyźnie zespolonej \cite{petroff2013bifurcation}, co pozwoli nam wykorzystać metody numeryczne do analizy problemu.
-
-
-    %\section{Obserwacje i walidacja modelu}\label{chapter:validation}
-
-    %  W pierwszej kolejności uzasadnijmy podejście wyjaśniające ewolucję sieci rzecznych erozją przesiąkającą związaną z odpływem wód gruntowych w źródłach. W 1980 r. motywacją Dunne do poszukiwania nowego opisu rozwoju sieci rzecznej była obserwacja obszaru w Vermont. Na granicy tego obszaru przebiegała droga zatrzymująca lądowy spływ wód, co uniemożliwiłoby rozwój sieci rzecznej pod drogą, gdyby rzeka była zasilana spływem powierzchniowym. Powstała tam jednak sieć rzeczna -- droga leżąca na powierzchni nie blokowała przepływu wód gruntowych \cite{dunne1980formation}. Pięć lat później, w 1985 roku, w Ref.~\cite{laity1985sapping} wykazano, że rzeki na płaskowyżu Kolorado są również zasilane przez wody gruntowe. Ponadto Lobkovsky \cite{lobkovsky2004threshold} wykazał, że spływ powierzchniowy przyczynia się do erozji tylko przy odpowiednio dużym nachyleniu terenu, co znacznie rozszerza zakres stosowalności modelu. Innym czynnikiem, który pozwala nam zaniedbywać spływ powierzchniowy, jest rodzaj gleby, w którą wcinają się rzeki. Przepuszczalny piasek lub porowate skały, takie jak piaskowiec, pozwalają wodzie opadać pod ziemię i gromadzić się w warstwie wodonośnej.
-
-    %  Następnie, aby zweryfikować podejście oparte na modelu cienkich palców, Seybold et al. w Ref.~\cite{seybold2017climate, seybold2018branching} wykonali analizę statystyczną rzek rosnących na obszarach o różnej wilgotności i wykazali związek między klimatem a średnim kątem rozwidlenia w sieci. Można analitycznie wykazać, że kąt rozwarcia bifurkacji w modelu cienkiego palca wynosi $72^\circ$ \cite{hastings2001growth, carleson2002laplacian, gubiec2008fingered, devauchelle2012ramification} i widzimy, że ten kąt odpowiada obszarom wilgotnym na Rys.~\ref{klimat_katy}. Można to wytłumaczyć tym, że woda zwykle spływa po suchej glebie (np. na pustyniach), podczas gdy w wilgotnych regionach może łatwiej zapadać się w ziemię.
-
-    %  \begin{figure}[H]
-    %    % \vspace{-15pt}
-    %    \centering
-    %    \includegraphics[width=0.45\textwidth]{figs/klimat_katy.png}
-    %    % \vspace{-15pt}
-    %    \caption{Porównanie średnich kątów rozgałęzień w sieciach rzecznych (a) z wilgotnością regionu (AI -- wskaźnik suchości) (b)}
-    %    % \vspace{-5pt}
-    %    \label{klimat_katy}
-    %  \end{figure}
-
-    %  Przykładami sieci rzecznych rozwijających się na polu Laplace'a są rzeki rosnące na wybrzeżu Nowej Zelandii \cite{schumm1986composite}. Zaopatrywane są w wodę z topniejących lodowców górskich, która następnie opada w ziemię i transportowana jest na duże odległości w zbiornikach wód podziemnych. Rys.~\ref{nowa_zelandia} pokazuje podobieństwo rzek w takim układzie do palców sięgających w kierunku odległego źródła wody TODO: remove this and add reference to stasiek work: uzyskanych w symulacjach.
-
-    %  \begin{figure}[h]
-    %    \centering
-    %    \includegraphics[width=1\textwidth]{figs/nowa_zelandia.png}
-    %    \caption{Rzeki rosnące na polu Laplace'a na wybrzeżu Nowej Zelandii \cite{schumm1986composite}}
-    %    \label{nowa_zelandia}
-    %    \vspace{0pt}
-    %  \end{figure}
-
-    %  Większość rzek jest jednak zasilana przez lokalne opady. Przykładem tego typu sieci ewoluującej w polu Poissona jest sieć dopływów rzeki Apalachicola na Florydzie \cite{schumm1995ground}. Dla tej sieci rzecznej przeprowadzono szereg analiz w celu potwierdzenia stosowalności modelu wód podziemnych. W ref. \cite{petroff2013bifurcation} Petroff i in. zmierzyli kąty z 4966 bifurkacji i wykazali, że średni kąt $\alpha = 71,9^\circ \pm 0.8^\circ$, co jest bardzo zgodne z teoretyczną wartością $2\pi/5=72^\circ$ (rys. .~\ref{apalachicola_katy}). Dodatkowo rozwiązali numerycznie równanie Poissona dla fragmentu tej sieci, co przedstawiono na rys.~\ref{potencjal_floryda}a. Wykorzystując wyliczony potencjał uzyskali strumień wody na całym rozpatrywanym obszarze. Następnie zmierzono doświadczalnie strumień wody płynącej w rzekach, a porównanie teorii z eksperymentem przedstawiono na rys.~\ref{potencjal_floryda}b. Ponownie dane teoretyczne i eksperymentalne wykazują wysoki stopień zgodności.
-
-    %  \begin{figure}[H]
-    %    \centering
-    %    \begin{minipage}{0.4\textwidth}
-    %      \caption{Rozkład kątów bifurkacji oszacowany na podstawie 4966 cieków rozwidlonych w sieci rzecznej Apalachicola.}
-    %      \label{apalachicola_katy}
-    %    \end{minipage}
-    %    \hspace{20pt}
-    %    \begin{minipage}{0.5\textwidth}
-    %      \centering
-    %      \includegraphics[width=1\textwidth]{figs/florida_angles.png}
-    %      \end{minipage}
-    % \end{figure}  
-
-    % \begin{figure}[H]
-    %   \centering
-    %   \includegraphics[width=\textwidth]{figs/potencjal_floryda_przewidywania.png}
-    %   \caption{Zwierciadło wód gruntowych i związany z nim przepływ wód gruntowych w sieci na Florydzie \cite{petroff2011geometry}. (a)~Wielkość obliczonego pola Poissona (b)~Porównanie przewidywanego zrzutu z pomiarami w 30 punktach sieci wykonanych w styczniu 2009 (punkty niebieskie) i 52 punktach w kwietniu 2009 (punkty czerwone). Czarna linia oznacza równość. To porównanie jest bezpośrednie i nie wymaga regulowanych parametrów.}
-    %   \label{potencjal_floryda}
-    % \end{figure}
-
   \section{Rozwiązywanie równania Laplace'a}\label{chapter:solving}
     
     We współrzędnych biegunowych (gdzie kierunek stycznej do palca na wierzchołku ustawia $\theta = 0$) pole w pobliżu wierzchołka można rozszerzyć \cite{derrida1992needle , petroff2013bifurcation}:
@@ -336,13 +234,6 @@
     W literaturze dotyczącej modelu cienkiego palca stosuje się dwa różne deterministyczne kryteria podziału -- kryterium prędkości i kryterium kształtu pola. Pierwsze kryterium może być wprost zaimplementowane w modelu cienkiego palca jako próg $a_1$: $a_1 > a_1^c$.
 
     Drugie kryterium jest związane z ekstremami strumienia (w funkcji kąta biegunowego) \cite{petroff2013bifurcation, kaandorp2001algorithmic_Chapter4.4}, a więc ze współczynnikiem $a_3$. Gdy dla danego promienia $r_0$ strumień pola ma wysokie pojedyncze maksimum, palec rośnie w kierunku tego maksimum. Jeśli jednak strumień pola z boków wierzchołka staje się porównywalny do tego z przodu, a nawet w końcu staje się większy (co odpowiada pojawieniu się dwóch maksimów przy $\pm \theta_0$), palec próbuje rosnąć w dwóch kierunkach jednocześnie, co skutkuje bifurkacją. Mówiąc dokładniej, mówimy, że palec dzieli się, gdy $a_3/a_1$ jest mniejsze niż jakaś wartość krytyczna.
-
-    %\begin{figure}[H]
-    %  \centering
-    %  \includegraphics[width=0.4\textwidth]{figs/bifurcation_rule_a3.png}
-    %  \caption{Kryterium kształtu pola bifurkacji: $a_3/a_1 < \textrm{wartość krytyczna} $. Na działce linie pola wchodzące w okrąg wokół czubka z dwóch stron.} 
-    %  \label{bif_rule_a3}
-    %\end{figure}
 
   \chapter{Rozwiązanie numeryczne i struktura oprogramowania}
 
@@ -672,7 +563,7 @@
         \label{series_params_integration}
       \end{figure}
 
-      Powyżej już było pokazano że erozja jest największa w miejscach gdzie gradient pola jest największy. Takim miejscem z największym gradientem są oklicy źródeł. We współrzędnych biegunowych pole w pobliżu wierzchołka można rozszerzyć z pomocą równania \ref{series_params_integration}. Gdzie kazdy parameter $a_n$, gdzie $n \epsilon [1, 3]$ ma fizyczną interpretację (\ref{circle}, \ref{a3a1}) i jest powiązany z regułami wzrostu (\ref{velocity}). Współczynniki $a_n$ są wylicznę z postaci całkowej \ref{a1}, \ref{a2} i \ref{a3}. Aby zmniejszyć szum numeryczny uśredniamy postaci całkowe wzdłuż promienia $r$ z wykorzystaniem funkcji wagi $\omega(r)$:
+      Powyżej już było pokazano że erozja jest największa w miejscach gdzie gradient pola jest największy. Takim miejscem z największym gradientem są oklicy źródeł. We współrzędnych biegunowych pole w pobliżu wierzchołka można rozszerzyć z pomocą równania \ref{series_params_integration}. Gdzie kazdy parameter $a_n$, $n \epsilon [1, 3]$ ma fizyczną interpretację (\ref{circle}, \ref{a3a1}) i jest powiązany z regułami wzrostu (\ref{velocity}). Współczynniki $a_n$ są wylicznę z postaci całkowej \ref{a1}, \ref{a2} i \ref{a3}. Aby zmniejszyć szum numeryczny uśredniamy postaci całkowe wzdłuż promienia $r$:
       
       \begin{equation}
         \label{a1_num}
@@ -689,29 +580,122 @@
         a_3 = \frac{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \phi(r, \theta) \cos \frac{3 \theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r}{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \cos^2 \frac{3 \theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r}
       \end{equation}	
 
-      Gdzie $\omega(r):$
+      Gdzie $\omega(r)$ funkcja wagi ma postać:
 
       \begin{equation}
         \label{integration_weight}
         \omega(r) = \exp(-{(\frac{r}{r_{ref}})}^e)
       \end{equation}
 
-      Całka $\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} f(r, \theta) \textrm{d} \theta \textrm{d} r$ jak i równanie dla pola wód podziemnych całka jest wyliczana numerycznie. Chociaż mamy dyskretnę rozwiązania pola wód podziemnych ale otzrymanie wartości pola $\phi(x, y)$ w dowolnym punkcie nadal jest numerycznie skomplikowanym, o ile wymaga iterację po całej siatce regionu, a po znaleziniu odpowiedniego elementu -- interpolacje. Przez to przy aproksymówaniu całki skończoną sumą celem jest minimizacja ilości elementów.  
+      Całka $\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} f(r, \theta) \textrm{d} \theta \textrm{d} r$ jak i równanie dla pola wód podziemnych, jest wyliczana numerycznie. Chociaż mamy dyskretnę rozwiązania pola wód podziemnych, ale wciąż otzrymanie wartości pola $\phi(x, y)$ w dowolnym punkcie nadal jest numerycznie skomplikowanym, o ile wymaga iterację po całej siatce regionu, a po znaleziniu odpowiedniego elementu -- interpolacje. Przez to przy aproksymówaniu całki skończoną sumą celem jest minimizacja ilości elementów. Kwadratura Gaussa jest dobrym rozwiązaniem, ale w danej pracy korzystamy z iteracujnej metody prostokątów:
 
+      \begin{equation}
+        \label{numerical_integral}
+        \int^{b}_{a} f(x) \textrm{d} x = h \sum_{i = 0}^{n - 1} f(x_i + \alpha h),    \\
+        h = \frac{a - b}{n}  
+      \end{equation}
 
-    \section{IO i inne}
-    \section{RiverSim}
-    \section{pyriversim}
+      Ta całka jest rozwiązywana iteracyjnie aby osiągnąć potrzebną dokładność \cite{Press2007}:
+
+      \begin{mintedbox}{c++}
+        class Quadrature {
+            public:
+                size_t n = 0;
+                virtual double next() = 0; };
+
+        template<typename T> class Trapzd: virtual public Quadrature {
+            public:
+                T f;
+                double s = 0., a, b;
+
+                Trapzd(T func, double aa, double bb):
+                    f{func}, a{aa}, b{bb} {}
+
+                double next(){
+                    ++n;
+                    if (n==1) s = (b - a) / 2. * (f(a) + f(b));
+                    else if (n > 1) {
+                        auto tnm = pow(2., n - 2.), d = (b - a) / tnm, x = a + 0.5 * d, sum = 0.;
+                        for(size_t j = 0; j < tnm; ++j) {
+                            sum += f(x); x += d;
+                        }
+                        s = 0.5 * (s + d * sum);
+                    }
+                    return s;
+                }
+        }
+        
+        template<typename T> double qtrap(T func, double a, double b, double eps){
+            auto s = 0., olds = 0.;
+            auto t = Trapzd(func, a, b);
+            for (size_t i = 0; i < (size_t)30; ++i) {
+                s = t.next();
+                auto cur_eps = abs(s - olds) / abs(olds);
+                if (cur_eps < eps || (s < EPS && olds < EPS))
+                    return s;
+                olds = s;
+            }
+            throw Exception("qtrap: Too many steps in routine.");
+        };\end{mintedbox}
+
+        W riversimpy dla obliczenia współczynników $a_i$ służy metoda integrate (lub integrate\_new) klasy Solver:
+        \begin{mintedbox}{python}
+          integration_params = IntegrationParams()
+          integration_params.eps = 1e-10
+          integration_params.integration_radius = 3e-2
+          integration_params.exponant = 2.0
+          integration_params.weigth_func_radius = 1e-2        
+          
+          river_id = 1
+          tip_point = rivers[river_id].tipPoint()
+          tip_angle = rivers[river_id].tipAngle()
+
+          ids_series_params = t_ids_series_params()
+          ids_series_params[river_id] = solver.integrate_new(integration_params, tip_point, tip_angle)\end{mintedbox}
+
+    \section{Reguły wzrostu i bifurkaji, zapisywanie i wczytywanie z pliku, klasa Model}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{figs/program_dependecy_graph.png}        
+        \caption {Graph zależności pomiędzy modułami programu.}
+        \label{program_strucutre}
+      \end{figure}
+
+    Przedstawione powyżej klasy biblioteki riversim już są wystarczają dla symulacji sieci rzecznych. Ale dla prostszego wykorzystania programu była stworzona klasa Model która zawiera wszystkie struktury danych programu, a tak że metody z regułami dla bifurkacji i wzrostu. Korzystajac z klasi Model możemy zapisać danę do pliku JSON, lub odczytać geometrie i wartości paratmetrów z pliku JSON:
+
+    \begin{mintedbox}{python}
+      model = Model()
+      model.initializeDirichlet();
+      save(model, "river_initializet_to_dirichlet.json")
+      
+      model_dirichlet = Model()
+      open(model_dirichlet, "river_initializet_to_dirichlet.json")\end{mintedbox}
+
 
   \chapter{Weryfikacja i walidacja oprogramowania}
-    \section{Zbiezność rozwiazania}
-    \section{Zbiezność calkowania i porownanie z wynikiem analitycznym}
-    \section{Optymalizacja predkosci i dokladności}
 
-  \chapter{Przyklady obliczen}
-    \section{Probabilistyczny wzrost rzeki a potegowe prawo.}
-    \section{Ewolucja zwrotna}
-    \section{Naczynia krwionosne}
+    %Розв'язання росту мережі річки в полі Лапласа є складною задачею. Щоб отримати наближений розв'язок були використані методи дискретизації. Способи дискретизації включали в себе як і заміну гладких ліній мережі на дискретні із подальшим зменшення кількості точок дискретизації в залежності від кривизни. Дискретизація регіону на чотирикутні елементи і ступінь квадратури в кожному елементі. Кількість елементів суми для обчислення інтегралу параметрів довкола джерела. Але відомо що в границі із ростом дескритизації:
+    Solving the growth of the river network in the Laplace field is a difficult task. Discretization methods were used to obtain an approximate solution. Discretization methods included the replacement of smooth network lines with discrete ones, followed by a reduction in the number of discretization points depending on the curvature. Discretization of the region into quadrilateral elements and the degree of quadrature in each element. The number of elements of the sum for calculating the integral of the parameters around the source. But it is known that in the limit of high descritization:
+
+    \begin{equation}
+      \label{convergence}
+      \lim_{n \to \infty} a_i(n)  = a_i
+    \end{equation}
+
+    %ми повинні отримати значення аналітичного розв'язку.
+    we must obtain the value of the analytical solution.
+    
+    \section{Zbiezność calkowania i porownanie z wynikiem analitycznym}
+
+    %В роботі Ґубєц \cite{gubiec2008fingered} було отримано вираз для швидкості $\upsilon(H)$ взросту одної річки в наступних умовах: регіон прямокутної форми, висота котрого прямує до безмежності, ширина рівна $2$. На нижній грані звідки посередині звідки і зростає одна гілка річки маємо поглинаючі граничні умови ($\phi(0, y) = 0$), ізолюючі граничні умови на бокових гранях ($(\nabla \phi(x, y))_{\vec{n}} = 0$) і маємо сталий потік на безмежній відстані на верхній грані ($(\nabla \phi(x, y))_{\vec{n}} = 1$). 
+    In the work of Gubiec et al.\cite{gubiec2008fingered}, an expression was obtained for the rate $\upsilon(H)$ of the growth of one river under the following conditions: a rectangular region, the height of which goes to infinity, the width is $2$. On the lower face, from where in the middle, from where one branch of the river grows, we have absorbing boundary conditions ($\phi(0, y) = 0$), insulating boundary conditions on the side faces ($(\nabla \phi(x, y))_{ \vec{n}} = 0$) and we have a constant flow at an infinite distance on the upper face ($(\nabla \phi(x, y))_{\vec{n}} = 1$).
+
+    \begin{equation}
+      \label{velocity_analytical}
+      \upsilon(H) = \sqrt{\frac{2}{\frac{\pi}{2}\coth(\frac{\pi}{2}H)}} \,.
+    \end{equation}
+    
+    %В нашому випадку ми не можемо задати безмежну відстань верхньої грані, тому ми обмежимося достатньо витягнутим прямокутником ($50/2$)
 
   \chapter{Podsumowanie}
 

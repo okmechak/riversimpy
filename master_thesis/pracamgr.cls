@@ -47,7 +47,7 @@
 			\vspace{8mm plus .5fill}
 			{
 				\Huge
-				\textbf{Riversim: oprogramowanie do wyliczenia wzrowstu sieci rzecznych w polu laplasowskim}
+				\textbf{Modeling of the growth of river networks using the Riversim package}
 				\par
 			}
 
@@ -85,5 +85,5 @@
   	
 	\vspace*{26pt}%
 	\begin{center} \bfseries\large Tytuł pracy w języku angielskim \end{center}
-  	Riversm: river network growth in Laplace'a field simulation program.\par
+	Modelowanie wzrostu sieci rzecznych za pomocą pakietu Riversim.\par
 }
