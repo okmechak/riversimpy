@@ -778,7 +778,7 @@
     %ми повинні отримати значення аналітичного розв'язку.
     we must obtain the value of the analytical solution.
     
-    \section{Zbiezność calkowania i porownanie z wynikiem analitycznym}
+    \section{Convergence of integration and comparison with analytical result}
 
     %В роботі Ґубєц \cite{gubiec2008fingered} було отримано вираз для швидкості $\upsilon(H)$ взросту одної річки в наступних умовах: регіон прямокутної форми, висота котрого прямує до безмежності, ширина рівна $2$. На нижній грані звідки посередині звідки і зростає одна гілка річки маємо поглинаючі граничні умови ($\phi(0, y) = 0$), ізолюючі граничні умови на бокових гранях ($(\nabla \phi(x, y))_{\vec{n}} = 0$) і маємо сталий потік на безмежній відстані на верхній грані ($(\nabla \phi(x, y))_{\vec{n}} = 1$). 
     In the work of Gubiec et al.\cite{gubiec2008fingered}, an expression was obtained for the rate $\upsilon(H)$ of the growth of one river under the following conditions: a rectangular region, the height of which goes to infinity, the width is $2$. On the lower face, from where in the middle, from where one branch of the river grows, we have absorbing boundary conditions ($\phi(0, y) = 0$), insulating boundary conditions on the side faces ($(\nabla \phi(x, y))_{ \vec{n}} = 0$) and we have a constant flow at an infinite distance on the upper face ($(\nabla \phi(x, y))_{\vec{n}} = 1$).
@@ -791,17 +791,34 @@
     %В нашому випадку ми не можемо задати безмежну відстань верхньої грані, тому ми обмежимося достатньо витягнутим прямокутником ($50/2$).
     In our case, we cannot specify an infinite distance of the upper face, so we will limit ourselves to a sufficiently elongated rectangle ($50/2$).
 
-  \chapter*{Podsumowanie}
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.5\textwidth]{figs/convergence.png}        
+      \caption{Left plot shows how the relative error in percentage between evaluated and analitical value $a_1$ is converging. Right plot shows convergence when number of mesh elements are increased.}
+      \label{convergence_new}
+    \end{figure}
 
-  \section*{Acknowledgements}
-  TODO
+  \chapter*{Summary}
 
-  \bibliographystyle{unsrt_initials} %ieeetr
-  \bibliography{bibliography}
+    %В цій праці магістерській ми розглянули розвиток просторової мережі на прикладі еволюції мережі річок. Спочатку ми зарепрезентували теоретичну модель з фокусом на підземні води і ерозію в околиці джерел. Запровадили спрощення одновимірної річки. Показали як описати поле підземних вод $\phi(x, y)$ в околиці джерела за допомогою пареметрів розкладу $a_i$. Тоді показали як параметри $a_i$ можна інтерпретувати і як вони пов'язані із динамікою розвитку мережі.\par
+    In this master's thesis, we considered the development of the spatial network using the example of the evolution of the river network. First, we represented a theoretical model with a focus on groundwater and erosion in the vicinity of sources. Simplification of the one-dimensional river was introduced. It was shown how to describe the field of groundwater $\phi(x, y)$ in the vicinity of the source using the parameters of the $a_i$ distribution. Then it was shown how the parameters $a_i$ can be interpreted and how they are related to the dynamics of the network development.\par
+
+    %Далі ми запропонували своє чисельне рішення цієї складної проблеми взаємозалежності мережі і поля під впливом якого, вона розвивається у бібліотеці Python -- riversim. Детально описали структуру бібліотеки із прикладами її використання. Як задавати довільну початкову геометрію. Як задати початкову позицію джерел із яких буде відбуватися розвиток річки. В якій структурі даних зберігається мережа річки і як із нею працювати. Як задавати граничні умови і яких видів вони присутні у програмі. Те, як із початкової геометрії згенерувати сітку з допомогою Tethex i Triangle С++ бібліотек. Після цього як отримати поле підземних вод з допомогою методу FEM, який імплементований в бібліотеці Deal.II. Як обчислити параметри  $a_i$ використовуючи чисельний інтеграл.\par
+    Next, we offered our numerical solution to this complex problem of the interdependence of the network and the field under whose influence it develops in the Python library -- riversim. The structure of the library was described in detail with examples of its use. How to set arbitrary initial geometry. How to set the initial position of the sources from which the river will develop. In which data structure is the river network stored and how to work with it. How to set boundary conditions and what types they are present in the program. How to generate a mesh from the initial geometry using the Tethex and Triangle C++ libraries. After that, how to get the groundwater field using the FEM method, which is implemented in the Deal.II library. How to calculate $a_i$ parameters using a numerical integral.\par
+
+    %Коротко показана верифікація бібліотеки riversim, приклад програми для обрахування розвитку мережі і деякі резултати симуляцій.\par
+    The verification of the riversim library, an example of a program for calculating the development of the network, and some simulation results are briefly shown.\par
+
+    \section*{Acknowledgements}
+      
+      I would like to thank Olivier Devauchelle from Institut de Physique du Globe, Paris and Hansjörg Seybold from ETH Zurich for sharing the code of river network growth simulation in FreeFEM++ which helped me to came out with my own solution.
+
+    \bibliographystyle{unsrt_initials} %ieeetr
+    \bibliography{bibliography}
 
   \appendix
 
-  \chapter*{Główna pętla programu}
+  \chapter*{The main loop of the program}
     
     %Instalacja biblioteki riversim w Python3 (tylko Linux):
     Installing the riversim library in Python3 (Linux only):
@@ -911,6 +928,27 @@
               break
       \end{mintedbox}
 
-  %\chapter{Przykładowe dane wejściowe algorytmu}
+      \section{Examples of networks}
+        
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.5\textwidth]{figs/convergence.png}        
+          \caption{Left plot shows how the relative error in percentage between evaluated and analitical value $a_1$ is converging. Right plot shows convergence when number of mesh elements are increased.}
+          \label{ex1}
+        \end{figure}
+
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.5\textwidth]{figs/convergence.png}        
+          \caption{Left plot shows how the relative error in percentage between evaluated and analitical value $a_1$ is converging. Right plot shows convergence when number of mesh elements are increased.}
+          \label{ex2}
+        \end{figure}
+
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.5\textwidth]{figs/convergence.png}        
+          \caption{Left plot shows how the relative error in percentage between evaluated and analitical value $a_1$ is converging. Right plot shows convergence when number of mesh elements are increased.}
+          \label{ex3}
+        \end{figure}
 
 \end{document}
