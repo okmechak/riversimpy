@@ -394,8 +394,8 @@
 
       \begin{wrapfigure}{r}{0.5\textwidth}
         \begin{center}
-          \vspace{-20pt}
-          \includegraphics[width=0.45\textwidth]{figs/descritization_reducing.jpg}
+          \vspace{-10pt}
+          \includegraphics[width=0.25\textwidth]{figs/descritization_reducing.jpg}
         \end{center}
         %Ilustracja algorytmu zmniejszenia ilości punktów brzegu.
         \caption{Illustration of the edge point reduction algorithm.}
@@ -793,12 +793,12 @@
 
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.5\textwidth]{figs/convergence.png}        
+      \includegraphics[width=1\textwidth]{figs/convergence.png}        
       \caption{Left plot shows how the relative error in percentage between evaluated and analitical value $a_1$ is converging. Right plot shows convergence when number of mesh elements are increased.}
       \label{convergence_new}
     \end{figure}
 
-  \chapter*{Summary}
+  \chapter{Summary}
 
     %В цій праці магістерській ми розглянули розвиток просторової мережі на прикладі еволюції мережі річок. Спочатку ми зарепрезентували теоретичну модель з фокусом на підземні води і ерозію в околиці джерел. Запровадили спрощення одновимірної річки. Показали як описати поле підземних вод $\phi(x, y)$ в околиці джерела за допомогою пареметрів розкладу $a_i$. Тоді показали як параметри $a_i$ можна інтерпретувати і як вони пов'язані із динамікою розвитку мережі.\par
     In this master's thesis, we considered the development of the spatial network using the example of the evolution of the river network. First, we represented a theoretical model with a focus on groundwater and erosion in the vicinity of sources. Simplification of the one-dimensional river was introduced. It was shown how to describe the field of groundwater $\phi(x, y)$ in the vicinity of the source using the parameters of the $a_i$ distribution. Then it was shown how the parameters $a_i$ can be interpreted and how they are related to the dynamics of the network development.\par
@@ -811,14 +811,14 @@
 
     \section*{Acknowledgements}
       
-      I would like to thank Olivier Devauchelle from Institut de Physique du Globe, Paris and Hansjörg Seybold from ETH Zurich for sharing the code of river network growth simulation in FreeFEM++ which helped me to came out with my own solution.
+      I would like to thank Olivier Devauchelle from Institut de Physique du Globe, Paris and Hansjörg Seybold from ETH Zurich for sharing the code of river network growth simulation in FreeFEM++ which helped me to came out with my own solution. And also thanks to Stasiek Żukowski for using riversim software for backward simulation and giving me usage experience of the program.
 
     \bibliographystyle{unsrt_initials} %ieeetr
     \bibliography{bibliography}
 
   \appendix
 
-  \chapter*{The main loop of the program}
+  \chapter{The main loop of the program}
     
     %Instalacja biblioteki riversim w Python3 (tylko Linux):
     Installing the riversim library in Python3 (Linux only):
@@ -932,23 +932,14 @@
         
         \begin{figure}[H]
           \centering
-          \includegraphics[width=0.5\textwidth]{figs/convergence.png}        
-          \caption{Left plot shows how the relative error in percentage between evaluated and analitical value $a_1$ is converging. Right plot shows convergence when number of mesh elements are increased.}
-          \label{ex1}
+          \includegraphics[width=1\textwidth]{figs/histogram.png}        
+          \caption{Left plot shows river network grown in Poisson field. Right plot shows length histogram of each line from which river network consists. You can see peak at $Length = 0.01$, it is due to numerical parameter which limits minimal river length between biffurcation points and in this simulation it is equal to $0.01$.}
         \end{figure}
 
         \begin{figure}[H]
           \centering
-          \includegraphics[width=0.5\textwidth]{figs/convergence.png}        
-          \caption{Left plot shows how the relative error in percentage between evaluated and analitical value $a_1$ is converging. Right plot shows convergence when number of mesh elements are increased.}
-          \label{ex2}
-        \end{figure}
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=0.5\textwidth]{figs/convergence.png}        
-          \caption{Left plot shows how the relative error in percentage between evaluated and analitical value $a_1$ is converging. Right plot shows convergence when number of mesh elements are increased.}
-          \label{ex3}
+          \includegraphics[width=1\textwidth]{figs/symmetic_rivers.png}        
+          \caption{Initial region of this simulaiton is rectangle where each corner is the source of the river. After growth of the each river network in Poisson field, you can see that figure is still symmetric.}
         \end{figure}
 
 \end{document}
