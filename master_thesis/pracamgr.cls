@@ -67,7 +67,7 @@
 			\end{flushright}
 			\vspace{1cm plus 1fill}
 			{
-				\large Warszaw, December 2022\par
+				\large Warsaw, December 2022\par
 			}
 		\end{center}
 	\end{titlepage}
