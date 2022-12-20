@@ -292,7 +292,7 @@
     During software development two solutions were created: Riversim\cite{Riversim} - a program that contains all the algorithms for river network generation, Riversimpy\cite{Riversimpy} - a Python library that contains algorithms that facilitate the creation of scripts for simulating network growth in a Laplacian field.
     
     %Riversim zawiera niektórę dodatkowe algorytmy dla odwracalnej ewolucji wsztecznej i do przodu, a poza tym Riversim i Riversimpy zawierają tę same algorytmy, w podalszym opisie głównie skupimysię na Riversimpy. 
-    Riversim includes some additional algorithms for reversible backward and forward evolution, but except of this Riversim and Riversimpy contain the same algorithms and are build aroud workflow shown on Fig. \ref{program_workflow}, thus in the following description we will mainly focus on Riversimpy.
+    Riversim includes some additional algorithms for reversible backward and forward evolution, but except of this Riversim and Riversimpy contain the same algorithms and are build aroud workflow shown on Fig. \ref{program_workflow}, in the following description we will focus on Riversimpy.
 
     \section{Geometry}
       
@@ -392,16 +392,6 @@
         \caption{Illustration of reducing the coordinate density at the boundary while maintaining sufficient accuracy.}
         \label{tree_coarsening}
       \end{figure}
-
-      \begin{wrapfigure}{r}{0.5\textwidth}
-        \begin{center}
-          \vspace{-10pt}
-          \includegraphics[width=0.25\textwidth]{figs/descritization_reducing.jpg}
-        \end{center}
-        %Ilustracja algorytmu zmniejszenia ilości punktów brzegu.
-        \caption{Illustration of the edge point reduction algorithm.}
-        \label{descritization_reducing}
-      \end{wrapfigure}
 
       %Кількість елементів сітки на котру ми розділюємо регіон має прямий вплив на розмір матриці лінійних рівняння, а тому на час знаходження розв'язку диференційного рівняння. Щоб зменшити час обчистленнь, ми можемо зменшити густини координат границі річки, при цьому не втрачаючи на точності. Для цього ми робимо процедуру огрублення границь частин річки. Тепер нам потрібно класи  Sources, Region та Rivers вкласти в границю Boundary, оскільки генератор сітки вимагає тільки  границю як аргумент. Другою проблемою, котра згадувалася вище є те, що немає можливості задати граничні умови в середині регіону, а тільки на границі. Для цього лінії з котрих складається мережа річки розділяються на дві лінії котрі знаходяться дуже близько одна до одної.
       %Liczba elementów siatki, na jakie dzielimy obszar, ma bezpośredni wpływ na wielkość macierzy równań liniowych, a więc na czas znalezienia rozwiązania równania różniczkowego. Aby skrócić czas obliczeń, możemy zmniejszyć gęstość współrzędnych granicy rzeki bez utraty dokładności. Zmniejszenie zagęszczenia współrzędnych na granicy opiera się na następującej idei: każda kolejna współrzędna zmienia kierunek linii o pewien kąt. Jeśli kąt jest bardzo mały, możemy założyć, że współrzędne leżą praktycznie na tej samej linii. Dlatego możemy usunąć wszystkie współrzędne pośrednie i pozostawić tylko te skrajne. Aby znaleźć „skrajne” współrzędne linii, iterujemy po wszystkich współrzędnych i obliczamy całkowity kąt odchylenia, gdy tylko ten kąt stanie się większy niż wartość krytyczna, traktujemy tę współrzędną jako skrajną.
@@ -784,8 +774,15 @@
     
     \section{Convergence of integration and comparison with analytical result}
 
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.5\textwidth]{figs/test_function_boundary.png}
+      \caption{Semi-infinite domain with flux of the field coming from infinity used for evaluation of analitical value for $a_1$.}
+      \label{test_boundary}
+    \end{figure}
+
     %В роботі Ґубєц \cite{gubiec2008fingered} було отримано вираз для швидкості $\upsilon(H)$ взросту одної річки в наступних умовах: регіон прямокутної форми, висота котрого прямує до безмежності, ширина рівна $2$. На нижній грані звідки посередині звідки і зростає одна гілка річки маємо поглинаючі граничні умови ($\phi(0, y) = 0$), ізолюючі граничні умови на бокових гранях ($(\nabla \phi(x, y))_{\vec{n}} = 0$) і маємо сталий потік на безмежній відстані на верхній грані ($(\nabla \phi(x, y))_{\vec{n}} = 1$). 
-    In the work of Gubiec et al.\cite{gubiec2008fingered}, an expression was obtained for the rate $\upsilon(H)$ of the growth of one river under the following conditions: a rectangular region, the height of which goes to infinity, the width is $2$. On the lower face, from where in the middle, from where one branch of the river grows, we have absorbing boundary conditions ($\phi(0, y) = 0$), insulating boundary conditions on the side faces ($(\nabla \phi(x, y))_{ \vec{n}} = 0$) and we have a constant flow at an infinite distance on the upper face ($(\nabla \phi(x, y))_{\vec{n}} = 1$).
+    In the work of Gubiec et al.\cite{gubiec2008fingered}, an expression was obtained for the rate $\upsilon(H)$ of the growth of one river under the following conditions: a rectangular region with infinite height, the width is $2$. In the middle of lower face, river branch with lenght $H$ is set (Fig. \ref{test_boundary}). At the bottom face and river branch, absorbing boundary conditions ($\phi(0, y) = 0$) are set, insulating boundary conditions on the side faces ($(\nabla \phi(x, y))_{ \vec{n}} = 0$) and constant flow at an infinite distance on the upper face ($(\nabla \phi(x, y))_{\vec{n}} = 1$).
 
     \begin{equation}
       \label{velocity_analytical}
@@ -793,7 +790,7 @@
     \end{equation}
     
     %В нашому випадку ми не можемо задати безмежну відстань верхньої грані, тому ми обмежимося достатньо витягнутим прямокутником ($50/2$).
-    In our case, we cannot specify an infinite distance of the upper face, so we will limit ourselves to a sufficiently elongated rectangle ($50/2$).
+    In our case, semi-infinite domain is aproximated by elongated rectangle (height -- $50$, width --$2$).
 
     \begin{figure}[H]
       \centering
