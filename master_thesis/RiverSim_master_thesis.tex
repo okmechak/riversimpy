@@ -61,15 +61,15 @@
   \begin{abstract}
     %Мережі в натуральний спосіб з'являються повсюдно в природі. Електростатичний розряд між двома зарядженими областями породжує струм котрий утворює мережу каналів. Дерево зростаючи утворює розгалужену мережу гілок для збору сонячної енергії в ефективний спосіб на протязі багатьох років. Також розвиток мережі судин є керований концентрацією кисню в тканині. 
     %Sieci naturalnie pojawiają się wszędzie w przyrodzie. Wyładowanie elektrostatyczne między dwoma naładowanymi obszarami generuje prąd, który tworzy sieć kanałów. W miarę wzrostu drzewo tworzy rozległą sieć gałęzi, które efektywnie gromadzą energię słoneczną przez wiele lat. Również rozwój sieci naczyniowej jest kontrolowany przez stężenie tlenu w tkance.\par
-    Networks naturally appear everywhere in nature. An electrostatic discharge between two charged areas generates a current that forms a network of channels. As the tree grows, it forms an extensive network of branches to collect solar energy efficiently over many years. Also, the development of the vascular network is controlled by the concentration of oxygen in the tissue.
+    Networks naturally appear everywhere in nature. An electrostatic discharge between two charged areas generates a current that forms a network of channels. Also, the development of the vascular network is controlled by the concentration of oxygen in the tissue.
 
     %На цьому етапі вже можна побачити деяку спільну рису між всіма процесами, а саме наявність взаємозалежних поля і матерії на котра переміщається в локальному напрямку максимального поля. Тому багато процесів із розвитку мережі можна звести до одного математичного формалізму. 
     %Na tym etapie można już dostrzec pewną wspólną cechę wszystkich procesów, a mianowicie obecność współzależnych pól i materii poruszającej się w lokalnym kierunku maksymalnego pola. Dlatego wiele procesów rozwoju sieci można sprowadzić do jednego formalizmu matematycznego.\par
-    At this stage, you can already see a common feature of all processes, namely the presence of interdependent fields and matter moving in the local direction of the maximum area. Therefore, many network growing processes can be reduced to a single mathematical formalism.\par
+    At this stage, you can already see a common feature of all processes, namely the presence of interdependent fields and matter moving in the local direction of the maximum field flux. Therefore, many network growing processes can be reduced to a common mathematical formalism.\par
 
-    %В даній праці ми фокусуємося на створенні Python бібліотеки котра помагає досліджувати розвиток мережі в полі Лапласа на прикладі розвитку мережі річки. Спочатку ми описуємо математичну модель розвитку мережі річки в полі Лапласа. Тоді описуємо бібліотеку riversim, її алгоритми і показуємо простий спосіб застосування програми крок по кроку. Тоді наводимо приклади збіжності розв'язку і покажемо кілька результатів.
-    %W tej pracy skupiamy się na stworzeniu biblioteki Pythona, która pomaga badać rozwój sieci w polu Laplace'a na przykładzie rozwoju sieci rzecznej. Najpierw opisujemy matematyczny model rozwoju sieci rzecznej w polu Laplace'a. Następnie opisujemy bibliotekę riversim, jej algorytmy i pokazujemy prosty sposób korzystania z programu krok po kroku. Następnie podajemy przykłady zbieżności rozwiązania i pokazujemy kilka wyników.\par
-    In this work, we focus on the creation of a Python library that helps to study the development of a network in the Laplace field using the example of the development of a river network. First, we describe the mathematical model of the development of the river network in the Laplace field. Then we describe the riversim library, its algorithms and show a simple step-by-step way of using the program. Then we give examples of the convergence of the solution and show several results.\par
+    %В даній праці ми фокусуємося на створенні Python бібліотеки котра помагає досліджувати розвиток мережі в полі Лапласа на прикладі розвитку мережі річки. Спочатку ми описуємо математичну модель розвитку мережі річки в полі Лапласа. Тоді описуємо бібліотеку Riversim, її алгоритми і показуємо простий спосіб застосування програми крок по кроку. Тоді наводимо приклади збіжності розв'язку і покажемо кілька результатів.
+    %W tej pracy skupiamy się na stworzeniu biblioteki Pythona, która pomaga badać rozwój sieci w polu Laplace'a na przykładzie rozwoju sieci rzecznej. Najpierw opisujemy matematyczny model rozwoju sieci rzecznej w polu Laplace'a. Następnie opisujemy bibliotekę Riversim, jej algorytmy i pokazujemy prosty sposób korzystania z programu krok po kroku. Następnie podajemy przykłady zbieżności rozwiązania i pokazujemy kilka wyników.\par
+    In this work, we focus on the creation of a Python library that helps to study the development of a network in the Laplacian field using the example of the development of a river network. First, we describe the mathematical model of the development of the river network in the Laplacian field. Then we describe the Riversim library, its algorithms and show a simple step-by-step way of using the program. Then we give examples of the convergence of the solution, river network growth in Laplacian and Poisson field for different $\eta$ values and some unique for this program features.\par
 
   \end{abstract}
 
@@ -78,11 +78,11 @@
   \chapter{Theoretical model}
     
     %Model wzrostu rzeki jest przykładem wzrostu w odpowiedzi na pole dyfuzji. Pole jest połączone z siecią rzeczną za pomocą warunków brzegowych. Taki połączony układ pól i sieci może opisywać wiele innych naturalnych procesów wzrostu, takich jak wyładowania elektryczne \cite{niemeyer1984fractal}, tworzenie naczyń krwionośnych \cite{nguyen2006dynamics}, wzorce rozpuszczania w ośrodkach porowatych \cite{szymczak2011initial} i inne. W przypadku sieci rzecznych pole opisuje wysokość poziomu wód gruntowych.
-    The river growth model is an example of growth in response to a diffusion field. The field is connected to the river network by boundary conditions. This combined array of fields and lattices can describe many other natural growth processes, such as electrical discharges \cite{niemeyer1984fractal}, blood vessel formation \cite{nguyen2006dynamics}, dissolution patterns in porous media \cite{szymczak2011initial}, and others. For river networks, this field describes the height of the groundwater level.
+    The river growth model is an example of growth in response to a diffusion field. The field is connected to the river network by boundary conditions. This coupling of field and network can describe many other natural growth processes, such as electrical discharges \cite{niemeyer1984fractal}, blood vessel formation \cite{nguyen2006dynamics}, dissolution patterns in porous media \cite{szymczak2011initial}, and others. For river networks, this field describes the height of the groundwater table.
 
     %Говорячи про річкові мережі, вода може надходити в річку двома різними шляхами: (i) через поверхневий стік або (ii) через резервуар підземних вод. У першому випадку вода (зазвичай з опадів) не занурюється в землю, а стікає поверхнею прямо в русло (світло-блакитні стрілки на рис. ~\ref{pow_soaking}). Такий сценарій можна спостерігати в районах, де грунт водонепроникний, а опади настільки інтенсивні, що вода не встигає зануритися в землю.
     %Jeśli chodzi o sieci rzeczne, woda może wpływać do rzeki na dwa różne sposoby: (i) przez spływ powierzchniowy lub (ii) przez zbiornik wód podziemnych. W pierwszym przypadku woda (zwykle pochodząca z opadów atmosferycznych) nie wsiąka w ziemię, lecz przepływa po powierzchni bezpośrednio do kanału (niebieskie strzałki na ryc. ~\ref{pow_wsiakanie}). Taki scenariusz można zaobserwować na obszarach, gdzie gleba jest nieprzepuszczalna, a opady są tak intensywne, że woda nie ma czasu wsiąknąć w ziemię.
-    In terms of river networks, water can enter a river in two different ways: (i) through surface runoff or (ii) through a groundwater reservoir. In the first case, water (usually from precipitation) does not sink into the ground, but flows over the surface directly into the channel (light blue arrows in Fig. ~\ref{pow_wsiakanie}). Such a scenario can be observed in areas where the soil is impermeable, and the precipitation is so intense that the water does not have time to sink into the ground.
+    In terms of river networks, water can enter a river in two different ways: (i) through surface runoff(light blue arrows in Fig. \ref{pow_wsiakanie}) or (ii) through a groundwater reservoir (blue arrows in Fig. \ref{pow_wsiakanie}). In the first case, water (usually from precipitation) does not sink into the ground, but flows over the surface directly into the channel. Such a scenario can be observed in areas where the soil is impermeable, and the precipitation is so intense that the water does not have time to sink into the ground.
 
     \begin{figure}[H]
       \centering
@@ -92,9 +92,9 @@
       \label{pow_wsiakanie}
     \end{figure}
 
-    %Однак, якщо ґрунт достатньо проникний, вода може занурюватися в землю, а не стікати вниз (темно-сині стрілки на рис. \ref{float_soaking}). Вода спочатку накопичується в підземній водоймі, а потім під дією гідродинамічного тиску витікає з річкового джерела і берегів. Цей процес утворює ерозію ґрунту в околиці джерела.
-    %Jeśli jednak gleba jest wystarczająco przepuszczalna, woda może wsiąkać w ziemię, zamiast spływać (ryc. \ref{pow_wsiakanie}). Woda najpierw gromadzi się w podziemnym zbiorniku, a następnie wypływa ze źródła rzeki i brzegów pod wpływem ciśnienia hydrodynamicznego. Proces ten powoduje erozję gleby w pobliżu źródła.
-    However, if the soil is sufficiently permeable, water can soak into the ground instead of running off (Fig. \ref{pow_wsiakanie}). Water first accumulates in an underground reservoir and then flows out of the river source and banks under the influence of hydrodynamic pressure. This process erodes the soil near the source.
+    %Однак, якщо ґрунт достатньо проникний, вода може занурюватися в землю, а не стікати вниз (темно-сині стрілки на рис. \ref{float_soaking}). Вода спочатку накопичується в підземній водоймі, а потім під дією гідродинамічного тиску витікає з річкового джерела. Цей процес утворює ерозію ґрунту в околиці джерела.
+    %Jeśli jednak gleba jest wystarczająco przepuszczalna, woda może wsiąkać w ziemię, zamiast spływać (ryc. \ref{pow_wsiakanie}). Woda najpierw gromadzi się w podziemnym zbiorniku, a następnie wypływa ze źródła rzeki pod wpływem ciśnienia hydrodynamicznego. Proces ten powoduje erozję gleby w pobliżu źródła.
+    However, if the soil is sufficiently permeable, water can soak into the ground instead of running off (Fig. \ref{pow_wsiakanie}). Water first accumulates in an underground reservoir and then flows out of the river spring under the influence of hydrodynamic pressure. This process erodes the soil near the spring (black arrows in Fig. \ref{zrodlo}).
 
     \begin{wrapfigure}{r}{0.5\textwidth}
       \begin{center}
@@ -103,45 +103,45 @@
       \end{center}
       \vspace{-20pt}
       %Ilustracja wzrostu rzeki poprzez procesy erozyjne zachodzącę w okolicy źródeł.
-      \caption{Illustration of the growth of the river through erosion processes occurring in the vicinity of the sources.}
+      \caption{Illustration of the growth of the river through erosion processes occurring in the vicinity of the springs.}
       \vspace{0pt}
       \label{zrodlo}
     \end{wrapfigure}
 
     %Ця ерозія в околиці джерела, котра відбувається в протилежному напрямку до течії відповідає за розширення та роздвоєння річки (біфуркація), загальну еволюцію річкової мережі.
     %Ta erozja w pobliżu źródła, która zachodzi w kierunku przeciwnym do nurtu, jest odpowiedzialna za ekspansję i bifurkację rzeki, ogólną ewolucję sieci rzecznej.
-    This erosion in the vicinity of the source, which occurs in the opposite direction to the flow, is responsible for the expansion and bifurcation of the river, the general evolution of the river network.
+    This erosion in the vicinity of the spring, which occurs in the opposite direction to the flow, is responsible for the expansion and bifurcation of the river, the general evolution of the river network.
 
 
     %Перша кількісна модель, що описує еволюцію таких річок, була представлена ​​в 1980 році Данном \cite{dunne1980formation}. Більш детальні моделі були запропоновані групою Даніеля Ротмана з Массачусетського технологічного інституту (Refs.~\cite{petroff2012four, devauchelle2012ramification}). Автори пов’язали висоту рівня ґрунтових вод із напрямком і швидкістю зростання річки.
     %Pierwszy ilościowy model opisujący ewolucję takich rzek przedstawił w 1980 roku Dunne \cite{dunne1980formation}. Bardziej szczegółowe modele zostały zaproponowane przez grupę Daniela Rothmana z Massachusetts Institute of Technology (Refs.~\cite{petroff2012four, devauchelle2012ramification}). Autorzy powiązali wysokość poziomu wód gruntowych z kierunkiem i szybkością wzrostu rzeki.
-    The first quantitative model describing the evolution of such rivers was presented in 1980 by Dunne \cite{dunne1980formation}. More detailed models have been proposed by Daniel Rothman's group at the Massachusetts Institute of Technology (Refs.~\cite{petroff2012four, devauchelle2012ramification}). The authors linked the height of the groundwater level with the direction and speed of the river's growth.
+    The first quantitative model describing the evolution of such rivers was presented in 1980 by Dunne \cite{dunne1980formation}. More detailed models have been proposed by Daniel Rothman group at the Massachusetts Institute of Technology (Refs.~\cite{petroff2012four, devauchelle2012ramification}). The authors linked the height of the groundwater table with the direction and speed of the river growth.
 
     %Остання модель передбачає однорідність проникної здатності і сталу висоту ґрунту, ширина річки вважається достатньо малою, а тому апроксимується лінією, а процес ерозії розглядають лише в околиці джерела.
     %Ten drugi model zakłada jednorodność przepuszczalności i stałą wysokość gruntu, szerokość rzeki uważa się za wystarczająco małą i dlatego jest przybliżona linią \cite{peterson1998singular,carleson2002laplacian,gubiec2008fingered}, a proces erozji uwzględnia się tylko w pobliżu źródła.
-    The last model assumes homogeneity of permeability and a constant height of the soil, the width of the river is considered small enough, and therefore is approximated by a line \cite{peterson1998singular,carleson2002laplacian,gubiec2008fingered}, and the erosion process is considered only in the vicinity of the source.
+    The last model assumes homogeneity of permeability, the width of the river is considered small enough, and therefore is approximated by a line \cite{peterson1998singular,carleson2002laplacian,gubiec2008fingered}, and the erosion process is considered only in the vicinity of the spring.
 
-    \section{Underground waters}
+    \section{Groundwater dynamics}
 
       %Wodę zgromadzoną w zbiorniku wód podziemnych opisuje prawo Darcy'ego \cite{darcy1856fontaines}:
-      The water stored in the groundwater reservoir is described by Darcy's law \cite{darcy1856fontaines}:
+      The movement of groundwater is described by Darcy's law \cite{darcy1856fontaines}:
       
       \begin{equation}
         \vec{u}=-\frac{\kappa}{\mu} \nabla p
       \end{equation}	
       
       %Równanie to opisuje prędkość filtracji ($\vec{u}$) płynu o lepkości dynamicznej $\mu$ przez ośrodek porowaty (np. piasek lub skały) o przepuszczalności $\kappa$ pod ciśnieniem $p$. 
-      This equation describes the filtration velocity ($\vec{u}$) of a fluid with a dynamic viscosity of $\mu$ through a porous medium (e.g. sand or rock) with a permeability of $\kappa$ under a pressure of $p$.
+      This equation describes the filtration velocity ($\vec{u}$) of a fluid with a dynamic viscosity $\mu$ through a porous medium (e.g. sand or rock) with a permeability $\kappa$ under a pressure $p$.
     
       %Aby obliczyć, ile wody przepływa przez określony punkt na płaszczyźnie $xy$, gdzie sieć się rozrasta, po prostu całkujemy prędkość Darcy'ego w danych współrzędnych $xy$ wzdłuż osi poziomej $z$ (wysokość zbiornika):
-      To calculate how much water flows through a particular point in the $xy$ plane where the network grows, we simply integrate Darcy's velocity in the given $xy$ coordinates along the $z$ horizontal axis (height of the tank):
+      To calculate how much water flows through a particular point in the $xy$ plane where the network grows, we simply integrate Darcy velocity in the given $xy$ coordinates along the $z$ horizontal axis (height of the groundwater table):
       
       \begin{equation}
         \vec{q}(x,y)=\int \vec{u}(x,y,z)\textrm{d}z
       \end{equation}
     
       %Teraz korzystamy z założenia Dupuit \cite{dupuit1863etudes}, które mówi, że wody gruntowe płyną poziomo. Ponadto zakładamy, że ciśnienie powodujące przepływ jest po prostu ciśnieniem hydrostatycznym $p = \rho g h $ ($\rho$ -- gęstość wody, $g$ -- przyspieszenie grawitacyjne, $h$ -- wysokość Tabela wód podziemnych). Dla takiego ciśnienia $\nabla p$ jest niezależne od współrzędnej $z$, a powyższa całka upraszcza się do iloczynu prędkości filtracji $\vec{u}$ i wysokości słupa wody $h(x, y)$ w danym miejscu:
-      Now we use the Dupuit \cite{dupuit1863etudes} assumption that groundwater flows horizontally. In addition, we assume that the pressure causing the flow is simply hydrostatic pressure $p = \rho g h $ ($\rho$ -- density of water, $g$ -- gravitational acceleration, $h$ -- height. Table of groundwater). For such a pressure, $\nabla p$ is independent of the $z$ coordinate, and the above integral simplifies to the product of the filtration velocity $\vec{u}$ and the height of the water column $h(x, y)$ at a given location:
+      Now we use the Dupuit \cite{dupuit1863etudes} assumption that groundwater flows horizontally. In addition, we assume that the pressure causing the flow is simply hydrostatic pressure $p = \rho g h $ ($\rho$ -- density of water, $g$ -- gravitational acceleration, $h$ -- height of groundwater table). For such a pressure, $\nabla p$ is independent of the $z$ coordinate, and the above integral simplifies to the product of the filtration velocity $\vec{u}$ and the height of the water column $h(x, y)$ at a given location:
       
       \begin{equation}
         \label{qq}
@@ -149,14 +149,15 @@
       \end{equation}
       
       %gdzie wprowadziliśmy potencjał $\phi(x,y)$:
-      where the potential was entered $\phi(x,y)$:
+      where we defined the groundwater potential $\phi(x,y)$:
       
       \begin{equation}
         \phi(x,y) = \frac{\kappa \rho g}{2\mu}h^2(x,y) \,.
       \end{equation}
     
       %Na koniec wyprowadzamy równania opisujące pole $\phi$ z równania ciągłości, uwzględniając opady (opisane przez średnią objętość opadów na jednostkę czasu i powierzchnię — $P$). Zmianę masy kolumny płynu ($M$) zamkniętej w obszarze $S$ można opisać następująco:
-      Finally, we derive the equations for the $\phi$ area from the continuity equation, taking into account precipitation (described by the average volume of precipitation per unit time and area, $P$). The mass change of the fluid column ($M$) enclosed in the $S$ area can be described as follows:
+      Now we can derive the equation describing the field $\phi$ from the continuity equation, taking into account rainfall (described by the average volume of precipitation per unit time and area, $P$). The mass change of the fluid column ($M$) enclosed in the $S$ area can be described as follows:
+      
 
       \begin{gather*}
         \frac{\partial M}{\partial t}=- \int\limits_{\partial S} \vec{q}\cdot \hat{n} \ \textrm{d}l + \int\limits_S P \ \textrm{d}S
@@ -198,14 +199,14 @@
   \section{Solving Laplace's equation}\label{chapter:solving}
     
     %We współrzędnych biegunowych (gdzie kierunek stycznej do palca na wierzchołku ustawia $\theta = 0$) pole w pobliżu wierzchołka można rozszerzyć \cite{derrida1992needle , petroff2013bifurcation}:
-    In polar coordinates (where the direction of the tangent to the finger at the vertex sets $\theta = 0$), the field near the vertex can be extended \cite{derrida1992needle , petroff2013bifurcation}:
+    In polar coordinates (where the direction of the tangent to the finger at the tip sets $\theta = 0$), the field near the spring can be extended \cite{derrida1992needle , petroff2013bifurcation}:
     
     \begin{equation}\label{phi_polar}
       \phi(r,\theta)=a_1r^{1/2}\cos\frac{\theta}{2}+a_2r \sin \theta+a_3 r^{3/2} \cos\frac{3\theta}{2}+\mathcal{O}\left(r^2\right) \,,
     \end{equation}
 
     %Równ. \eqref{phi_polar} obowiązuje również w przypadku pól Poissona, ponieważ w sąsiedztwie wierzchołka wkład strumienia z członu źródłowego jest pomijalny w porównaniu do strumienia z obszarów oddalonych od wierzchołka. Dla każdego z wiodących współczynników $a_i$ w równaniu \eqref{phi_polar} możemy znaleźć interpretację fizyczną.
-    Eq. \eqref{phi_polar} is also valid for Poisson fields, because in the vicinity of the vertex the contribution of the flux from the source term is negligible compared to the flux from areas far from the vertex. For each of the leading coefficients $a_i$ in the equation \eqref{phi_polar} we can find a physical interpretation.
+    Eq. \eqref{phi_polar} is also valid for Poisson fields, because in the vicinity of the tip point the contribution of the flux from the source term is negligible compared to the flux from areas far from the spring. For each of the leading coefficients $a_i$ in the equation \eqref{phi_polar} we can find a physical interpretation.
 
     %Po pierwsze, współczynnik $a_1$ jest powiązany z całkowitym strumieniem na małym okręgu o promieniu $r_0$ wokół końcówki:
     First, the coefficient $a_1$ is related to the total flux in a small circle of radius $r_0$ around the tip: 
@@ -215,17 +216,17 @@
     \end{equation}
 
     %Współczynnik $a_2$ jest powiązany z asymetrią pola wokół wierzchołka. Przy dodatnim $a_2$ strumień pola jest większy po prawej stronie wierzchołka, a przy ujemnym $a_2$ — po lewej stronie. Palec rośnie jednak w kierunku największego strumienia i w efekcie rośnie w taki sposób, że $a_2$ zawsze znika (zasada lokalnej symetrii \cite{cohen2015path}).
-    The $a_2$ coefficient is related to the asymmetry of the field around the vertex. With positive $a_2$, the field flux is greater on the right side of the vertex, and with negative $a_2$ - on the left side. However, the finger grows in the direction of the greatest flux, and in effect grows in such a way that $a_2$ always vanishes (the principle of local symmetry \cite{cohen2015path}).
+    The $a_2$ coefficient is related to the asymmetry of the field around the tip. With positive $a_2$, the field flux is greater on the right side of the tip, and with negative $a_2$ - on the left side. However, the finger grows in the direction of the greatest flux, and in effect grows in such a way that $a_2$ always vanishes (the principle of local symmetry \cite{cohen2015path}).
     
     %Wreszcie $a_3$ jest połączona z drugą pochodną pola. Jeśli ponownie skupimy się na małym okręgu o promieniu $r_0$ wokół końcówki i zbadamy pole jako funkcję kąta $\theta$, zauważymy, że przy ustalonych $a_1>0$ i $a_2=a_3=0$ pole ma pojedyncze maksimum przy $\theta = 0$. Im mniejszy współczynnik $a_3$, tym bardziej płaskie maksimum pola wokół końcówki. W końcu, gdy druga pochodna $\phi$ znika, co odpowiada ujemnej wartości $a_3/a_1$:
-    Finally, $a_3$ is combined with the second derivative of the field. If we focus again on the small circle of radius $r_0$ around the tip and examine the field as a function of the angle $\theta$, we see that given $a_1>0$ and $a_2=a_3=0$ the field has a single maximum at $\ theta = $0. The smaller the $a_3$ factor, the flatter the field maximum around the tip. Finally, when the second derivative of $\phi$ disappears, which corresponds to the negative value of $a_3/a_1$:
+    Finally, $a_3$ is related to the second derivative of the field. If we focus again on the small circle of radius $r_0$ around the tip and examine the field as a function of the angle $\theta$, we see that given $a_1>0$ and $a_2=a_3=0$ the field has a single maximum at $\theta = $0. The smaller the $a_3$ factor, the flatter the field maximum around the tip. Finally, when the second derivative of $\phi$ disappears:
     
     \begin{equation}\label{a3a1}
       \frac{\partial^2 \phi}{\partial \theta^2}\big|_{\theta=0, r=r_0} = 0 \implies a_3/a_1 = -\frac{1}{9 r_0} \,, 
     \end{equation}
     
     %to pojedyncze maksimum przekształca się w dwa maksima w $\pm \theta_0$. Zauważ, że wartość progowa $a_3/a_1$ zależy od odległości $r_0$ od końcówki, przy której analizowane jest pole. Dla nieskończenie małych $r_0$ profil pola jest zawsze symetryczny z jednym maksimum przy $\theta=0$.
-    this single maximum becomes two maximums in $\pm \theta_0$. Note that the threshold value $a_3/a_1$ depends on the distance of $r_0$ from the tip where the field is analyzed. For infinitesimals $r_0$ the profile of the field is always symmetric with one maximum at $\theta=0$.
+    This single maximum splits into two maxima at $\pm \theta_0$. Note that the threshold value $a_3/a_1$ depends on the distance $r_0$ from the tip where the field is analyzed. For infinitesimal $r_0$ the profile of the field is always symmetric with one maximum at $\theta=0$.
 
     %Aby otrzymać współczynniki $a_i$, możemy po prostu rozwiązać odpowiednie równanie dla pola (Laplace'a lub Poissona) metodą elementów skończonych, a następnie korzystając z postaci całkowej współczynników:
     To get the coefficients $a_i$, the appropriate equation for the field (Laplace or Poisson) should be solved using the finite element method and then using the integral form of the coefficients:
@@ -245,7 +246,7 @@
       a_3 = \frac{1}{\pi r_0^{3/2}}\int^{\pi}_{-\pi} \phi(r_0,\theta)\cos\frac{3\theta}{2}\textrm{d}\theta
     \end{equation}	
     
-    %obliczyć je. Przeprowadzamy ją w programie RiverSim który był inspirowany rozwiązaniem w FreeFEM++\cite{hecht2012new} początkowo stworzonych przez grupę Daniela Rothmana w MIT \cite{petroff2011geometry, petroff2013bifurcation, cohen2015path} i dalej rozwijanych w grupie Piotra Szymczaka \cite{morawiecki2016problem, zukowski2019zwiazek}.
+    %obliczyć je. Przeprowadzamy ją w programie Riversim który był inspirowany rozwiązaniem w FreeFEM++\cite{hecht2012new} początkowo stworzonych przez grupę Daniela Rothmana w MIT \cite{petroff2011geometry, petroff2013bifurcation, cohen2015path} i dalej rozwijanych w grupie Piotra Szymczaka \cite{morawiecki2016problem, zukowski2019zwiazek}.
 
 
 
@@ -254,28 +255,28 @@
     %\subsection{Reguły wzrostu}
 
     %W najogólniejszym przypadku prędkość wzrostu może być dowolną funkcją pola ($v = f(\phi)$), ale w klasycznym wzroście Laplace'a jest proporcjonalna do gradientu pola -- $f(\phi) = \alpha |\nabla \phi|$, gdzie $\alpha$ jest stałą proporcjonalności. Jednak, prawo potęgowe zostały odnotowane w wielu różnych systemach fizycznych, np. przebicie dielektryczne \cite{niemeyer1984fractal} i -- po tych pracach -- założymy tutaj, że prędkość końcówki jest proporcjonalna do strumienia wchodzącego w nią pola ($J$) do potęgi $\eta$. Przypominając równanie \eqref{circle} mamy \cite{carleson2002laplacian, selander1999two}:
-    In the most general case, the growth rate can be any function of the field ($v = f(\phi)$), but in classical Laplace growth it is proportional to the gradient of the field -- $f(\phi) = \alpha |\nabla \phi |$, where $\alpha$ is a constant of proportionality. However, power law has been reported in many different physical systems, e.g. dielectric breakdown \cite{niemeyer1984fractal} and - after this work - we will assume here that the speed of the tip is proportional to the flux of the field entering it ($J$) to the power $\eta$. Recalling the equation \eqref{circle} we have \cite{carleson2002laplacian, selander1999two}:
+    In the most general case, the growth rate can be any function of the field ($v = f(\phi)$), but in classical Laplace growth it is proportional to the gradient of the field -- $f(\phi) = \alpha |\nabla \phi |$, where $\alpha$ is a constant of proportionality. However, power law has been reported in many different physical systems, e.g. dielectric breakdown \cite{niemeyer1984fractal} and - following this work - we will assume here that the speed of the tip is proportional to the flux of the field entering it ($J$) to the power $\eta$. Recalling the equation \eqref{circle} we have \cite{carleson2002laplacian, selander1999two}:
        
     \begin{equation}\label{velocity}
       v = \alpha a_1^\eta \,.
     \end{equation}
       
     %W literaturze dotyczącej modelu cienkiego palca stosuje się dwa różne deterministyczne kryteria podziału -- kryterium prędkości i kryterium kształtu pola. Pierwsze kryterium może być wprost zaimplementowane w modelu cienkiego palca jako próg $a_1$: $a_1 > a_1^c$.
-    In the literature on the thin finger model, two different deterministic division criteria are used - the velocity criterion and the field shape criterion. The first criterion can be directly implemented in the thin finger model as the $a_1$ threshold: $a_1 > a_1^c$.
+    In the literature on the thin finger model two different deterministic division criteria are used - the velocity criterion and the field shape criterion. The first criterion can be directly implemented in the thin finger model as the $a_1$ threshold: $a_1 > a_1^c$.
 
     %Drugie kryterium jest związane z ekstremami strumienia (w funkcji kąta biegunowego) \cite{petroff2013bifurcation, kaandorp2001algorithmic_Chapter4.4}, a więc ze współczynnikiem $a_3$. Gdy dla danego promienia $r_0$ strumień pola ma wysokie pojedyncze maksimum, palec rośnie w kierunku tego maksimum. Jeśli jednak strumień pola z boków wierzchołka staje się porównywalny do tego z przodu, a nawet w końcu staje się większy (co odpowiada pojawieniu się dwóch maksimów przy $\pm \theta_0$), palec próbuje rosnąć w dwóch kierunkach jednocześnie, co skutkuje bifurkacją. Mówiąc dokładniej, mówimy, że palec dzieli się, gdy $a_3/a_1$ jest mniejsze niż jakaś wartość krytyczna.
-    The second criterion is related to the extremes of the flux (as a function of the polar angle) \cite{petroff2013bifurcation, kaandorp2001algorithmic_Chapter4.4}, i.e. with the coefficient $a_3$. When, for a given radius $r_0$, the field flux has a high single maximum, the finger grows towards this maximum. However, if the field flux from the sides of the vertex becomes comparable to that of the front, and even eventually becomes larger (corresponding to the appearance of two maxima at $\pm \theta_0$), the finger tries to grow in two directions at once, resulting in a bifurcation. More precisely, we say that the finger splits when $a_3/a_1$ is less than some critical value.
+    The second criterion is related to the extremes of the flux (as a function of the polar angle) \cite{petroff2013bifurcation, kaandorp2001algorithmic_Chapter4.4}, i.e. with the coefficient $a_3$. When, for a given radius $r_0$, the field flux has a high single maximum, the finger grows towards this maximum. However, if the field flux from the sides of the spring becomes comparable to that of the front, and even eventually becomes larger (corresponding to the appearance of two maxima at $\pm \theta_0$), the finger tries to grow in two directions at once, resulting in a bifurcation. More precisely, we say that the finger splits when $a_3/a_1$ is less than some critical value.
 
   \chapter{Numerical solution and software structure}
 
     %\hspace{1em} \= 
     %Pole wód podziemnych kształtuję erozje w oklicy żródła i jak skutek dynamikę i rozwój sięci. Z matematycznego modelu dla opisu sieci rzecznych otrzymujemy równania dla opisu wód podziemnych w postaci równania Laplacea \ref{laplace}(lub Poissona \ref{poisson}). Pole w okolicy źródła jest aproxymowane współcznynnikami $a_i$ (\ref{a1} \ref{a2} \ref{a3}). Całkowanie współcznynników jak i rozwiązywanie też w swoją kolej wymaga metod numerycznych. W ogólnym przypadku równanie Laplace można rozwiązać metodami numerycznymi, a w szczegolności w tej pracy skorzystano z metody skończonych elementów. \\ \indent
-    \hspace{1em} \=
-    The groundwater field is shaped by erosion in the vicinity of the source and, as a result, the dynamics and development of the network. From the mathematical model for the description of river networks, we obtain equations for the description of groundwater in the form of the Laplace \ref{laplace} (or Poisson \ref{poisson}) equation. The field near the source is approximated by the coefficients $a_i$ (\ref{a1} \ref{a2} \ref{a3}). Integrating the coefficients as well as solving in turn requires numerical methods. In general, the Laplace equation can be solved by numerical methods, and in particular, the finite element method was used in this work. \\ \indent
+    \hspace{1em} 
+    The groundwater field is shaped by erosion in the vicinity of the spring and, as a result, the dynamics and development of the network. From the mathematical model for the description of river networks, we obtain equations for the description of groundwater in the form of the Laplace \ref{laplace} (or Poisson \ref{poisson}) equation. The field near the spring is approximated by the coefficients $a_i$ (\ref{a1} \ref{a2} \ref{a3}). Evaluation of the coefficients $a_i$ as well as solving groundwater field $\phi(x, y)$ requires numerical methods. In general, the Laplacian equation can be solved by numerical methods, and in particular, the finite element method was used in this work. \\ \indent
     
     %В попередніх проектах вже було представлені рішення для задачі еволюції мережі річки. Один з розв'язків був написаний з використанням Фреефем++ і Матлаб. Інший, з допомогою конформних перетворень. Однак для отримання і ще більших мереж річок потрібен був оптимальніший розв'язок. Другою вимогою було використання тільки технологій із відкритим вихідним кодом, адже не кожен має можливість придбати Матлаб. Вибір припав на C++\cite{Stroustrup1997} та Python. Адже ці мови програмування є одними з найбілш росповсюдженних, а також містять в собі багато бібліотек із відкритим кодом, що полегшує написання програм. C++ -- з одного боку, він дуже швидкий, але вимогливий до написання. С++ містить реалізацію частини програми, яка займає є складною в обчисленнях, такі як алгоритми для роботи із геометрією, генерацією сітки, розязок диференціальних рівняннь. Python\cite{python3} -- має меншу обчислювальну ефективність, але набагато швидший у розробці програмного забезпечення і надає інтерактивний інструмент для написання скрипту -- Jupyter.  
     %W poprzednich projektach prezentowano już rozwiązania problemu ewolucji sieci rzecznej. Jedno z rozwiązań zostało napisane przy użyciu Freefem++ i Matlaba. Inny, za pomocą przekształceń konforemnych. Jednak aby uzyskać jeszcze większe sieci rzeczne, potrzebne było bardziej optymalne rozwiązanie. Drugim wymogiem było korzystanie wyłącznie z technologii z otwartym kodem źródłowym, ponieważ nie każdy ma możliwość zakupu Matlaba. Wybór padł na C++\cite{Stroustrup1997} i Python\cite{python3}. W końcu te języki programowania należą do najbardziej rozpowszechnionych, a także zawierają wiele bibliotek z otwartym źródłołem kodem, co ułatwia pisanie programów. C++ -- z jednej strony jest bardzo szybki, ale wymagający w pisaniu. C++ zawiera implementację części programu, która jest złożona w obliczeniach, takich jak algorytmy pracy z geometrią, generowanie siatki i rozwiązywanie równań różniczkowych. Python — ma mniejszą wydajność obliczeniową, ale jest znacznie szybszy w tworzeniu oprogramowania i zapewnia interaktywne narzędzie do tworzenia skryptów — Jupyter.
-    In previous projects, solutions for the problem of the evolution of the river network have already been presented. One of the solutions was written using Freefem++ and Matlab. Another, with the help of conformal transformations. However, in order to obtain even larger river networks, a more optimal solution was needed. The second requirement was to use only technologies with open source code, because not everyone has the opportunity to purchase Matlab. The choice fell on C++\cite{Stroustrup1997} and Python. After all, these programming languages are among the most widespread, and also contain many open source libraries, which makes it easier to write programs. C++ -- on the one hand, it is very fast, but demanding to write. C++ contains the implementation of a part of the program that is complex in calculations, such as algorithms for working with geometry, mesh generation, and solving differential equations. Python\cite{python3} -- is less computationally efficient, but much faster in software development and provides an interactive scripting tool -- Jupyter.
+    In previous projects, solutions for the problem of the evolution of the river network have already been presented. One of the solutions was written using Freefem++ and Matlab. Another, with the help of conformal transformations. However, in order to obtain even larger river networks, a more optimal solution was needed. The second requirement was to use only technologies with open source code, because not everyone has the opportunity to purchase Matlab. The choice fell on C++\cite{Stroustrup1997} and Python. After all, these programming languages are among the most widespread, and also contain many open source libraries, which makes it easier to write programs. C++ -- it is very fast, but demanding to write. Python\cite{python3} -- is less computationally efficient, but much faster in software development and provides an interactive scripting tool -- Jupyter.
 
     \begin{figure}[H]
       \centering
@@ -283,53 +284,53 @@
       %(1) Початкова геометрія, задавання місць на границі звідки буде рости річка, граничні умови. (2) Початкова мережа річки(можна не задавати). (3) Спрощення геометрії річки. (4) Генерація дрібнозернистого мешу. (5) Розв'язок диференційних рівнянь. (6) Визначення параметрів ряду довкола джерел. (2) Ріст мережі річки.
       %Метод конечних елементів вимагає визначення геометрії області, потім її дискретизація, створення лінійних рівнянь, розв’язування рівнянь, інтегрування коефіцієнти $a_i$ розкладу в ряд. Наведені вище кроки формують структуру програмного забезпечення \ref{program_workflow}.
       %Metoda elementów skończonych wymaga wyznaczenia geometrii obszaru, następnie jej dyskretyzacji, utworzenia równań liniowych, rozwiązania równań, zintegrowania współczynników rozszerzenia $a_i$ w szereg. Powyższe kroki tworzą strukturę oprogramowania. (1) Geometria początkowa, ustalenie miejsc na granicy, z których rzeka będzie wypływać i warunki brzegowe. (2) Początkowa sieć rzeki (opcjonalnie). (3) Uproszczenie geometrii rzeki. (4) Generowanie drobnoziarnistej siatki. (5) Rozwiązywanie równań różniczkowych. (6) Wyznaczanie parametrów szeregu wokół źródeł. (2) Wzrost sieci rzecznej.
-      \caption{The finite element method requires determining the geometry of the area, then discretizing it, creating linear equations, solving the equations, integrating the expansion factors $a_i$ into a series. The above steps form the structure of the software. (1) Initial geometry, determination of boundary locations from which the river will flow, and boundary conditions. (2) Initial river network (optional). (3) Simplifying the geometry of the river. (4) Fine mesh generation. (5) Solving differential equations. (6) Determining the parameters of the series around the sources. (2) Growth of the river network.}
+      \caption{The finite element method requires determining the geometry of the area, then discretizing it, creating linear equations, solving the equations, integrating the expansion factors $a_i$ into a series. The above steps form the structure of the software. (1) Initial geometry, determination of boundary locations from which the river will flow, and boundary conditions. (2) Initial river network (optional). (3) Simplifying the geometry of the river. (4) Fine mesh generation. (5) Solving differential equations. (6) Determining the parameters of the series around the springs. (2) Growth of the river network.}
       \label{program_workflow}
     \end{figure}
       
-    %W trakcie tworzenia oprogramowania było stworzono dwa rzowiązania: RiverSim\cite{riversim} - program który zawiera wszystkie algorytmy dla generacji sieci rzecznych, riversimpy\cite{riversimpy} - biblioteka w Pythonie które zawiera algorytmy ułatwiające tworzenie skryptów dla symulacji wzrostu sieci w polu Laplasowskim. 
-    During software development two solutions were created: RiverSim\cite{riversim} - a program that contains all the algorithms for river network generation, riversimpy\cite{riversimpy} - a Python library that contains algorithms that facilitate the creation of scripts for simulating network growth in a Laplas field.
+    %W trakcie tworzenia oprogramowania było stworzono dwa rzowiązania: Riversim\cite{Riversim} - program który zawiera wszystkie algorytmy dla generacji sieci rzecznych, Riversimpy\cite{Riversimpy} - biblioteka w Pythonie które zawiera algorytmy ułatwiające tworzenie skryptów dla symulacji wzrostu sieci w polu Laplasowskim. 
+    During software development two solutions were created: Riversim\cite{Riversim} - a program that contains all the algorithms for river network generation, Riversimpy\cite{Riversimpy} - a Python library that contains algorithms that facilitate the creation of scripts for simulating network growth in a Laplacian field.
     
-    %RiverSim zawiera niektórę dodatkowe algorytmy dla odwracalnej ewolucji wsztecznej i do przodu, a poza tym RiverSim i riversimpy zawierają tę same algorytmy, w podalszym opisie głównie skupimysię na riversimpy. 
-    RiverSim includes some additional algorithms for reversible backward and forward evolution, and besides RiverSim and riversimps contain the same algorithms, in the following description we will mainly focus on riversimps.
+    %Riversim zawiera niektórę dodatkowe algorytmy dla odwracalnej ewolucji wsztecznej i do przodu, a poza tym Riversim i Riversimpy zawierają tę same algorytmy, w podalszym opisie głównie skupimysię na Riversimpy. 
+    Riversim includes some additional algorithms for reversible backward and forward evolution, but except of this Riversim and Riversimpy contain the same algorithms and are build aroud workflow shown on Fig. \ref{program_workflow}, in the following description we will focus on Riversimpy.
 
     \section{Geometry}
       
       %В реальних середовищах еволюції русла річок даного типу, ми можемо зустріти цілий ряд чинників, котрі мають вплив на поле підземних вод. Наприклад, це можуть бути гори звідки регулярно надходить потік води, озеро котре може слугувати кінцевою точкою або початком річки. Мережа річки теж має вплив на поле підземних вод і багато інших чинників. Ця довільність геометрії продемонстрована на малюнку \ref{geometry_examples}.
       %W rzeczywistych środowiskach ewolucji koryt rzecznych możemy napotkać szereg czynników, które mają wpływ na pole wód gruntowych. Na przykład mogą to być góry, z których regularnie wypływa strumień wody, jezioro, które może służyć jako punkt końcowy lub początek rzeki. Sieć rzeczna ma również wpływ na pole wód gruntowych i wiele innych czynników. Ta arbitralność geometrii jest pokazana na rysunku \ref{geometry_examples}.
-      In the real environments of the evolution of riverbeds of this type, we can meet a number of factors that have an impact on the groundwater field. For example, these can be mountains from which a stream of water regularly flows, a lake that can serve as the end point or the beginning of a river. The river network also has an influence on the groundwater field and many other factors. This arbitrariness of geometry is demonstrated in the figure \ref{geometry_examples}.
+      In the real environments of the evolution of riverbeds of this type, we can meet a number of factors that have an impact on the groundwater field. For example, these can be mountains from which a stream of water regularly flows, a lake that can serve as the end point or the beginning of a river and the river network itself. Example of domain is demonstrated in the Fig. \ref{geometry_examples}.
       
       \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{figs/geometry_examples.png}
         %Szereg przykładów granicy:  brzeg z dwoma zaznaczonymi źródłami (1), granica zawierająca granicę(na przykład jezioro) (2), basen rzeki aproksymowany łamą linią i częściowo odzwierciedloną rżeką (4), dwa prostokąty z różną szerokością nie powiązane topologicznie(5).
-        \caption{Several examples of a boundary: a bank with two selected sources (1), a boundary containing a boundary (for example, a lake) (2), a river basin approximated by a broken line and a partially reflected river (4), two rectangles with different widths, not topologically related (5).}
+        \caption{Examples of different domains: a boundary with two springs (1), a boundary containing a hole (for example, a lake) (2), a river basin approximated with the polygon and the river network (4), three domains not connected topologically which can be used for example to run several simulations with slightly different domains (5).}
         \label{geometry_examples}
       \end{figure}
       
       %І що б охопити всю цю довільність геометрії, було створено цілий ряд класів і функцій. Деякі найголовніші класи і функції: Point, Polar, Line, Boundary, BoundaryConditions, Sources, Branch, Rivers, Region і функція BoundaryGenerator. Приклади використання даних функцій розглянемо далі.
       %Aby pokryć całą tę arbitralność geometrii, stworzono szereg klas i funkcji\ref{GeometryClasses}. Niektóre z najważniejszych klas i funkcji to Point, Polar, Line, Boundary, BoundaryConditions, Sources, Branch, Rivers, Region i funkcja BoundaryGenerator. Poniżej rozważymy przykłady użycia tych funkcji.
-      And in order to cover all this arbitrariness of geometry, a number of classes and functions were created \ref{GeometryClasses}. Some of the most important classes and functions are Point, Polar, Line, Boundary, BoundaryConditions, Sources, Branch, Rivers, Region, and the BoundaryGenerator function. We will consider examples of the use of these functions below.
+      In order to cover all this arbitrariness of geometry, a number of classes and functions were created (Fig. \ref{GeometryClasses}). Some of the most important classes and functions are Point, Polar, Line, Boundary, BoundaryConditions, Sources, Branch, Rivers, Region, and the BoundaryGenerator function. We will consider examples of the use of these functions below.
       
       \begin{figure}[H]
         \centering
         \includegraphics[width=0.7\textwidth]{figs/GeometryClasses.png}
-        %Ilustracja objektów zdefiniowanych w bibliotece riversim i ich relacje pomiędzy sobą przy konfigurowaniu geometrii.
-        \caption{An illustration of objects defined in the riversim library and their relationships to each other when configuring geometry.}
+        %Ilustracja objektów zdefiniowanych w bibliotece Riversim i ich relacje pomiędzy sobą przy konfigurowaniu geometrii.
+        \caption{An illustration of objects defined in the Riversim library and their relationships to each other when configuring geometry.}
         \label{GeometryClasses}
       \end{figure}
 
       \begin{figure}[H]
         \centering
         \includegraphics[width=0.9\textwidth]{figs/region_workflow.png}
-        %Ilustracja kolejności kroków przy definicji regionu. Definicja wszystkich punktów i zapisanie ich do oddzielnychlist t\_PointList jeżeli należą do różnych brzegów (1). Definicja linii i indeksów i też przepisanie ich do oddzielnych list t\_LineList (2). Definicja punktów źródłowych na granicy w klasie Source (3). Definicja warunków brzegowych (4).
-        \caption{Illustration of the sequence of steps in defining a region. Define all points and store them in separate lists t\_PointList if they belong to different edges (1). Definition of lines and indexes and rewriting them to separate lists t\_LineList (2). Definition of source points on the boundary in the Source class (3). Definition of boundary conditions (4).}
+        %Ilustracja kolejności kroków przy definicji regionu. Definicja wszystkich punktów i zapisanie ich do oddzielnychlist t\_PointList jeżeli należą do różnych brzegów (1). Definicja linii i indeksów i też przepisanie ich do oddzielnych list t\_LineList (2). Definicja punktów źródłowych na granicy w klasie spring (3). Definicja warunków brzegowych (4).
+        \caption{Illustration of the sequence of steps in defining a region. Define all points and store them in separate lists t\_PointList if they belong to different edges (1). Definition of lines and indexes and rewriting them to separate lists t\_LineList (2). Definition of spring points on the boundary in the Source class (3). Definition of boundary conditions (4).}
         \label{region_workflow}
       \end{figure}
 
       %Спочатку задаємо впорядковану множину координат з допомогою класу Point і ліній з допомогою класу Line для визначення границі. В програмі границя репрезентується класом Boundary. Таких границь може бути декілька. Група границь котрим присвоєний унікальний індекс утворює регіон який репрезентується класом Region. Границя - це замкнута лінія, іншими словами полігон. В регіоні немає обмежень на кількість границь. Границя також може містити цілковито іншу границю, проте перетин ліній не допускається. Щоб утворити дірку в границі потрібно визначити координату в межах цієї границі і присвоїти до списку дір який зберігається в класі Region. Наступним кроком є визначення місць звідки буде відбуватися ріст мережі річки. Такими місцями може бути кожна  точка границі і джерел може бути необмежена кількість(практично обмежена сумарної кількістю координат границь). Для зберігання інформації про початкові координати джерел створено клас Source. Цей клас зберігає унікальний номер кожного джерела, номер границі на котрій розташовується і номер координати на даній границі.
       %Najpierw określamy uporządkowany zestaw współrzędnych za pomocą klasy Point i linii za pomocą klasy Line, aby określić granicę. W programie granica jest reprezentowana przez klasę Boundary. Takich granic może być kilka. Grupa granic, którym przypisano unikalny indeks, tworzy region reprezentowany przez klasę Region. Granica jest zamkniętą linią, innymi słowy wielokątem. W regionie nie ma ograniczeń co do liczby granic. Jedna granica może również zawierać inną granicę, ale przecięcie linii jest niedozwolone. Aby utworzyć otwór w granicy, należy zdefiniować współrzędną w obrębie tej granicy i przypisać ją do listy otworów przechowywanej w klasie Region. Kolejnym krokiem jest określenie miejsc, z których nastąpi rozwój sieci rzecznej. Takimi miejscami może być każdy punkt granicy, a źródeł może być nieograniczona (praktycznie ograniczona całkowitą liczbą współrzędnych granic). Klasa Source została stworzona do przechowywania informacji o początkowych współrzędnych źródeł. Ta klasa przechowuje unikalny numer każdego źródła, numer granicy, na której się znajduje, oraz numer współrzędnej na tej granicy.
-      First, we specify an ordered set of coordinates using the Point class and lines using the Line class to determine the boundary. In the program, the boundary is represented by the Boundary class. There can be several such borders. A group of boundaries assigned a unique index forms a region represented by the Region class. The border is a closed line, in other words, a polygon. There are no limits on the number of borders in the region. The border can also contain a completely different border, but crossing lines is not allowed. To create a hole in a border, you need to define a coordinate within this border and assign it to the list of holes stored in the Region class. The next step is to determine the places from where the growth of the river network will take place. Such places can be every point of the border and there can be an unlimited number of sources (practically limited by the total number of coordinates of the borders). The Source class was created to store information about the initial coordinates of the sources. This class stores the unique number of each source, the number of the boundary on which it is located, and the number of the coordinate on this boundary.
+      First, we specify an ordered set of coordinates using the Point class and lines using the Line class to determine the boundary. In the program, the boundary is represented by the Boundary class. There can be several such borders. A group of boundaries assigned a unique index forms a region represented by the Region class. The border is a closed line, in other words, a polygon. There are no limits on the number of borders in the region. The border can also contain a different border, but crossing lines is not allowed nor sharing common vertex. To create a hole in a border, you need to define a coordinate within this border and assign it to the list of holes stored in the Region class. The next step is to determine the places from where the growth of the river network will take place. Such places can be every point of the border and there can be an unlimited number of springs (practically limited by the total number of coordinates of the borders). The Source class was created to store information about the initial coordinates of the springs. This class stores the unique number of each spring, the number of the boundary on which it is located, and the number of the coordinate on this boundary (Fig. \ref{region_workflow}).
 
       \begin{mintedbox}{python}
         from riversim import *
@@ -353,7 +354,7 @@
 
       %Після визначення регіону і розташування джерел, тепер можемо перейти до побудови геометрії річки. Всі дані про геометрію річок і алгоритми містяться в класі Rivers. Rivers містить унікальний номер для кожної річки, котрий має теж саме значення,  що й номер джерела в Sources. Для ініціалізації класу Rivers, потрібно конвертувати дані з класу Sources в координати і напрямок. Для цього служить функція GetSourcesIdsPointsAndAngles класу Region аргументом котрої є Sources. В результаті ми отримаємо набір індексів річок і відповідні їм координати і напрямок перпендикулярний до границі. Для визначення точного напрямку перпендикуляру, має значення напрямок координати при задаванні границі. Прийнято, що перпендикуляр буде з лівої сторони від напрямку координат. Тому якщо звернути увагу на регіон де є дірка по центрі, то зовнішня границя має протилежний напрямок нумерації координат відносно внутрішньої.
       %Po określeniu regionu i lokalizacji źródeł możemy przystąpić do konstruowania geometrii rzeki. Wszystkie dane geometrii rzeki i algorytmy są zawarte w klasie Rivers. Rzeki zawierają unikalny numer dla każdej rzeki, który ma takie samo znaczenie jak numer źródła w Źródłach. Aby zainicjować klasę Rivers, należy przekonwertować dane z klasy Sources na współrzędne i kierunek. W tym celu jako argument służy funkcja GetSourcesIdsPointsAndAngles klasy Region, której argumentem jest Sources. W rezultacie otrzymamy zestaw indeksów rzecznych i odpowiadających im współrzędnych oraz kierunek prostopadły do granicy. Aby określić dokładny kierunek prostopadłej, podczas wyznaczania granicy ważny jest kierunek współrzędnych. Zakłada się, że prostopadła będzie po lewej stronie kierunku współrzędnych. Dlatego jeśli zwrócisz uwagę na obszar, w którym znajduje się dziura w środku, wówczas zewnętrzna granica ma przeciwny kierunek numeracji współrzędnych w stosunku do wewnętrznej.
-      After determining the region and the location of the sources, we can now proceed to the construction of the geometry of the river. All river geometry data and algorithms are contained in the Rivers class. Rivers contains a unique number for each river, which has the same meaning as the source number in Sources. To initialize the Rivers class, you need to convert the data from the Sources class into coordinates and direction. For this, the GetSourcesIdsPointsAndAngles function of the Region class serves as an argument, which has Sources as its argument. As a result, we will get a set of river indices and their corresponding coordinates and the direction perpendicular to the border. To determine the exact direction of the perpendicular, the direction of the coordinate is important when setting the border. It is assumed that the perpendicular will be on the left side of the coordinate direction. Therefore, if you pay attention to the region where there is a hole in the center, then the outer border has the opposite direction of coordinate numbering relative to the inner one.
+      After determining the region and the location of the springs, we can now proceed to the construction of the geometry of the river. All river geometry data and algorithms are contained in the Rivers class. Rivers contains a unique number for each river, which has the same value as the spring number in Sources. To initialize the Rivers class, you need to convert the data from the Sources class into coordinates and nomal vector (Fig. \ref{rivers_initialization}). For that purpose the GetSourcesIdsPointsAndAngles function of the Region class is used, which has Sources as its argument. As a result, we will get a set of river indices and their corresponding coordinates and the normal vectors to the border. To determine the normal vector dirrection, order of the coordinate is important when setting the border. It is assumed that the perpendicular will be on the left side of the coordinate order. Therefore, if you pay attention to the region where there is a hole in the center, then the outer border has the opposite order of coordinate numbering relative to the inner one.
       
       \begin{figure}[H]
         \centering
@@ -369,7 +370,7 @@
       
       %Вище вказувалося, що в більшості випадків біфуркація річки відбувається на дві частини. А якщо поділів відбувається більше, ми можемо вважати це двома послідовними достатньо близько розташованими між собою біфуркаціями. Поміж біфуркаціями річка апроксимується ламаною лінією. Інформація  про цю лінію криється в класі Branch. А інформація про те котрі частини річки з'єднуються з іншими частинами річки в пунктах біфуркації міститься в графі котрий в свою чергу міститься в класі Rivers. Класс Rivers надає можливості для легкого способу працювати із геометрією річки, а саме: отримання інформації про поточний стан річок(довжини, відношення між частинами річками, визначення кривизни, координати джерел і тд), розвиток мережі річки(додавання нових координат до річки при рості, згладжування кривизни, створення нових річок, додавання нових пунктів біфуркації), зменшення довжини річки і  видалення пунктів біфуркації для полегшення обрахунків при оберненій еволюції. 
       %Powyżej zaznaczono, że w większości przypadków rzeka rozdziela się na dwie części. A jeśli podziałów jest więcej, możemy to uznać za dwa kolejne bifurkacje dostatecznie blisko siebie. Pomiędzy punktami bifurkacji rzeka jest aproksymowana linią przerywaną. Informacje o tej linii znajdują się w klasie Branch. A informacja o tym, które odcinki rzeki łączą się z innymi odcinkami rzeki w punktach rozwidlenia, zawarta jest w grafie, który z kolei jest zawarty w klasie Rivers. Klasa Rivers daje możliwość łatwej pracy z geometrią rzek, a mianowicie: uzyskiwania informacji o aktualnym stanie rzek (długości, relacje między odcinkami rzek, określanie krzywizny, współrzędne źródeł itp.), opracowywania sieci rzecznej ( dodawanie nowych współrzędnych do rzeki podczas wzrostu, wygładzanie krzywizny, tworzenie nowych rzek, dodawanie nowych punktów bifurkacji), zmniejszanie długości rzeki i usuwanie punktów bifurkacji w celu ułatwienia obliczeń podczas ewolucji odwrotnej.
-      It was indicated above that in most cases the bifurcation of the river occurs into two parts. And if there are more divisions, we can consider it as two successive bifurcations sufficiently close to each other. Between the bifurcations, the river is approximated by a broken line. Information about this line lies in the Branch class. And the information about which parts of the river connect with other parts of the river at bifurcation points is contained in the column, which in turn is contained in the Rivers class. The Rivers class provides opportunities for an easy way to work with river geometry, namely: obtaining information about the current state of rivers (lengths, relationships between parts of rivers, determining curvature, coordinates of sources, etc.), developing a river network (adding new coordinates to a river when growing, smoothing the curvature, creating new rivers, adding new bifurcation points), reducing the length of the river and removing bifurcation points to facilitate calculations in reverse evolution.
+      It was indicated above that in most cases at the bifurcation points river divides into two parts. And if there are more divisions, we can consider it as two successive bifurcations sufficiently close to each other. Between the bifurcations, the river is approximated by a broken line. Information about this line lies in the Branch class. And the information about which parts of the river connect with other parts of the river at bifurcation points is contained in the Rivers class. The Rivers class provides methods for an easy way to work with river geometry, namely: obtaining information about the current state of rivers (lengths, relationships between parts of rivers, determining curvature, coordinates of springs, etc.), developing a river network (adding new coordinates to a river when growing, smoothing the curvature, creating new rivers, adding new bifurcation points), reducing the length of the river and removing bifurcation points to facilitate calculations in reverse evolution.
       
       \begin{mintedbox}{python}
         rivers_ids = t_sources_ids(); rivers_ids.extend([1, 2, 3])
@@ -382,7 +383,7 @@
 
       %Оскільки мережа річки котра міститься в класі Rivers опирається в своїй реалізації на клас Boundary, то для кожного сегменту річки ми можемо задати унікальні граничні умови. Наприклад, можна врахувати "опір" русла ріки і збільшення висоти підземних вод вздовж.
       %Ponieważ sieć rzeczna zawarta w klasie Rivers opiera się w swojej implementacji na klasie Boundary, możemy ustawić unikalne warunki brzegowe dla każdego odcinka rzeki. Naprzykład, możemy uwzględnić „opór” koryta rzeki i wzrost wysokości wód gruntowych wzdłuż niego.
-      Since the river network contained in the Rivers class rests in its implementation on the Boundary class, we can set unique boundary conditions for each segment of the river. For example, it is possible to take into account the "resistance" of the river bed and the increase in the height of groundwater along it.
+      Since the river network contained in the Rivers class is based on the Boundary class, we can set unique boundary conditions for each segment of the river. For example, it is possible to take into account the "resistance" of the river bed and the increase in the height of groundwater along it. So, we can remove assumption that groundwater level $\phi$ is equal to zero on its entire length and assign unique boundary index for each segment which corresponds to different groundwater table height ($\phi(i) \sim i$, where $i$ is segment number).
 
       \begin{figure}[H]
         \centering
@@ -392,19 +393,10 @@
         \label{tree_coarsening}
       \end{figure}
 
-      \begin{wrapfigure}{r}{0.5\textwidth}
-        \begin{center}
-          \vspace{-20pt}
-          \includegraphics[width=0.45\textwidth]{figs/descritization_reducing.jpg}
-        \end{center}
-        %Ilustracja algorytmu zmniejszenia ilości punktów brzegu.
-        \caption{Illustration of the edge point reduction algorithm.}
-        \label{descritization_reducing}
-      \end{wrapfigure}
-
       %Кількість елементів сітки на котру ми розділюємо регіон має прямий вплив на розмір матриці лінійних рівняння, а тому на час знаходження розв'язку диференційного рівняння. Щоб зменшити час обчистленнь, ми можемо зменшити густини координат границі річки, при цьому не втрачаючи на точності. Для цього ми робимо процедуру огрублення границь частин річки. Тепер нам потрібно класи  Sources, Region та Rivers вкласти в границю Boundary, оскільки генератор сітки вимагає тільки  границю як аргумент. Другою проблемою, котра згадувалася вище є те, що немає можливості задати граничні умови в середині регіону, а тільки на границі. Для цього лінії з котрих складається мережа річки розділяються на дві лінії котрі знаходяться дуже близько одна до одної.
       %Liczba elementów siatki, na jakie dzielimy obszar, ma bezpośredni wpływ na wielkość macierzy równań liniowych, a więc na czas znalezienia rozwiązania równania różniczkowego. Aby skrócić czas obliczeń, możemy zmniejszyć gęstość współrzędnych granicy rzeki bez utraty dokładności. Zmniejszenie zagęszczenia współrzędnych na granicy opiera się na następującej idei: każda kolejna współrzędna zmienia kierunek linii o pewien kąt. Jeśli kąt jest bardzo mały, możemy założyć, że współrzędne leżą praktycznie na tej samej linii. Dlatego możemy usunąć wszystkie współrzędne pośrednie i pozostawić tylko te skrajne. Aby znaleźć „skrajne” współrzędne linii, iterujemy po wszystkich współrzędnych i obliczamy całkowity kąt odchylenia, gdy tylko ten kąt stanie się większy niż wartość krytyczna, traktujemy tę współrzędną jako skrajną.
-      The number of grid elements into which we divide the region has a direct effect on the size of the matrix of linear equations, and therefore on the time of finding the solution of the differential equation. To reduce the cleaning time, we can reduce the density of the coordinates of the river border without losing accuracy. For this purpose, we perform the procedure of roughing the borders of parts of the river. Now we need to nest the Sources, Region, and Rivers classes in the Boundary boundary since the mesh generator requires only the boundary as an argument. The second problem, which was mentioned above, is that there is no possibility to set boundary conditions in the middle of the region, but only on the border. For this, the lines that make up the river network are divided into two lines that are very close to each other.
+      The number of grid elements into which we divide the region has a direct effect on the size of the matrix of linear equations, and therefore on the time of finding the solution of the differential equation. To reduce the solution time, we can reduce the density of the coordinates of the river border without losing much of accuracy (Fig. \ref{tree_coarsening}). For this purpose, we perform the procedure of roughing the borders of parts of the river. 
+      %Now we need to nest the Sources, Region, and Rivers classes in the Boundary boundary since the mesh generator requires only the boundary as an argument. The second problem, which was mentioned above, is that there is no possibility to set boundary conditions in the middle of the region, but only on the border. For this, the lines that make up the river network are divided into two lines that are very close to each other.
 
     \section{Mesh generation}
 
@@ -412,13 +404,13 @@
         \centering
         \includegraphics[width=0.9\textwidth]{figs/mesh_generation.png}        
         %Wszystkie brzegi które są zawierane w klasie Region, a także brzegi rzek w klasie Rivers łączą się w jeden zamknięty brzeg (1). Z pomocą Triangle na bazie jednej zamkniętej granicy jest generowana siatką trójkątowa (2). Siatka trójkątowa z pomocą biblioteki Tethex jest konwertowana w siatkę prostokątów (3).
-        \caption{All banks that are contained in the Region class, as well as river banks in the Rivers class merge into one closed bank (1). With the help of a Triangle, a triangular mesh (2) is generated on the basis of one closed border. A triangle mesh is converted into a rectangle mesh with the help of the Tethex library (3).}
+        \caption{All boundaries that are contained in the Region class, as well as river boundaries in the Rivers class are merged into one closed boundary (1). With the help of a Triangle, a triangular mesh (2) is generated on the basis of one closed border. A triangular mesh is converted into a rectangular mesh with the help of the Tethex library (3).}
         \label{mesh_generation}
       \end{figure}
 
       %Для генерації сітки нам потрібна замкнута границя Boundary. Для цього існує функція BoundaryGenerator, котра об'єднує класи  Sources, Region та Rivers в одну границю Boundary. Другою проблемою, котра згадувалася вище є те, що немає можливості задати граничні умови в середині регіону, а тільки на границі. Для цього лінії з котрих складається мережа річки розділяються на дві лінії котрі знаходяться достатньо близько одна до одної.
       %Aby wygenerować siatkę, potrzebujemy zamkniętej granicy Boundary. W tym celu dostępna jest funkcja BoundaryGenerator, która łączy klasy Sources, Region i Rivers w jedną granicę Boundary. Drugi problem, o którym była mowa powyżej, polega na tym, że nie ma możliwości ustalenia warunków brzegowych w środku regionu, a jedynie na granicy. W tym celu linie tworzące sieć rzeczną są podzielone na dwie linie, które są wystarczająco blisko siebie.
-      To create a grid, we need a closed Boundary. For this, there is a BoundaryGenerator function that combines the Sources, Region, and Rivers classes into a single Boundary boundary. The second problem mentioned above is that it is not possible to set boundary conditions in the middle of the region, only on the boundary. For this, the lines that make up the river network are divided into two lines, located quite close to each other.
+      To create a grid, we need a closed Boundary. For this, there is a BoundaryGenerator function that combines the Sources, Region, and Rivers classes into a single Boundary boundary. The second problem mentioned above is that it is not possible to set boundary conditions in the middle of the region, only on the boundary. For this, the lines that make up the river network are converted into two parallel lines, located quite close to each other(Fig. (1) \ref{mesh_generation}).
 
       \begin{mintedbox}{python}
         region_params = RegionParams()
@@ -428,14 +420,16 @@
 
       %Коли є замкнута границя можна згенерувати сітку. Для цього була використана C++ бібліотека \cite{szewczuk1996triangle}. Методи і алгоритми бібліотеки Traingle містяться в однойменному класі. Triangle генерує Деланау сітку. Triangle дає можливість задати значення мінімального кута трикутника, мінімальної і максимальної довжини сторони трикутника, мінімальної і максимальної площі трикутника, співвідношення сторін трикутника та інше. Другим важливим аспектом є генерація достатньо малої сітки в місцях, де поле підземних вод змінюється найшвидше -- довкола джерел. Для цього можна задати множину координат(а саме координат джерел), де буде обмежена радіально площа трикутника відносно даних точок. Функція котра обмежує площу трикутника виглядає наступним чином:
       %Gdy istnieje zamknięta granica, można wygenerować siatkę. W tym celu wykorzystano bibliotekę C++ Triangle\cite{szewczuk1996triangle}. Metody i algorytmy biblioteki Traingle są zawarte w klasie o tej samej nazwie. Trójkąt generuje siatkę Delaunaya. Trójkąt pozwala ustawić wartość minimalnego kąta trójkąta, minimalną i maksymalną długość boku trójkąta, minimalną i maksymalną powierzchnię trójkąta, stosunek boków trójkąta itp. Drugim ważnym aspektem jest generowanie odpowiednio małej siatki w miejscach, w których pole wód podziemnych zmienia się najszybciej - w okolicach źródeł. Aby to zrobić, możesz określić zestaw współrzędnych (czyli współrzędne źródeł), w których obszar trójkąta względem danych punktów będzie ograniczony promieniowo. Funkcja ograniczająca pole trójkąta wygląda następująco:
-      When there is a closed border, you can generate a grid. For this, the C++ library \cite{szewczuk1996triangle} was used. The methods and algorithms of the Triangle library are contained in the class of the same name. Triangle generates a Delaunay mesh. Triangle allows you to set the value of the minimum angle of the triangle, the minimum and maximum length of the side of the triangle, the minimum and maximum area of the triangle, the ratio of the sides of the triangle, etc. The second important aspect is the generation of a sufficiently small grid in places where the groundwater field changes the fastest - around springs. To do this, you can specify a set of coordinates (namely, the coordinates of the sources), where the area of the triangle relative to the given points will be limited radially. The function that limits the area of the triangle looks like this:
+      When there is a closed border, you can generate a grid (Fig. (2) \ref{mesh_generation}). For this, the Triangle C++ library \cite{szewczuk1996triangle} was used. The methods and algorithms of the Triangle library are contained in the class of the same name. Triangle generates a Delaunay mesh. Triangle allows you to set the value of the minimum angle of the triangle, the minimum and maximum length of the side of the triangle, the minimum and maximum area of the triangle, the ratio of the sides of the triangle, etc. The second important aspect is the generation of a sufficiently small grid in places where the groundwater field changes the fastest - around springs. To do this, you can specify a set of coordinates (namely, the coordinates of the springs), where the area of the triangle relative to the given points will be limited radially. The function that limits the area of the triangle looks like this:
       \begin{equation}
-        A(r) = A_{min} + (A_{max} - A_{min}) \frac{1 - \exp{(\frac{-(\frac{r}{r_{ref}})^{exponant}}{2 \sigma^2})}}{1 + \exp{(\frac{-(\frac{r}{r_{ref}})^{exponant}}{2 \sigma^2})}} 
+        A(r) = A_{min} + (A_{max} - A_{min}) \frac{1 - \exp{(\frac{-(\frac{r}{r_{ref}})^{e}}{2 \sigma^2})}}{1 + \exp{(\frac{-(\frac{r}{r_{ref}})^{e}}{2 \sigma^2})}} 
       \end{equation}
+
+      Where $A_{min}$ -- is the minimal mesh area, $A_{max}$ -- the maximal mesh area, $r_{ref}$ -- specifies charatcterstic radius of transition, $\sigma$ and $e$ are responsible for slope of transiotion.
 
       %Розв'язувач Deal.II\cite{dealII94} вимагає сітки із квадратними елементами. Для цього ми використовуємо бібліотеку C++  Tethex \cite{tethex}  котра конвертує трикутні елементи сітки у чотирикутники, розбиваючи один трикутний елемент на три квадратних, чим збільшуючи кількість елементів сітки у три рази.
       %Solver Deal.II\cite{dealII94} wymaga siatki z elementami kwadratowymi. W tym celu używamy biblioteki Tethex \cite{tethex} C++, która konwertuje trójkątne elementy siatki na czworoboki, dzieląc jeden trójkątny element na trzy kwadratowe, zwiększając w ten sposób liczbę elementów siatki trzykrotnie.
-      The Deal.II\cite{dealII94} solver requires a mesh with square elements. For this, we use the Tethex \cite{tethex} C++ library, which converts triangular grid elements into quadrilaterals, dividing one triangular element into three square ones, thereby increasing the number of grid elements by three times.
+      The Deal.II\cite{dealII94} solver requires a mesh with quadrilateral elements. For this, we use the Tethex C++ library \cite{tethex} , which converts triangular grid elements into quadrilaterals, dividing one triangular element into three square ones, thereby increasing the number of grid elements by three times (Fig. (3) \ref{mesh_generation}).
 
       \begin{mintedbox}{python}
         mesh_params = MeshParams()
@@ -456,7 +450,7 @@
 
       %Кожна лінія містить також номер(посилання) граничної умови. Boundaries -- клас котрий містить набір пар із унікальним номером і відповідною йому граничною умовою котра може бути двох типів: Діріхлет і Ноймана. Граничну умову можна задати тільки на граничній лінії, іншими словами задати лінію посеред регіону і граничну умову на ній не можна. Проте лінію завжди можна апроксимувати дуже тонким прямокутником, тож за потреби це не є проблемою.
       %Każda linia zawiera również numer (odniesienie) warunku brzegowego. Boundaries -- klasa zawierająca zbiór par o unikalnym numerze i odpowiadającym mu warunku brzegowym, który może być dwojakiego rodzaju: Dirichlet i Neumann. Warunek brzegowy można ustawić tylko na linii granicznej, innymi słowy, nie można ustawić linii pośrodku regionu i warunku brzegowego na nim. Jednak linię zawsze można przybliżyć bardzo cienkim prostokątem, więc w razie potrzeby nie stanowi to problemu.
-      Each line also contains the number (reference) of the boundary condition. Boundaries -- a class that contains a set of pairs with a unique number and the boundary condition corresponding to it, which can be of two types: Dirichlet and Neumann. The boundary condition can be set only on the boundary line, in other words, you cannot set a line in the middle of the region and a boundary condition on it. However, the line can always be approximated by a very thin rectangle, so this is not a problem if needed.
+      Each line also contains the number (reference) of the boundary condition. Boundaries -- is a class that contains a set of pairs with a unique number and the boundary condition corresponding to it, which can be of two types: Dirichlet and Neumann. The boundary condition can be set only on the boundary line, in other words, you cannot set a line in the middle of the region and a boundary condition on it. However, the line can always be approximated by a very thin rectangle, so this is not a problem if needed.
 
       \begin{mintedbox}{python}
         boundary_conditions = BoundaryConditions()
@@ -464,12 +458,12 @@
         boundary_conditions[2] = BoundaryCondition(NEUMAN, 0)
         boundary_conditions[3] = BoundaryCondition(NEUMAN, 1)\end{mintedbox}
 
-    \section{Solution of groundwater field}
+    \section{Groundwater potential profiles}
 
       \begin{figure}[H]
         \centering
         \includegraphics[width=0.9\textwidth]{figs/solver.png}        
-        \caption {Pole wód podziemnych.}
+        \caption {Groundwater field on the example domain.}
         \label{solver}
       \end{figure}
 
@@ -477,16 +471,7 @@
       Deal.II\cite{dealII94} is a C++ library for numerically solving partial differential equations using adaptive finite elements. It uses state-of-the-art programming techniques to offer a modern interface to complex data structures and algorithms.
 
       %Rozwiążemy prostą wersję równania Poissona na naszym obszarze z niezerową prawą stroną.
-      We're going to solve a simple version of the Poisson equation in our area with a non-zero right-hand side.
-      
-      \begin{align*}
-        -\Delta \phi &= f \qquad\qquad & \text{in}\ S,
-        \\
-        \phi &= 0 \qquad\qquad & \text{on}\ \partial S.
-      \end{align*}
-      
-      %Rozważymy tylko szczególny przypadek $f(x)=P$.
-      We will only consider the special case $f(x)=P$.
+      We are going to find solution (Fig. \ref{solver}) for a simple version of the Poisson equation in our area with a non-zero right-hand side $\Delta \phi = -P/\kappa$ = f (\ref{poisson}).
 
       %Od podstaw metody elementów skończonych wiemy, że potrzebne są kolejne kroki, aby przybliżyć rozwiązanie $\phi$ przybliżeniem skończonych wymiarów. Konkretnie, najpierw musimy wyprowadzić słabą postać powyższego równania, którą otrzymujemy mnożąc równanie przez funkcję testową $u$ z lewej strony i całkując po domenie $S$:
       From the basics of the finite element method, we know that further steps are needed to approximate the $\phi$ solution with the finite-dimensional approximation. Specifically, we first need to derive the weak form of the above equation, which we get by multiplying the equation by the $u$ test function on the left and integrating over the $S$ domain:
@@ -506,7 +491,7 @@
       \end{align*}
       
       %Funkcja testowa $u$ musi spełniać ten sam rodzaj warunków brzegowych (w sensie matematycznym: musi pochodzić z przestrzeni stycznej zbioru, w którym szukamy rozwiązania), więc na granicy $u=0$ w konsekwencji otrzymujemy następny wygląd słabej formy:
-      The test function $u$ must satisfy the same kind of boundary conditions (in the mathematical sense: it must come from the tangent space of the set in which we are looking for a solution), so at the boundary $u=0$ we consequently get the next appearance of the weak form:
+      The test function $u$ must satisfy the same kind of boundary conditions (in the mathematical sense: it must come from the tangent space of the set in which we are looking for a solution), so at the boundary $u=0$ we consequently get the next appearance of the weak formulation:
       
       \begin{align*}
         (\nabla u, \nabla \phi)
@@ -517,13 +502,13 @@
       where we used the common notation $(a,b)=\int_S a\; b$. The problem then asks for the $\phi$ function for which this statement is true for all $u$ test functions in the appropriate space (which here is the space $H^1$).
 
       %Oczywiście nie możemy znaleźć takiej funkcji w ogólnym przypadku i zamiast tego szukamy przybliżenia $\phi_h(\mathbf x)=\sum_j \Phi_j u_j(\mathbf x)$, gdzie $\Phi_j$ to nieznane współczynniki rozszerzalności, które musimy wyznaczyć („stopnie swobody” tego problemu), a $u_i(\mathbf x)$ to funkcje kształtu elementów skończonych, których będziemy używać. Aby zdefiniować te funkcje kształtu, potrzebujemy:
-      Of course, we can't find such a function in the general case, and instead, we look for the approximation $\phi_h(\mathbf x)=\sum_j \Phi_j u_j(\mathbf x)$, where $\Phi_j$ are the unknown expansion factors we need to find (" degrees of freedom” of this problem) and $u_i(\mathbf x)$ are the finite element shape functions we will be using. To define these shape functions we need:
+      Of course, we can not find such a function in the general case, and instead, we look for the approximation $\phi_h(\mathbf x)=\sum_j \Phi_j u_j(\mathbf x)$, where $\Phi_j$ are the unknown expansion factors we need to find („degrees of freedom” of this problem) and $u_i(\mathbf x)$ are the finite element shape functions we will be using. To define these shape functions we need:
       
       \begin{itemize}
         %\item Siatka, na której można zdefiniować funkcje kształtu;
         \item Grid on which shape functions can be defined;
         %\item Element skończony opisujący funkcje kształtu, których chcemy użyć w komórce odniesienia (kwadrat jednostkowy $[0,1]^2$). Zwykłe funkcje Lagrange'a;
-        \item A finite element describing the shape functions we want to use in the reference cell (unit square $[0,1]^2$). Usual Lagrangian functions;
+        \item A finite element describing the shape functions we want to use in the reference cell (unit square $[0,1]^2$). Usually Lagrangian functions;
         %\item Numeracja wszystkich stopni swobody w siatce;
         \item Numbering of all degrees of freedom in the mesh;
         %\item Odwzorowanie, które mówi, w jaki sposób funkcje kształtu w rzeczywistej komórce są uzyskiwane z funkcji kształtu zdefiniowanych przez klasę elementów skończonych w komórce odniesienia. Domyślnie Deal.II użyje biliniowego mapowania;
@@ -531,7 +516,7 @@
       \end{itemize}
 
       %Dzięki tym krokom mamy teraz zbiór funkcji $u_i$ i możemy zdefiniować słabą postać problemu dyskretnego: Znaleźć funkcję $\phi_h$, czyli Znaleźć wspomniane wyżej współczynniki rozszerzalności $\Phi_j$, tak aby
-      With these steps, we now have a set of functions $u_i$ and we can define the weak form of the discrete problem: Find the function $\phi_h$, i.e. Find the expansion coefficients $\Phi_j$ mentioned above, so that
+      With these steps, we now have a set of functions $u_i$ and we can define the weak form of the discrete problem: Find the function $\phi_h$, i.e., find the expansion coefficients $\Phi_j$ mentioned above, so that
 
       \begin{align*}
         (\nabla u_i, \nabla \phi_h)
@@ -553,14 +538,14 @@
       \end{align*}
 
       %Ostatecznie otrzymejmy równanie dla przebliżnoego rozwiązania $\Phi$, aby
-      Finally, we get the equation for the approximate solution of $\Phi$ to
+      Finally, we get the equation for the approximate solution $\Phi$:
       
       \begin{align*}
         A \Phi = F,
       \end{align*}
       
       %gdzie macierz $A$ i prawa strona $F$ są zdefiniowani jak:
-      where the $A$ matrix and the right side of the $F$ are defined as:
+      where the matrix $A$ and the right side vecvtor $F$ are defined as:
 
       \begin{align*}
         A_{ij} &= (\nabla u_i, \nabla u_j),
@@ -574,7 +559,7 @@
           \centering
           \includegraphics[width=0.9\textwidth]{figs/adaptive_refinment.png}        
           %Elementy siatki są dzielone w tych miejscach, gdzie błąd rozwiązania jest największy. W okolicy źródła pole zachowuje się jako $\frac{1}{\sqrt[2]{r}}$.
-          \caption{Mesh elements are divided in those places where the solution error is the greatest. Near the source, the field behaves as $\frac{1}{\sqrt[2]{r}}$.}
+          \caption{Mesh elements are adapted in those places where the solution error is the greatest. Near the spring, the field behaves as $\sqrt{r}$.}
           \label{adaptive_refinment}
         \end{figure}
 
@@ -593,14 +578,14 @@
         \end{itemize}
 
         %Poza tą strukturą istnieje jednak wiele sposobów osiągnięcia tego celu. Zasadniczo różnią się tym, jak dokładnie generuje się jedną siatkę z poprzedniej. Dla siatki z trójkątów, trójkąt zaznaczony do udoskonalenia jest dzielony na dwie części poprzez wprowadzenie jednej nowej krawędzi od środka najdłuższej krawędzi do przeciwległego wierzchołka. Oczywiście punkt środkowy od najdłuższej krawędzi musi być w jakiś sposób zrównoważony poprzez udoskonalenie komórki po drugiej stronie tej krawędzi (jeśli taka istnieje). Ta metoda nie działa w przypadku czworokątów, a przynajmniej nie jest łatwa. Powodem jest to, że elementy przejściowe utworzone z czworobocznych sąsiadów czworobocznej komórki, która ma zostać udoskonalona, byłyby trójkątami, a tego nie chcemy. W związku z tym podejście do adaptacyjności wybrane w Deal.II polega na wykorzystaniu siatek, w których sąsiednie komórki mogą różnić się poziomem udoskonalenia o jeden. Powoduje to, że węzły na interfejsach komórek należą do jednej strony, ale są niezrównoważone po drugiej. Powszechnym terminem dla nich są „wiszące węzły”. Jeśli udoskonalimy siatkę globalnie, błąd spadnie jako
-        Outside of this structure, however, there are many ways to achieve this goal. They fundamentally differ in how accurately one mesh is generated from the previous one. For a triangle mesh, the triangle selected for refinement is split in two by inserting one new edge from the center of the longest edge to the opposite vertex. Of course, the midpoint from the longest edge has to be balanced somehow by refining the cell on the other side of that edge (if any). This method doesn't work for quads, at least it's not easy. The reason is that the transition elements created from the quadrilateral neighbors of the quadrilateral cell to be refined would be triangles, and we don't want that. Therefore, the approach to adaptability is chosen in Deal.II is to use grids where adjacent cells can differ in the level of refinement by one. This causes nodes on cell interfaces to belong to one side but are unbalanced to the other. The common term for these is "hanging knots". If we refine the mesh globally, the error will fall as
+        Outside of this structure, however, there are many ways to achieve this goal. They fundamentally differ in how accurately one mesh is generated from the previous one. For a triangular mesh, the triangle selected for refinement is split in two by inserting one new edge from the center of the longest edge to the opposite tip. Of course, the midpoint from the longest edge has to be balanced somehow by refining the cell on the other side of that edge (if any). This method does not work for quadrangles, at least it is not easy. The reason is that the transition elements created from the quadrilateral neighbors of the quadrilateral cell to be refined would be triangles, and we don not want that. Therefore, Deal.II approach to adaptability is to use grids where adjacent cells can differ in the level of refinement by one. This causes nodes on cell interfaces to belong to one side but are unbalanced on the other. The common term for these is "hanging nodes". If we refine the mesh globally, the error will behave as
 
         \begin{align*}
           \|\nabla(\phi-\phi_h)\|_{S} \le C h_\text{max}^p \| \nabla^{p+1} \phi \|_{S},
         \end{align*}
 
         %gdzie $C$ jest pewną stałą niezależną od $h$ i $\phi$, $p$ jest stopniem wielomianu używanego elementu skończonego, a $h_{max}$ jest średnicą największej komórki. Jeśli więc ważną jest największa komórka, to dlaczego mielibyśmy chcieć, aby siatka była drobna w niektórych częściach domeny, ale nie we wszystkich? Odpowiedź tkwi w spostrzeżeniu, że powyższy wzór nie jest optymalny. W rzeczywistości poniższe wzór jest lepszym oszacowaniem:
-        where $C$ is some constant independent of $h$ and $\phi$, $p$ is the polynomial degree of the finite element used, and $h_{max}$ is the diameter of the largest cell. So if the largest cell is important, then why would we want the mesh to be fine in some parts of the domain but not all? The answer lies in the observation that the above formula is not optimal. In fact, the formula below is a better estimate:
+        where $C$ is some constant independent of $h$ and $\phi$, $\parallel \cdot \parallel_S $ is $\mathsf{L}_1-norm$, $p$ is the polynomial degree of the finite element used, and $h_{max}$ is the diameter of the largest cell. Above formula is not optimal, not only largest cells are important, but also value of solution derivative in some parts of domain also impacts error. Taking this into account, we can introduce better estimate:
         
 
         \begin{align*}
@@ -608,15 +593,15 @@
         \end{align*}
 
         %(Ponieważ $h_K\le h_\text{max}$, ta formuła natychmiast implikuje poprzednią, jeśli po prostu wyciągniesz rozmiar oczek z sumy.) Ta formuła sugeruje, że nie jest konieczne, aby największa komórka była mała, ale te komórki tak naprawdę potrzebują być małymi, gdzie $\| \nabla^{p+1} \phi \|_K$ jest duże! Innymi słowy: Siatka naprawdę musi być dokładna tylko wtedy, gdy rozwiązanie ma duże zmiany, na co wskazuje $p+1$ pochodna.
-        (Since $h_K\le h_\text{max}$, this formula immediately implies the previous one if you simply take the mesh size from the sum.) This formula implies that it is not necessary that the largest cell be small, but that these cells actually need to be small where $\| \nabla^{p+1} \phi \|_K$ is big! In other words: The grid only really needs to be exact if the solution has large changes, as indicated by the $ p+1$ derivative.
+        (Since $h_K\le h_\text{max}$, this formula immediately implies the previous one if you simply take the mesh size from the sum.) This formula implies that it is sufficient that these cells need to be small where $\| \nabla^{p+1} \phi \|_K$ is big. In other words: The grid only really needs to be fine if the solution has large variations, as indicated by the $p+1$ derivative (Fig. \ref{adaptive_refinment}).
         
         %Oczywiście to oszacowanie a priori nie jest zbyt przydatne w praktyce, ponieważ nie znamy dokładnego rozwiązania $\phi$, a za tym idzie, że nie możemy obliczyć $\nabla^{p+1} \phi$. Ale możemy obliczyć numeryczne przybliżenia $\nabla^{p+1} \phi$ bazując tylko na dyskretnym rozwiązaniu $\phi_h$.
-        Of course, this a priori estimate isn't very useful in practice, since we don't know the exact solution to $\phi$, and therefore we can't compute $\nabla^{p+1} \phi$. But we can compute numerical approximations of $\nabla^{p+1} \phi$ based only on the discrete solution $\phi_h$.
+        In practice numerical aproximations are used to compute estimate of the $\nabla^{p+1} \phi$ derivative based on the discrete solution $\phi_h$.
 
-      \paragraph{riversim}
+      \paragraph{Riversim}
         
-        %Powyższe rozumuwania teoretyczne są zaimplementowane w bibliotece riversim w pliku `solver.hpp`:
-        The above theoretical reasoning is implemented in the riversim library in the file `solver.hpp`:
+        %Powyższe rozumuwania teoretyczne są zaimplementowane w bibliotece Riversim w pliku `solver.hpp`:
+        The above theoretical reasoning is implemented in the Riversim library in the file `solver.hpp`:
         
         \begin{mintedbox}{python}
           solver_params = SolverParams()
@@ -631,7 +616,6 @@
           solver = Solver(solver_params)
           solver.openMesh(mesh)
           
-          solver.openMesh(mesh)
           for j in range(adaptive_refinment_steps + 1):
               if j > 0:
                   solver.refineGrid()
@@ -639,36 +623,36 @@
               solver.assembleSystem(boundary_conditions)
               solver.solve()\end{mintedbox}
 
-    \section{Integrating series parameters}
+    \section{Calculation of the $a_i$ coefficients}
       
       \begin{figure}[H]
         \centering
         \includegraphics[width=0.9\textwidth]{figs/series_params_integration.png}        
         %Ilustracja rozkładu pola w okolicy źródła na współczynniki $a_n$.
-        \caption{Illustration of the distribution of the field in the vicinity of the source into $a_n$ coefficients.}
+        \caption{Illustration of the distribution of the field in the vicinity of the spring into $a_n$ coefficients.}
         \label{series_params_integration}
       \end{figure}
 
       %Powyżej już było pokazano że erozja jest największa w miejscach gdzie gradient pola jest największy. Takim miejscem z największym gradientem są oklicy źródeł. We współrzędnych biegunowych pole w pobliżu wierzchołka można rozszerzyć z pomocą równania \ref{series_params_integration}. Gdzie kazdy parameter $a_n$, $n \epsilon [1, 3]$ ma fizyczną interpretację (\ref{circle}, \ref{a3a1}) i jest powiązany z regułami wzrostu (\ref{velocity}). Współczynniki $a_n$ są wylicznę z postaci całkowej \ref{a1}, \ref{a2} i \ref{a3}. Aby zmniejszyć szum numeryczny uśredniamy postaci całkowe wzdłuż promienia $r$:
-      It has already been shown above that erosion is greatest in places where the field gradient is greatest. Such a place with the greatest gradient is around the sources. In polar coordinates, the field near the vertex can be extended using the equation \ref{series_params_integration}. Where each parameter $a_n$, $n \epsilon [1, 3]$ has a physical interpretation (\ref{circle}, \ref{a3a1}) and is associated with growth rules (\ref{velocity}). The coefficients $a_n$ are derived from the integral form \ref{a1}, \ref{a2} and \ref{a3}. To reduce the numerical noise, we average the integral forms along the $r$ radius:
+      It has already been postulated above that erosion is greatest in places where the field gradient is greatest. The areas in which the filed gradient is at its largest are usually located in the neighbourhood of the springs. In polar coordinates, the field near the spring can be expanded using equation (Fig. \ref{series_params_integration}). Each parameter $a_n$, $n \epsilon [1, 3]$ has a physical interpretation (\ref{circle}, \ref{a3a1}) and is associated with growth rules (\ref{velocity}). The coefficients $a_n$ are derived from the integral form (\ref{a1}, \ref{a2} and \ref{a3}). To reduce the numerical noise and to grasp field features(\ref{a3a1}) we average the integral forms along the radius $r$ to some $r_{max}$ value:
       
       \begin{equation}
         \label{a1_num}
-        a_1 = \frac{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \phi(r, \theta) \cos \frac{\theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r}{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \cos^2 \frac{\theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r} \,,
+        a_1 = \frac{\int^{r_{max}}_{0} \int^{\pi}_{-\pi} \phi(r, \theta) \cos \frac{\theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r}{\int^{r_{max}}_{0} \int^{\pi}_{-\pi} \cos^2 \frac{\theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r} \,,
       \end{equation} 
       
       \begin{equation}
         \label{a2_num}
-        a_2 = \frac{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \phi(r, \theta) \sin \theta \omega(r) \textrm{d} \theta \textrm{d} r}{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \sin^2 \theta \omega(r) \textrm{d} \theta \textrm{d} r} \,,
+        a_2 = \frac{\int^{r_{max}}_{0} \int^{\pi}_{-\pi} \phi(r, \theta) \sin \theta \omega(r) \textrm{d} \theta \textrm{d} r}{\int^{r_{max}}_{0} \int^{\pi}_{-\pi} \sin^2 \theta \omega(r) \textrm{d} \theta \textrm{d} r} \,,
       \end{equation}
       
       \begin{equation}
         \label{a3_num}
-        a_3 = \frac{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \phi(r, \theta) \cos \frac{3 \theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r}{\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} \cos^2 \frac{3 \theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r}
+        a_3 = \frac{\int^{r_{max}}_{0} \int^{\pi}_{-\pi} \phi(r, \theta) \cos \frac{3 \theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r}{\int^{r_{max}}_{0} \int^{\pi}_{-\pi} \cos^2 \frac{3 \theta}{2} \omega(r) \textrm{d} \theta \textrm{d} r}
       \end{equation}	
 
       %Gdzie $\omega(r)$ funkcja wagi ma postać:
-      Where $\omega(r)$ the weight function is:
+      Where $\omega(r)$ the weight function is used to control field averaging:
 
       \begin{equation}
         \label{integration_weight}
@@ -676,7 +660,7 @@
       \end{equation}
 
       %Całka $\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} f(r, \theta) \textrm{d} \theta \textrm{d} r$ jak i równanie dla pola wód podziemnych, jest wyliczana numerycznie. Chociaż mamy dyskretnę rozwiązania pola wód podziemnych, ale wciąż otzrymanie wartości pola $\phi(x, y)$ w dowolnym punkcie nadal jest numerycznie skomplikowanym, o ile wymaga iterację po całej siatce regionu, a po znaleziniu odpowiedniego elementu -- interpolacje. Przez to przy aproksymówaniu całki skończoną sumą celem jest minimizacja ilości elementów. Kwadratura Gaussa jest dobrym rozwiązaniem, ale w danej pracy korzystamy z iteracujnej metody prostokątów:
-      Integral $\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} f(r, \theta) \textrm{d} \theta \textrm{d} r$, as well as the equation for the groundwater field, is calculated numerically. Although we have a discrete groundwater field solution, still getting the value of the $\phi(x, y)$ field at any point is still numerically complicated, as it requires iterating over the whole region mesh, and after finding the right element, interpolations. Thus, when approximating the integral with a finite sum, the goal is to minimize the number of elements. Gaussian quadrature is a good solution, but in this paper, we use the iterative method of rectangles:
+      Integral $\int^{r_{max}}_{r_{min}} \int^{\pi}_{-\pi} f(r, \theta) \textrm{d} \theta \textrm{d} r$ is calculated numerically. Although we have a discrete groundwater field solution, still getting the value of the $\phi(x, y)$ field at any point is numerically complicated, as it requires iterating over the whole region mesh, and after finding the right element, evaluate value using quadrature. Thus, when approximating the integral with a finite sum, the goal is to minimize the number of elements. Gaussian quadrature is a good solution, but in this paper, we use the iterative method of rectangles:
 
       \begin{equation}
         \label{numerical_integral}
@@ -728,8 +712,8 @@
             throw Exception("qtrap: Too many steps in routine.");
         };\end{mintedbox}
 
-        %W riversimpy dla obliczenia współczynników $a_i$ służy metoda integrate (lub integrate\_new) klasy Solver:
-        In riversimpy, the integrate (or integrate\_new) method of the Solver class is used to calculate the $a_i$ coefficients:
+        %W Riversimpy dla obliczenia współczynników $a_i$ służy metoda integrate (lub integrate\_new) klasy Solver:
+        In Riversimpy, the integrate\_trap (or integrate\_new) method of the Solver class is used to calculate the $a_i$ coefficients:
         
         \begin{mintedbox}{python}
           integration_params = IntegrationParams()
@@ -749,12 +733,13 @@
       \begin{figure}[H]
         \centering
         \includegraphics[width=0.5\textwidth]{figs/program_dependecy_graph.png}        
-        \caption {Graph zależności pomiędzy modułami programu.}
+        %\caption{Graph zależności między modułami programu.}
+        \caption{Graph of dependencies between program modules.}
         \label{program_strucutre}
       \end{figure}
 
-    %Przedstawione powyżej klasy biblioteki riversim już są wystarczają dla symulacji sieci rzecznych. Ale dla prostszego wykorzystania programu była stworzona klasa Model która zawiera wszystkie struktury danych programu, a tak że metody z regułami dla bifurkacji i wzrostu. Korzystajac z klasi Model możemy zapisać danę do pliku JSON, lub odczytać geometrie i wartości paratmetrów z pliku JSON:
-    The riversim library classes presented above are already sufficient to simulate river networks. But for simpler use of the program, the Model class was created which contains all the data structures of the program as well as methods with rules for bifurcation and growth. Using the Model class, we can save data to a JSON file, or read geometries and parameter values from a JSON file:
+    %Przedstawione powyżej klasy biblioteki Riversim już są wystarczają dla symulacji sieci rzecznych. Ale dla prostszego wykorzystania programu była stworzona klasa Model która zawiera wszystkie struktury danych programu, a tak że metody z regułami dla bifurkacji i wzrostu. Korzystajac z klasi Model możemy zapisać danę do pliku JSON, lub odczytać geometrie i wartości paratmetrów z pliku JSON:
+    The Riversim library classes presented in Fig \ref{program_strucutre} are already sufficient to simulate river networks. But for simpler use of the program, the Model class was created which contains all the data structures of the program as well as methods with rules for bifurcation, growth and standard parameters. Using the Model class, we can save data to a JSON file, or read geometries and parameter values from a JSON file:
 
     \begin{mintedbox}{python}
       model = Model()
@@ -768,7 +753,16 @@
   \chapter{Verification and validation}
 
     %Розв'язання росту мережі річки в полі Лапласа є складною задачею. Щоб отримати наближений розв'язок були використані методи дискретизації. Способи дискретизації включали в себе як і заміну гладких ліній мережі на дискретні із подальшим зменшення кількості точок дискретизації в залежності від кривизни. Дискретизація регіону на чотирикутні елементи і ступінь квадратури в кожному елементі. Кількість елементів суми для обчислення інтегралу параметрів довкола джерела. Але відомо що в границі із ростом дескритизації:
-    Solving the growth of the river network in the Laplace field is a difficult task. Discretization methods were used to obtain an approximate solution. Discretization methods included the replacement of smooth network lines with discrete ones, followed by a reduction in the number of discretization points depending on the curvature. Discretization of the region into quadrilateral elements and the degree of quadrature in each element. The number of elements of the sum for calculating the integral of the parameters around the source. But it is known that in the limit of high descritization:
+    Solving the growth of the river network in the Laplacian field is a difficult task. Several discretization methods were used to obtain an approximate solution: 
+    
+    \begin{itemize}
+      \item Replacement of smooth network lines with discrete ones, followed by a reduction in the number of discretization points depending on the curvature;
+      \item Discretization of the region into quadrilateral elements and the degree of quadrature in each element;
+      \item The number of elements of the sum for calculating the integral of the parameters around the spring. But it is known that in the limit of high descritization;
+      \item Split or combine selected cells to get a new grid.
+    \end{itemize}
+    
+    In the limit of infinite discretization: 
 
     \begin{equation}
       \label{convergence}
@@ -776,12 +770,19 @@
     \end{equation}
 
     %ми повинні отримати значення аналітичного розв'язку.
-    we must obtain the value of the analytical solution.
+    where $n$ stands for total of each descritization, aproximate result should approach analytical solution value.
     
-    \section{Zbiezność calkowania i porownanie z wynikiem analitycznym}
+    \section{Convergence of integration and comparison with analytical result}
+
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.5\textwidth]{figs/test_function_boundary.png}
+      \caption{Semi-infinite domain with flux of the field coming from infinity used for evaluation of analitical value for $a_1$.}
+      \label{test_boundary}
+    \end{figure}
 
     %В роботі Ґубєц \cite{gubiec2008fingered} було отримано вираз для швидкості $\upsilon(H)$ взросту одної річки в наступних умовах: регіон прямокутної форми, висота котрого прямує до безмежності, ширина рівна $2$. На нижній грані звідки посередині звідки і зростає одна гілка річки маємо поглинаючі граничні умови ($\phi(0, y) = 0$), ізолюючі граничні умови на бокових гранях ($(\nabla \phi(x, y))_{\vec{n}} = 0$) і маємо сталий потік на безмежній відстані на верхній грані ($(\nabla \phi(x, y))_{\vec{n}} = 1$). 
-    In the work of Gubiec et al.\cite{gubiec2008fingered}, an expression was obtained for the rate $\upsilon(H)$ of the growth of one river under the following conditions: a rectangular region, the height of which goes to infinity, the width is $2$. On the lower face, from where in the middle, from where one branch of the river grows, we have absorbing boundary conditions ($\phi(0, y) = 0$), insulating boundary conditions on the side faces ($(\nabla \phi(x, y))_{ \vec{n}} = 0$) and we have a constant flow at an infinite distance on the upper face ($(\nabla \phi(x, y))_{\vec{n}} = 1$).
+    In the work of Gubiec et al.\cite{gubiec2008fingered}, an expression was obtained for the rate $\upsilon(H)$ of the growth of one river under the following conditions: a rectangular region with infinite height, the width is $2$. In the middle of lower face, river branch with lenght $H$ is set (Fig. \ref{test_boundary}). At the bottom face and river branch, absorbing boundary conditions ($\phi(0, y) = 0$) are set, insulating boundary conditions on the side faces ($(\nabla \phi(x, y))_{ \vec{n}} = 0$) and constant flow at an infinite distance on the upper face ($(\nabla \phi(x, y))_{\vec{n}} = 1$).
 
     \begin{equation}
       \label{velocity_analytical}
@@ -789,28 +790,55 @@
     \end{equation}
     
     %В нашому випадку ми не можемо задати безмежну відстань верхньої грані, тому ми обмежимося достатньо витягнутим прямокутником ($50/2$).
-    In our case, we cannot specify an infinite distance of the upper face, so we will limit ourselves to a sufficiently elongated rectangle ($50/2$).
+    In our case, semi-infinite domain is aproximated by elongated rectangle (height -- $50$, width --$2$).
 
-  \chapter*{Podsumowanie}
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=1\textwidth]{figs/convergence.png}        
+      \caption{Left plot shows how the relative error in percentage between evaluated and analitical value $a_1$ is converging. Right plot shows convergence when number of mesh elements are increased.}
+      \label{convergence_new}
+    \end{figure}
 
-  \section*{Acknowledgements}
-  TODO
+  \chapter{Summary}
 
-  \bibliographystyle{unsrt_initials} %ieeetr
-  \bibliography{bibliography}
+    %В цій праці магістерській ми розглянули розвиток просторової мережі на прикладі еволюції мережі річок. Спочатку ми зарепрезентували теоретичну модель з фокусом на підземні води і ерозію в околиці джерел. Запровадили спрощення одновимірної річки. Показали як описати поле підземних вод $\phi(x, y)$ в околиці джерела за допомогою пареметрів розкладу $a_i$. Тоді показали як параметри $a_i$ можна інтерпретувати і як вони пов'язані із динамікою розвитку мережі.\par
+    In this master's thesis, we considered the development of the spatial network using the example of the evolution of the river network. First, we represented a theoretical model with a focus on groundwater and erosion in the vicinity of springs. Simplification of the one-dimensional river was introduced. It was shown how to describe the field of groundwater $\phi(x, y)$ in the vicinity of the spring using the $a_i$ parameters. Then it was shown how the parameters $a_i$ can be interpreted and how they are related to the dynamics of the network development.\par
+
+    %Далі ми запропонували своє чисельне рішення цієї складної проблеми взаємозалежності мережі і поля під впливом якого, вона розвивається у бібліотеці Python -- Riversim. Детально описали структуру бібліотеки із прикладами її використання. Як задавати довільну початкову геометрію. Як задати початкову позицію джерел із яких буде відбуватися розвиток річки. В якій структурі даних зберігається мережа річки і як із нею працювати. Як задавати граничні умови і яких видів вони присутні у програмі. Те, як із початкової геометрії згенерувати сітку з допомогою Tethex i Triangle С++ бібліотек. Після цього як отримати поле підземних вод з допомогою методу FEM, який імплементований в бібліотеці Deal.II. Як обчислити параметри  $a_i$ використовуючи чисельний інтеграл.\par
+    Next, we described our open source numerical solution to the river network development in the Python library -- Riversim. The structure of the library was described in detail with examples of its use: 
+    
+    \begin{itemize}
+      \item Setting arbitrary initial geometry;
+      \item Setting initial position of the springs;
+      \item How to work with Rivers class, which holds river network related data;
+      \item Setting of boundary conditions;
+      \item Mesh generation, using capabilities based on Triangle and Tethex C++ libraries;
+      \item Groundwater field evaluation using the FEM method, which is implemented in the Deal.II C++ library;
+      \item Evaluation of $a_i$ parameters using a numerical integral.
+    \end{itemize}
+
+    %Коротко показана верифікація бібліотеки Riversim, приклад програми для обрахування розвитку мережі і деякі резултати симуляцій.\par
+    The verification of the Riversim library, an example of a program for calculating the development of the network, simulations result in Laplacian and Poisson field for different $\eta$ are shown.\par
+
+    \section*{Acknowledgements}
+      
+      I would like to thank Olivier Devauchelle from Institut de Physique du Globe, Paris and Hansjörg Seybold from ETH Zurich for sharing the code of river network growth simulation in FreeFEM++ which helped me to came out with my own solution. And also thanks to Stasiek Żukowski for using Riversim software for backward simulation and giving me usage experience of the program.
+
+    \bibliographystyle{unsrt_initials} %ieeetr
+    \bibliography{bibliography}
 
   \appendix
 
-  \chapter*{Główna pętla programu}
+  \chapter{The main loop of the program}
     
-    %Instalacja biblioteki riversim w Python3 (tylko Linux):
-    Installing the riversim library in Python3 (Linux only):
+    %Instalacja biblioteki Riversim w Python3 (tylko Linux):
+    Installing the Riversim library in Python3 (Linux only):
     
     \begin{mintedbox}{bash} 
       python3 -m pip install riversim\end{mintedbox}
     
     %Skrypt Python symulujący rozwój sieci rzecznej napisany w oparciu biblioteki riversm:
-    Python script simulating the development of the river network written on the basis of the riversim library:
+    Python script simulating the development of the river network written on the basis of the Riversim library:
 
     \begin{mintedbox}{python} 
       from riversim import *
@@ -911,6 +939,18 @@
               break
       \end{mintedbox}
 
-  %\chapter{Przykładowe dane wejściowe algorytmu}
+      \section{Examples of networks}
+        
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=1\textwidth]{figs/histogram.png}        
+          \caption{Left plot shows river network grown in Poisson field. Right plot shows length histogram of each line from which river network consists. You can see peak at $Length = 0.01$, it is due to numerical parameter which limits minimal river length between biffurcation points and in this simulation it is equal to $0.01$.}
+        \end{figure}
+
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=1\textwidth]{figs/symmetic_rivers.png}        
+          \caption{Initial region of this simulaiton is rectangle where each corner is the spring of the river. After growth of the each river network in Poisson field, you can see that figure is still symmetric.}
+        \end{figure}
 
 \end{document}
