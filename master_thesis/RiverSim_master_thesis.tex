@@ -69,7 +69,7 @@
 
     %В даній праці ми фокусуємося на створенні Python бібліотеки котра помагає досліджувати розвиток мережі в полі Лапласа на прикладі розвитку мережі річки. Спочатку ми описуємо математичну модель розвитку мережі річки в полі Лапласа. Тоді описуємо бібліотеку Riversim, її алгоритми і показуємо простий спосіб застосування програми крок по кроку. Тоді наводимо приклади збіжності розв'язку і покажемо кілька результатів.
     %W tej pracy skupiamy się na stworzeniu biblioteki Pythona, która pomaga badać rozwój sieci w polu Laplace'a na przykładzie rozwoju sieci rzecznej. Najpierw opisujemy matematyczny model rozwoju sieci rzecznej w polu Laplace'a. Następnie opisujemy bibliotekę Riversim, jej algorytmy i pokazujemy prosty sposób korzystania z programu krok po kroku. Następnie podajemy przykłady zbieżności rozwiązania i pokazujemy kilka wyników.\par
-    In this work, we focus on the creation of a Python library that helps to study the development of a network in the Laplacian field using the example of the development of a river network. First, we describe the mathematical model of the development of the river network in the Laplacian field. Then we describe the Riversim library, its algorithms and show a simple step-by-step way of using the program. Then we give examples of the convergence of the solution, river network growth in Laplacian and Poisson field for different $\eta$ values and some unique for this program features.\par
+    In this work, we focus on the creation of a Python library that helps to study the development of a network in the Laplacian field using the example of the development of a river network. First, we describe the mathematical model of the development of the river network in the Laplacian field. Then we describe the Riversim library, its algorithms and show a simple step-by-step way of using the program. Then we give examples of the convergence of the solution, river network growth in Laplacian and Poisson field for different $\eta$ values, branch length distribution and Strahler number distribution for different $\eta$.\par
 
   \end{abstract}
 
@@ -818,7 +818,7 @@
     \end{itemize}
 
     %Коротко показана верифікація бібліотеки Riversim, приклад програми для обрахування розвитку мережі і деякі резултати симуляцій.\par
-    The verification of the Riversim library, an example of a program for calculating the development of the network, simulations result in Laplacian and Poisson field for different $\eta$ are shown.\par
+    The verification of the Riversim library, an example of a program for calculating the development of the network, simulations result in Laplacian and Poisson field for different $\eta$, branch length distribution and Strahler number distribution for different $\eta$ are shown.\par
 
     \section*{Acknowledgements}
       
@@ -951,6 +951,32 @@
           \centering
           \includegraphics[width=1\textwidth]{figs/symmetic_rivers.png}        
           \caption{Initial region of this simulaiton is rectangle where each corner is the spring of the river. After growth of the each river network in Poisson field, you can see that figure is still symmetric.}
+        \end{figure}
+        
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=1\textwidth]{figs/sims/laplacian_field_etas.png}        
+          \caption{River networks in Laplacian field with different $\eta$ parameter value and bifurcation threshold equal to $0.5$.}
+          \label{laplacian_etas}
+        \end{figure}
+
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=1\textwidth]{figs/sims/strahler_and_leght_histogram_for_laplacian_field.png}        
+          \caption{Branches lenght histogram and Strahler number histogram for river networks shown in Fig. \ref{laplacian_etas}}
+        \end{figure}
+
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=1\textwidth]{figs/sims/poisson_field_etas.png}        
+          \caption{River networks in Poisson field with different $\eta$ parameter value and bifurcation threshold equal to $0.5$.}
+          \label{poisson_etas}
+        \end{figure}
+
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=1\textwidth]{figs/sims/strahler_and_leght_histogram_for_poisson_field.png}        
+          \caption{Branches lenght histogram and Strahler number histogram for river networks shown in Fig. \ref{poisson_etas}}
         \end{figure}
 
 \end{document}
