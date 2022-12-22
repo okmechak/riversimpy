@@ -143,7 +143,7 @@ def growRiver(m, plot_period = 50, debug = False):
             for id in dynamic_river_ids:
                 tip_point = m.rivers[id].tipPoint()
                 tip_angle = m.rivers[id].tipAngle()
-                id_series_params[id] = solver.integrate_new(m.integr_params, tip_point, tip_angle)
+                id_series_params[id] = solver.integrate_trap(m.integr_params, tip_point, tip_angle)
                 if id_series_params[id][0] > max_a1:
                     max_a1 = id_series_params[id][0]
         except:
