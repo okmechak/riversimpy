@@ -1,8 +1,10 @@
 \documentclass[]{pracamgr}
 
-\usepackage{tcolorbox} 
+\usepackage{tcolorbox}
 
-\raggedbottom
+\pdfcompresslevel=9 
+\pdfobjcompresslevel=2 
+\raggedbottom 
 \tcbuselibrary{minted, breakable, xparse, skins}
 \definecolor{bg}{gray}{0.95}
 \DeclareTCBListing{mintedbox}{O{}m!O{}}{%
@@ -87,7 +89,7 @@
 
     \begin{figure}[H]
       \centering
-      \includegraphics[width=1\textwidth]{figs/basic_river_illustration.png}
+      \includegraphics[width=1\textwidth]{figs/basic_river_illustration.jpg}
       %Dolina rzeki z jeziorem i ich przekrój. Po prawej stronie można widać jak wody podziemne są napędzane przez opady lub naprzykład przez spływ z gór.
       \caption{The river valley with the lake and their cross-section. On the right, you can see how groundwater is driven by precipitation or by runoff from mountains, for example.}
       \label{pow_wsiakanie}
@@ -100,7 +102,7 @@
     \begin{wrapfigure}{r}{0.5\textwidth}
       \begin{center}
         \vspace{-20pt}
-        \includegraphics[width=0.45\textwidth]{figs/erosion_illustration.png}
+        \includegraphics[width=0.45\textwidth]{figs/erosion_illustration.jpg}
       \end{center}
       \vspace{-20pt}
       %Ilustracja wzrostu rzeki poprzez procesy erozyjne zachodzącę w okolicy źródeł.
@@ -281,7 +283,7 @@
 
     \begin{figure}[H]
       \centering
-      \includegraphics[width=1\textwidth]{figs/ProgramWorkflowMainIllustration.png}
+      \includegraphics[width=1\textwidth]{figs/ProgramWorkflowMainIllustration.jpg}
       %(1) Початкова геометрія, задавання місць на границі звідки буде рости річка, граничні умови. (2) Початкова мережа річки(можна не задавати). (3) Спрощення геометрії річки. (4) Генерація дрібнозернистого мешу. (5) Розв'язок диференційних рівнянь. (6) Визначення параметрів ряду довкола джерел. (2) Ріст мережі річки.
       %Метод конечних елементів вимагає визначення геометрії області, потім її дискретизація, створення лінійних рівнянь, розв’язування рівнянь, інтегрування коефіцієнти $a_i$ розкладу в ряд. Наведені вище кроки формують структуру програмного забезпечення \ref{program_workflow}.
       %Metoda elementów skończonych wymaga wyznaczenia geometrii obszaru, następnie jej dyskretyzacji, utworzenia równań liniowych, rozwiązania równań, zintegrowania współczynników rozszerzenia $a_i$ w szereg. Powyższe kroki tworzą strukturę oprogramowania. (1) Geometria początkowa, ustalenie miejsc na granicy, z których rzeka będzie wypływać i warunki brzegowe. (2) Początkowa sieć rzeki (opcjonalnie). (3) Uproszczenie geometrii rzeki. (4) Generowanie drobnoziarnistej siatki. (5) Rozwiązywanie równań różniczkowych. (6) Wyznaczanie parametrów szeregu wokół źródeł. (2) Wzrost sieci rzecznej.
@@ -463,7 +465,7 @@
 
       \begin{figure}[H]
         \centering
-        \includegraphics[width=0.9\textwidth]{figs/solver.png}        
+        \includegraphics[width=0.9\textwidth]{figs/solver.jpg}        
         \caption {Groundwater field on the example domain.}
         \label{solver}
       \end{figure}
@@ -558,7 +560,7 @@
 
         \begin{figure}[H]
           \centering
-          \includegraphics[width=0.9\textwidth]{figs/adaptive_refinment.png}        
+          \includegraphics[width=0.9\textwidth]{figs/adaptive_refinment.jpg}        
           %Elementy siatki są dzielone w tych miejscach, gdzie błąd rozwiązania jest największy. W okolicy źródła pole zachowuje się jako $\frac{1}{\sqrt[2]{r}}$.
           \caption{Mesh elements are adapted in those places where the solution error is the greatest. Near the spring, the field behaves as $\sqrt{r}$.}
           \label{adaptive_refinment}
@@ -628,7 +630,7 @@
       
       \begin{figure}[H]
         \centering
-        \includegraphics[width=0.9\textwidth]{figs/series_params_integration.png}        
+        \includegraphics[width=0.9\textwidth]{figs/series_params_integration.jpg}        
         %Ilustracja rozkładu pola w okolicy źródła na współczynniki $a_n$.
         \caption{Illustration of the distribution of the field in the vicinity of the spring into $a_n$ coefficients.}
         \label{series_params_integration}
@@ -751,7 +753,7 @@
       open(model_dirichlet, "river_initializet_to_dirichlet.json")\end{mintedbox}
 
 
-  \chapter{Validation and simulation examples}
+  \chapter{Validation and geometries of the networks}
 
     %Розв'язання росту мережі річки в полі Лапласа є складною задачею. Щоб отримати наближений розв'язок були використані методи дискретизації. Способи дискретизації включали в себе як і заміну гладких ліній мережі на дискретні із подальшим зменшення кількості точок дискретизації в залежності від кривизни. Дискретизація регіону на чотирикутні елементи і ступінь квадратури в кожному елементі. Кількість елементів суми для обчислення інтегралу параметрів довкола джерела. Але відомо що в границі із ростом дескритизації:
     Solving the growth of the river network in the Laplacian field is a difficult task. Several discretization methods were used to obtain an approximate solution: 
@@ -766,30 +768,93 @@
     
     \section{Convergence of integration and comparison with analytical result}
 
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=0.5\textwidth]{figs/test_function_boundary.png}
-      \caption{Semi-infinite domain with flux of the field coming from infinity used for evaluation of analitical value for $a_1$.}
-      \label{test_boundary}
-    \end{figure}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{figs/test_function_boundary.png}
+        \caption{Semi-infinite domain with flux of the field coming from infinity used for evaluation of analitical value for $a_1$.}
+        \label{test_boundary}
+      \end{figure}
 
-    %В роботі Ґубєц \cite{gubiec2008fingered} було отримано вираз для швидкості $\upsilon(H)$ взросту одної річки в наступних умовах: регіон прямокутної форми, висота котрого прямує до безмежності, ширина рівна $2$. На нижній грані звідки посередині звідки і зростає одна гілка річки маємо поглинаючі граничні умови ($\phi(0, y) = 0$), ізолюючі граничні умови на бокових гранях ($(\nabla \phi(x, y))_{\vec{n}} = 0$) і маємо сталий потік на безмежній відстані на верхній грані ($(\nabla \phi(x, y))_{\vec{n}} = 1$). 
-    In the work of Gubiec et al.\cite{gubiec2008fingered}, an expression was obtained for the rate $\upsilon(H)$ of the growth of one river under the following conditions: a rectangular region with infinite height and the width of $2$. In the center of bottom face, river branch with lenght $H$ is positioned (Fig. \ref{test_boundary}). At the bottom face and river branch, absorbing boundary conditions ($\phi(0, y) = 0$) are set, reflecting boundary conditions on the side faces ($(\nabla \phi(x, y))_{ \vec{n}} = 0$) and constant flow at an infinite distance on the upper face ($(\nabla \phi(x, y))_{\vec{n}} = 1$).
+      %В роботі Ґубєц \cite{gubiec2008fingered} було отримано вираз для швидкості $\upsilon(H)$ взросту одної річки в наступних умовах: регіон прямокутної форми, висота котрого прямує до безмежності, ширина рівна $2$. На нижній грані звідки посередині звідки і зростає одна гілка річки маємо поглинаючі граничні умови ($\phi(0, y) = 0$), ізолюючі граничні умови на бокових гранях ($(\nabla \phi(x, y))_{\vec{n}} = 0$) і маємо сталий потік на безмежній відстані на верхній грані ($(\nabla \phi(x, y))_{\vec{n}} = 1$). 
+      In the work of Gubiec et al.\cite{gubiec2008fingered}, an expression was obtained for the rate $\upsilon(H)$ of the growth of one river under the following conditions: a rectangular region with infinite height and the width of $2$. In the center of bottom face, river branch with lenght $H$ is positioned (Fig. \ref{test_boundary}). At the bottom face and river branch, absorbing boundary conditions ($\phi(0, y) = 0$) are set, reflecting boundary conditions on the side faces ($(\nabla \phi(x, y))_{ \vec{n}} = 0$) and constant flow at an infinite distance on the upper face ($(\nabla \phi(x, y))_{\vec{n}} = 1$).
 
-    \begin{equation}
-      \label{velocity_analytical}
-      \upsilon(H) = \sqrt{\frac{2}{\frac{\pi}{2}\coth(\frac{\pi}{2}H)}} \,.
-    \end{equation}
+      \begin{equation}
+        \label{velocity_analytical}
+        \upsilon(H) = \sqrt{\frac{2}{\frac{\pi}{2}\coth(\frac{\pi}{2}H)}} \,.
+      \end{equation}
     
-    %В нашому випадку ми не можемо задати безмежну відстань верхньої грані, тому ми обмежимося достатньо витягнутим прямокутником ($50/2$).
-    In our case, semi-infinite domain is aproximated by elongated rectangle (height -- $50$, width --$2$).
+      %В нашому випадку ми не можемо задати безмежну відстань верхньої грані, тому ми обмежимося достатньо витягнутим прямокутником ($50/2$).
+      In our case, semi-infinite domain is aproximated by elongated rectangle (height -- $50$, width --$2$).
 
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=1\textwidth]{figs/convergence.png}        
-      \caption{Left plot shows how the relative error in percentage between evaluated and analitical value $a_1$ is converging. Right plot shows convergence when number of mesh elements are increased.}
-      \label{convergence_new}
-    \end{figure}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{figs/convergence.png}        
+        \caption{Left plot shows how the relative error in percentage between evaluated and analitical value $a_1$ is converging. Right plot shows convergence when number of mesh elements are increased.}
+        \label{convergence_new}
+      \end{figure}
+
+    \section{Geometries of the networks}
+
+      \subsection{Laplacian field}
+        
+        Here we present on Fig. \ref{laplacian_etas} growth of complex networks in quadrangular region with width equal to $1$ and height -- $5$. Boundary conditions are same as shown on Fig \ref{test_boundary}.
+      
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.9\textwidth]{figs/sims/laplacian_field_etas.png}        
+          \caption{River networks in Laplacian field with different $\eta$ parameter value and bifurcation threshold equal to $0.5$.}
+          \label{laplacian_etas}
+        \end{figure}
+
+        Next, we present on Fig. \ref{laplacian_big_etas} similar growth as on Fig. \ref{laplacian_etas} but in a bigger qudrangle with width equal to $3$ and height -- $7$.
+
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figs/sims/laplacian_big_field_etas.png}        
+          \caption{River networks in Laplacian field with different $\eta$ parameter value and bifurcation threshold equal to $0.5$.}
+          \label{laplacian_big_etas}
+        \end{figure}
+
+      \subsection{Poisson field}
+        
+        Here we present on Fig. \ref{poisson_etas} growth of complex networks in quadrangular region with width equal to $1$ and height -- $1$. Dirichlet boundary conditions $\phi = 0$ are applied on all faces.
+
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.75\textwidth]{figs/sims/poisson_field_etas.png}        
+          \caption{River networks in Poisson field with different $\eta$ parameter value and bifurcation threshold equal to $0.5$.}
+          \label{poisson_etas}
+        \end{figure}
+
+      \subsection{Histograms of branch lengths and Strahler numbers}
+      
+        Here we present on Fig. \ref{laplacian_etas_analysis} length and Strahler number histogram for Fig. \ref{laplacian_etas}.
+        
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.9\textwidth]{figs/sims/strahler_and_leght_histogram_for_laplacian_field.png}        
+          \caption{Branches lenght histogram and Strahler number histogram for river networks shown in Fig. \ref{laplacian_etas}}
+          \label{laplacian_etas_analysis}
+        \end{figure}
+
+        Next, we present on Fig. \ref{laplacian_big_etas_analysis} length and Strahler number histogram for Fig. \ref{laplacian_big_etas}.
+
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=1\textwidth]{figs/sims/strahler_and_leght_histogram_for_laplacian_big_field.png}        
+          \caption{Branches lenght histogram and Strahler number histogram for river networks shown in Fig. \ref{laplacian_big_etas}}
+          \label{laplacian_big_etas_analysis}
+        \end{figure}
+
+        And here we present on Fig. \ref{poisson_etas_analysis} length and Strahler number histogram for Fig. \ref{poisson_etas}.
+
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.9\textwidth]{figs/sims/strahler_and_leght_histogram_for_poisson_field.png}        
+          \caption{Branches lenght histogram and Strahler number histogram for river networks shown in Fig. \ref{poisson_etas}}
+          \label{poisson_etas_analysis}
+        \end{figure}
+
 
   \chapter{Summary}
 
@@ -799,7 +864,6 @@
     %Далі ми запропонували своє чисельне рішення цієї складної проблеми взаємозалежності мережі і поля під впливом якого, вона розвивається у бібліотеці Python -- Riversim. Детально описали структуру бібліотеки із прикладами її використання. Як задавати довільну початкову геометрію. Як задати початкову позицію джерел із яких буде відбуватися розвиток річки. В якій структурі даних зберігається мережа річки і як із нею працювати. Як задавати граничні умови і яких видів вони присутні у програмі. Те, як із початкової геометрії згенерувати сітку з допомогою Tethex i Triangle С++ бібліотек. Після цього як отримати поле підземних вод з допомогою методу FEM, який імплементований в бібліотеці Deal.II. Як обчислити параметри  $a_i$ використовуючи чисельний інтеграл.\par
     Next, we described our open source numerical solution to the river network development in the Python library -- Riversim. The structure of the library was described in detail with examples of its use: 
     
-    \vspace{-\topsep}
     \begin{itemize}
       \item Setting arbitrary initial geometry;
       \item Setting initial position of the springs;
@@ -944,45 +1008,6 @@
           \centering
           \includegraphics[width=1\textwidth]{figs/symmetic_rivers.png}        
           \caption{Initial region of this simulaiton is rectangle where each corner is the spring of the river. After growth of the each river network in Poisson field, you can see that figure is still symmetric.}
-        \end{figure}
-        
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=0.9\textwidth]{figs/sims/laplacian_field_etas.png}        
-          \caption{River networks in Laplacian field with different $\eta$ parameter value and bifurcation threshold equal to $0.5$.}
-          \label{laplacian_etas}
-        \end{figure}
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=0.9\textwidth]{figs/sims/strahler_and_leght_histogram_for_laplacian_field.png}        
-          \caption{Branches lenght histogram and Strahler number histogram for river networks shown in Fig. \ref{laplacian_etas}}
-        \end{figure}
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=1\textwidth]{figs/sims/laplacian_big_field_etas.png}        
-          \caption{River networks in Laplacian field in a bigger domain with different $\eta$ parameter value ($0$, $1$, and $2$ accordingly) and bifurcation threshold equal to $0.5$.}
-          \label{laplacian_big_etas}
-        \end{figure}
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=1\textwidth]{figs/sims/strahler_and_leght_histogram_for_laplacian_big_field.png}        
-          \caption{Branches lenght histogram and Strahler number histogram for river networks shown in Fig. \ref{laplacian_big_etas}}
-        \end{figure}
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=0.9\textwidth]{figs/sims/poisson_field_etas.png}        
-          \caption{River networks in Poisson field with different $\eta$ parameter value and bifurcation threshold equal to $0.5$.}
-          \label{poisson_etas}
-        \end{figure}
-
-        \begin{figure}[H]
-          \centering
-          \includegraphics[width=0.9\textwidth]{figs/sims/strahler_and_leght_histogram_for_poisson_field.png}        
-          \caption{Branches lenght histogram and Strahler number histogram for river networks shown in Fig. \ref{poisson_etas}}
         \end{figure}
 
 \end{document}
