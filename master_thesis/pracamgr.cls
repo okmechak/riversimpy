@@ -82,7 +82,7 @@
 	\par
 	\vspace*{26pt}%
 	\begin{center} \bfseries\large Keyword \end{center}
-  	FEM, physics, ground water dynamics, erosion, numerical methods, network geometry\par
+  	FEM, physics, groundwater dynamics, erosion, numerical methods, network geometry\par
   	
 	\vspace*{26pt}%
 	\begin{center} \bfseries\large Title of the thesis in Polish language\end{center}
