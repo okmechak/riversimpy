@@ -776,15 +776,14 @@
       \end{figure}
 
       %В роботі Ґубєц \cite{gubiec2008fingered} було отримано вираз для швидкості $\upsilon(H)$ взросту одної річки в наступних умовах: регіон прямокутної форми, висота котрого прямує до безмежності, ширина рівна $2$. На нижній грані звідки посередині звідки і зростає одна гілка річки маємо поглинаючі граничні умови ($\phi(0, y) = 0$), ізолюючі граничні умови на бокових гранях ($(\nabla \phi(x, y))_{\vec{n}} = 0$) і маємо сталий потік на безмежній відстані на верхній грані ($(\nabla \phi(x, y))_{\vec{n}} = 1$). 
-      In the work of Gubiec et al.\cite{gubiec2008fingered}, an expression was obtained for the rate $\upsilon(H)$ of the growth of one river under the following conditions: a rectangular region with infinite height and the width of $2$. In the center of bottom face, river branch with lenght $H$ is positioned (Fig. \ref{test_boundary}). At the bottom face and river branch, absorbing boundary conditions ($\phi(0, y) = 0$) are set, reflecting boundary conditions on the side faces ($(\nabla \phi(x, y))_{ \vec{n}} = 0$) and constant flow at an infinite distance on the upper face ($(\nabla \phi(x, y))_{\vec{n}} = 1$).
+      In the work of Gubiec et al.\cite{gubiec2008fingered}, an expression was obtained for the rate $\upsilon(H)$ of the growth of one river under the following conditions: a rectangular region with infinite height and the width of $2$. In the center of bottom face, river branch with lenght $H$ is positioned (Fig. \ref{test_boundary}). At the bottom face and river branch, absorbing boundary conditions ($\phi(0, y) = 0$) are set, reflecting boundary conditions on the side faces ($(\nabla \phi(x, y))_{ \vec{n}} = 0$) and constant flow at an infinite distance on the upper face ($(\nabla \phi(x, y))_{\vec{n}} = 1$). In our case, semi-infinite domain is aproximated by elongated rectangle (height -- $50$, width --$2$). Expression for $\upsilon(H) = a_1$ is equal to:
 
       \begin{equation}
         \label{velocity_analytical}
         \upsilon(H) = \sqrt{\frac{2}{\frac{\pi}{2}\coth(\frac{\pi}{2}H)}} \,.
       \end{equation}
-    
-      %В нашому випадку ми не можемо задати безмежну відстань верхньої грані, тому ми обмежимося достатньо витягнутим прямокутником ($50/2$).
-      In our case, semi-infinite domain is aproximated by elongated rectangle (height -- $50$, width --$2$).
+      
+      and is used for validation of the $a_1$ series parameter which is shown on Fig. \ref{convergence_new}.
 
       \begin{figure}[H]
         \centering
