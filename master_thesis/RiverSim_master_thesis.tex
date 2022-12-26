@@ -305,7 +305,7 @@
       
       \begin{figure}[H]
         \centering
-        \includegraphics[width=1\textwidth]{figs/geometry_examples.png}
+        \includegraphics[width=1\textwidth]{figs/geometry_examples.jpg}
         %Szereg przykładów granicy:  brzeg z dwoma zaznaczonymi źródłami (1), granica zawierająca granicę(na przykład jezioro) (2), basen rzeki aproksymowany łamą linią i częściowo odzwierciedloną rżeką (4), dwa prostokąty z różną szerokością nie powiązane topologicznie(5).
         \caption{Examples of different domains: a boundary with two springs (1), a boundary containing a hole (for example, a lake) (2), a river basin approximated with the polygon and the river network (4), three domains not connected topologically which can be used for example to run several simulations with slightly different domains (5).}
         \label{geometry_examples}
@@ -317,7 +317,7 @@
       
       \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{figs/GeometryClasses.png}
+        \includegraphics[width=0.7\textwidth]{figs/GeometryClasses.jpg}
         %Ilustracja objektów zdefiniowanych w bibliotece Riversim i ich relacje pomiędzy sobą przy konfigurowaniu geometrii.
         \caption{An illustration of objects defined in the Riversim library and their relationships to each other when configuring geometry.}
         \label{GeometryClasses}
@@ -325,7 +325,7 @@
 
       \begin{figure}[H]
         \centering
-        \includegraphics[width=0.9\textwidth]{figs/region_workflow.png}
+        \includegraphics[width=0.9\textwidth]{figs/region_workflow.jpg}
         %Ilustracja kolejności kroków przy definicji regionu. Definicja wszystkich punktów i zapisanie ich do oddzielnychlist t\_PointList jeżeli należą do różnych brzegów (1). Definicja linii i indeksów i też przepisanie ich do oddzielnych list t\_LineList (2). Definicja punktów źródłowych na granicy w klasie spring (3). Definicja warunków brzegowych (4).
         \caption{Illustration of the sequence of steps in defining a region. Define all points and store them in separate lists t\_PointList if they belong to different edges (1). Definition of lines and indexes and rewriting them to separate lists t\_LineList (2). Definition of spring points on the boundary in the Source class (3). Definition of boundary conditions (4).}
         \label{region_workflow}
@@ -361,7 +361,7 @@
       
       \begin{figure}[H]
         \centering
-        \includegraphics[width=0.6\textwidth]{figs/rivers_initialization.png}        
+        \includegraphics[width=0.6\textwidth]{figs/rivers_initialization.jpg}        
         %Indeksy brzegów i odpowiednich współrzędnych, które są przechowywane w klasie Source, są konwertowane w współrzędne i kąt normalnej linii w danym punkcie granicy. Te dane są wykorzystywane dla inicjalizacji struktury Rivers która przechowuje dane o sieci rzecznej.
         \caption{The boundary and corresponding coordinate indexes, which are stored in the Source class, are converted to the coordinates and angle of the normal line at the given boundary point. This data is used to initialize the Rivers structure which holds data about the river network.}
         \label{rivers_initialization}
@@ -390,7 +390,7 @@
 
       \begin{figure}[H]
         \centering
-        \includegraphics[width=0.9\textwidth]{figs/tree_coarsening.png}        
+        \includegraphics[width=0.9\textwidth]{figs/tree_coarsening.jpg}        
         %Ilustracja zmniejszenia gęstości współrzędnych na granicy przy zachowaniu wystarczającej dokładności.
         \caption{Illustration of reducing the coordinate density at the boundary while maintaining sufficient accuracy.}
         \label{tree_coarsening}
@@ -405,7 +405,7 @@
 
       \begin{figure}[H]
         \centering
-        \includegraphics[width=0.9\textwidth]{figs/mesh_generation.png}        
+        \includegraphics[width=0.9\textwidth]{figs/mesh_generation.jpg}        
         %Wszystkie brzegi które są zawierane w klasie Region, a także brzegi rzek w klasie Rivers łączą się w jeden zamknięty brzeg (1). Z pomocą Triangle na bazie jednej zamkniętej granicy jest generowana siatką trójkątowa (2). Siatka trójkątowa z pomocą biblioteki Tethex jest konwertowana w siatkę prostokątów (3).
         \caption{All boundaries that are contained in the Region class, as well as river boundaries in the Rivers class are merged into one closed boundary (1). With the help of a Triangle, a triangular mesh (2) is generated on the basis of one closed border. A triangular mesh is converted into a rectangular mesh with the help of the Tethex library (3).}
         \label{mesh_generation}
@@ -735,7 +735,7 @@
     \section{Growth and bifurcation rules, save and load from file, class Model}
       \begin{figure}[H]
         \centering
-        \includegraphics[width=0.5\textwidth]{figs/program_dependecy_graph.png}        
+        \includegraphics[width=0.5\textwidth]{figs/program_dependecy_graph.jpg}        
         %\caption{Graph zależności między modułami programu.}
         \caption{Graph of dependencies between program modules.}
         \label{program_strucutre}
@@ -770,7 +770,7 @@
 
       \begin{figure}[H]
         \centering
-        \includegraphics[width=0.5\textwidth]{figs/test_function_boundary.png}
+        \includegraphics[width=0.5\textwidth]{figs/test_function_boundary.jpg}
         \caption{Semi-infinite domain with flux of the field coming from infinity used for evaluation of analitical value for $a_1$.}
         \label{test_boundary}
       \end{figure}
@@ -781,13 +781,13 @@
       \begin{equation}
         \label{velocity_analytical}
         \upsilon(H) = \sqrt{\frac{2}{\frac{\pi}{2}\coth(\frac{\pi}{2}H)}} \,.
-      \end{equation}
+      \end{equation} 
       
       and is used for validation of the $a_1$ series parameter which is shown on Fig. \ref{convergence_new}.
 
       \begin{figure}[H]
         \centering
-        \includegraphics[width=1\textwidth]{figs/convergence.png}        
+        \includegraphics[width=1\textwidth]{figs/convergence.jpg}        
         \caption{Left plot shows how the relative error in percentage between evaluated and analitical value $a_1$ is converging. Right plot shows convergence when number of mesh elements are increased.}
         \label{convergence_new}
       \end{figure}
@@ -800,7 +800,7 @@
       
         \begin{figure}[H]
           \centering
-          \includegraphics[width=0.9\textwidth]{figs/sims/laplacian_field_etas.png}        
+          \includegraphics[width=0.9\textwidth]{figs/sims/laplacian_field_etas.jpg}        
           \caption{River networks in Laplacian field with different $\eta$ parameter value and bifurcation threshold equal to $0.5$.}
           \label{laplacian_etas}
         \end{figure}
@@ -809,7 +809,7 @@
 
         \begin{figure}[H]
           \centering
-          \includegraphics[width=0.8\textwidth]{figs/sims/laplacian_big_field_etas.png}        
+          \includegraphics[width=0.8\textwidth]{figs/sims/laplacian_big_field_etas.jpg}        
           \caption{River networks in Laplacian field with different $\eta$ parameter value and bifurcation threshold equal to $0.5$.}
           \label{laplacian_big_etas}
         \end{figure}
@@ -820,7 +820,7 @@
 
         \begin{figure}[H]
           \centering
-          \includegraphics[width=0.75\textwidth]{figs/sims/poisson_field_etas.png}        
+          \includegraphics[width=0.75\textwidth]{figs/sims/poisson_field_etas.jpg}        
           \caption{River networks in Poisson field with different $\eta$ parameter value and bifurcation threshold equal to $0.5$.}
           \label{poisson_etas}
         \end{figure}
@@ -831,7 +831,7 @@
         
         \begin{figure}[H]
           \centering
-          \includegraphics[width=0.9\textwidth]{figs/sims/strahler_and_leght_histogram_for_laplacian_field.png}        
+          \includegraphics[width=0.9\textwidth]{figs/sims/strahler_and_leght_histogram_for_laplacian_field.jpg}        
           \caption{Branches lenght histogram and Strahler number histogram for river networks shown in Fig. \ref{laplacian_etas}}
           \label{laplacian_etas_analysis}
         \end{figure}
@@ -840,7 +840,7 @@
 
         \begin{figure}[H]
           \centering
-          \includegraphics[width=1\textwidth]{figs/sims/strahler_and_leght_histogram_for_laplacian_big_field.png}        
+          \includegraphics[width=1\textwidth]{figs/sims/strahler_and_leght_histogram_for_laplacian_big_field.jpg}        
           \caption{Branches lenght histogram and Strahler number histogram for river networks shown in Fig. \ref{laplacian_big_etas}}
           \label{laplacian_big_etas_analysis}
         \end{figure}
@@ -849,7 +849,7 @@
 
         \begin{figure}[H]
           \centering
-          \includegraphics[width=0.9\textwidth]{figs/sims/strahler_and_leght_histogram_for_poisson_field.png}        
+          \includegraphics[width=0.9\textwidth]{figs/sims/strahler_and_leght_histogram_for_poisson_field.jpg}        
           \caption{Branches lenght histogram and Strahler number histogram for river networks shown in Fig. \ref{poisson_etas}}
           \label{poisson_etas_analysis}
         \end{figure}
@@ -999,13 +999,13 @@
         
         \begin{figure}[H]
           \centering
-          \includegraphics[width=1\textwidth]{figs/histogram.png}        
+          \includegraphics[width=1\textwidth]{figs/histogram.jpg}        
           \caption{Left plot shows river network grown in Poisson field. Right plot shows length histogram of each line from which river network consists. You can see peak at $Length = 0.01$, it is due to numerical parameter which limits minimal river length between biffurcation points and in this simulation it is equal to $0.01$.}
         \end{figure}
 
         \begin{figure}[H]
           \centering
-          \includegraphics[width=1\textwidth]{figs/symmetic_rivers.png}        
+          \includegraphics[width=1\textwidth]{figs/symmetic_rivers.jpg}        
           \caption{Initial region of this simulaiton is rectangle where each corner is the spring of the river. After growth of the each river network in Poisson field, you can see that figure is still symmetric.}
         \end{figure}
 
