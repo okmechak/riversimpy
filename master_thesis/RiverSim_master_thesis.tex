@@ -53,7 +53,7 @@
 \usepackage{xcolor} %c++ code snippet
 \lstset { %
     language=C++,
-    %backgroundcolor=\color{black!5}, % set backgroundcolor
+    %backgroundcolor=\color{black!5}, % set background color
     basicstyle=\footnotesize,% basic font setting
 } %c++ code
 
@@ -72,7 +72,7 @@
 
     %В даній праці ми фокусуємося на створенні Python бібліотеки котра помагає досліджувати розвиток мережі в полі Лапласа на прикладі розвитку мережі річки. Спочатку ми описуємо математичну модель розвитку мережі річки в полі Лапласа. Тоді описуємо бібліотеку Riversim, її алгоритми і показуємо простий спосіб застосування програми крок по кроку. Тоді наводимо приклади збіжності розв'язку і покажемо кілька результатів.
     %W tej pracy skupiamy się na stworzeniu biblioteki Pythona, która pomaga badać rozwój sieci w polu Laplace'a na przykładzie rozwoju sieci rzecznej. Najpierw opisujemy matematyczny model rozwoju sieci rzecznej w polu Laplace'a. Następnie opisujemy bibliotekę Riversim, jej algorytmy i pokazujemy prosty sposób korzystania z programu krok po kroku. Następnie podajemy przykłady zbieżności rozwiązania i pokazujemy kilka wyników.\par
-    In this work, we focus on the creation of a Python library that helps to study the development of a network in the Laplacian field using the example of the development of a river network. First, we describe the mathematical model of the development of the river network in the Laplacian field. Then we describe the Riversim library, its algorithms and show a simple step-by-step way of using the program. Then we give examples of the convergence of the solution, river network growth in Laplacian and Poisson fields, branch length distribution and Strahler number distribution.\par
+    In this work, we focus on the creation of a Python library that helps to study the development of a network in the Laplacian field using the example of the development of a river network. First, we describe the mathematical model of the development of the river network in the Laplacian field. Then we describe the Riversim library, and its algorithms and show a simple step-by-step way of using the program. Then we give examples of the convergence of the solution, river network growth in Laplacian and Poisson fields, branch length distribution and Strahler number distribution.\par
     
   \end{abstract}
 
@@ -766,7 +766,7 @@
       \item Series parameters integrals discretization;
     \end{itemize}
 
-    %In previous works on river growth simulations were presented river networs in Laplacian and Poisson fields 
+    %In previous works on river growth simulations were presented river networks in Laplacian and Poisson fields 
     
     \section{Convergence of integration and comparison with analytical result}
 
@@ -985,7 +985,7 @@
                       dynamic_river_ids.append(ids.left)
                       dynamic_river_ids.append(ids.right)
 
-                      # and remove a parent from growth evaluation
+                      # and remove a parent from the growth evaluation
                       for f in range(len(dynamic_river_ids)):
                           if dynamic_river_ids[f] == id:
                               del dynamic_river_ids[f]
