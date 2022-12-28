@@ -426,6 +426,7 @@
       When there is a closed border, you can generate a grid (Fig. (2) \ref{mesh_generation}). For this, the Triangle C++ library \cite{szewczuk1996triangle} was used. The methods and algorithms of the Triangle library are contained in the class of the same name. Triangle generates a Delaunay mesh. Triangle allows you to set the value of the minimum angle of the triangle, the minimum and maximum length of the side of the triangle, the minimum and maximum area of the triangle, the ratio of the sides of the triangle, etc. The second important aspect is the generation of a sufficiently small grid in places where the groundwater field changes the fastest - around springs. To do this, you can specify a set of coordinates (namely, the coordinates of the springs), where the area of the triangle relative to the given points will be limited radially. The function that limits the area of the triangle looks like this:
       \begin{equation}
         A(r) = A_{min} + (A_{max} - A_{min}) \frac{1 - \exp{(\frac{-(\frac{r}{r_{ref}})^{e}}{2 \sigma^2})}}{1 + \exp{(\frac{-(\frac{r}{r_{ref}})^{e}}{2 \sigma^2})}} 
+        \label{mesh_ref_formula}
       \end{equation}
 
       Where $A_{min}$ -- is the minimal mesh area (at $r = 0$), $A_{max}$ -- the maximal mesh area at ($r = \infty$), $r_{ref}$ -- specifies characteristic radius of function transition region where the value mostly changes its value from $A_{min}$ to $A_{max}$ ($A(r_{ref}) =  A_{min} + (A_{max} - A_{min}) \tanh(\frac{1}{4 \sigma^2}) \approx |_{\sigma = 1} \ A_{min} + (A_{max} - A_{min}) 0.245 $), $\sigma$ and $e$ are responsible for slope of funtion in transiotion region.
@@ -753,7 +754,7 @@
       open(model_dirichlet, "river_initializet_to_dirichlet.json")\end{mintedbox}
 
 
-  \chapter{Validation and geometries of the networks}
+  \chapter{Code validation and river growth simulations}
 
     %Розв'язання росту мережі річки в полі Лапласа є складною задачею. Щоб отримати наближений розв'язок були використані методи дискретизації. Способи дискретизації включали в себе як і заміну гладких ліній мережі на дискретні із подальшим зменшення кількості точок дискретизації в залежності від кривизни. Дискретизація регіону на чотирикутні елементи і ступінь квадратури в кожному елементі. Кількість елементів суми для обчислення інтегралу параметрів довкола джерела. Але відомо що в границі із ростом дескритизації:
     Solving the growth of the river network in the Laplacian field is a difficult task. Several discretization methods were used to obtain an approximate solution: 
@@ -763,8 +764,9 @@
       \item Replacement of smooth network lines with discrete ones, followed by a reduction in the number of discretization points depending on the curvature;
       \item Discretization of the region into quadrilateral elements and the quadrature discretization degree in each element;
       \item Series parameters integrals discretization;
-      \item Split or combine selected cells to get a new grid.
     \end{itemize}
+
+    %In previous works on river growth simulations were presented river networs in Laplacian and Poisson fields 
     
     \section{Convergence of integration and comparison with analytical result}
 
@@ -776,14 +778,14 @@
       \end{figure}
 
       %В роботі Ґубєц \cite{gubiec2008fingered} було отримано вираз для швидкості $\upsilon(H)$ взросту одної річки в наступних умовах: регіон прямокутної форми, висота котрого прямує до безмежності, ширина рівна $2$. На нижній грані звідки посередині звідки і зростає одна гілка річки маємо поглинаючі граничні умови ($\phi(0, y) = 0$), ізолюючі граничні умови на бокових гранях ($(\nabla \phi(x, y))_{\vec{n}} = 0$) і маємо сталий потік на безмежній відстані на верхній грані ($(\nabla \phi(x, y))_{\vec{n}} = 1$). 
-      In the work of Gubiec et al.\cite{gubiec2008fingered}, an expression was obtained for the rate $\upsilon(H)$ of the growth of one river under the following conditions: a rectangular region with infinite height and the width of $2$. In the center of bottom face, river branch with lenght $H$ is positioned (Fig. \ref{test_boundary}). At the bottom face and river branch, absorbing boundary conditions ($\phi(0, y) = 0$) are set, reflecting boundary conditions on the side faces ($(\nabla \phi(x, y))_{ \vec{n}} = 0$) and constant flow at an infinite distance on the upper face ($(\nabla \phi(x, y))_{\vec{n}} = 1$). In our case, semi-infinite domain is aproximated by elongated rectangle (height -- $50$, width --$2$). Expression for $\upsilon(H) = a_1$ is equal to:
+      In the work of Gubiec et al.\cite{gubiec2008fingered}, an expression was obtained for the rate $\upsilon(H)$ of the growth of one river under the following conditions: a rectangular region with infinite height and the width of $2$. In the center of bottom face, river branch with lenght $H$ is positioned (Fig. \ref{test_boundary}). At the bottom face and river branch, absorbing boundary conditions ($\phi(0, y) = 0$) are set, reflecting boundary conditions on the side faces ($(\nabla \phi(x, y))_{ \vec{n}} = 0$) and constant flow at an infinite distance on the upper face ($(\nabla \phi(x, y))_{\vec{n}} = 1$). In our case, semi-infinite domain is aproximated by elongated rectangle (height -- $50$, width --$2$). Expression for $\upsilon(H) = a_1$ is then:
 
       \begin{equation}
         \label{velocity_analytical}
         \upsilon(H) = \sqrt{\frac{2}{\frac{\pi}{2}\coth(\frac{\pi}{2}H)}} \,.
       \end{equation} 
       
-      and is used for validation of the $a_1$ series parameter which is shown on Fig. \ref{convergence_new}.
+      \noindent and is used for validation of the $a_1$ series parameter which is shown on Fig. \ref{convergence_new}. On the right plot we are changing $A_{min}$ parameter, used in mesh refinment formula \ref{mesh_ref_formula}, which controls mesh elements area around springs. For $A_{min} \sim 10^{-9}$, relative error is around $0.01\%$. On the left plot you can see convergence of numerical integral, for value of eps (see function arguments of qtrap above) below $0.4$ we are getting relative error of order $0.0003\%$.
 
       \begin{figure}[H]
         \centering
@@ -796,7 +798,7 @@
 
       \subsection{Laplacian field}
         
-        Here we present on Fig. \ref{laplacian_etas} growth of complex networks in quadrangular region with width equal to $1$ and height -- $5$. Boundary conditions are same as shown on Fig \ref{test_boundary}.
+        In Fig.\ref{laplacian_etas} we present the growth of complex networks in rectangular region with width equal to $1$ and height -- $5$. Boundary conditions are the same as shown on Fig.\ref{test_boundary}.
       
         \begin{figure}[H]
           \centering
@@ -805,7 +807,7 @@
           \label{laplacian_etas}
         \end{figure} 
 
-        Next, we present on Fig. \ref{laplacian_big_etas} similar growth as on Fig. \ref{laplacian_etas} but in a bigger qudrangle with width equal to $3$ and height -- $7$.
+        Next, we present on Fig.\ref{laplacian_big_etas} similar growth as on Fig.\ref{laplacian_etas} but in a bigger rectangle with width equal to $3$ and height -- $7$.
 
         \begin{figure}[H]
           \centering
@@ -814,9 +816,12 @@
           \label{laplacian_big_etas}
         \end{figure}
 
+        When $\eta = 0$, as the result we are getting network with few bifurcations and long branches. With the positive values of $\eta > 0$ we get river network where springs with higher groundwater flux grow faster and springs with lower flux eventually stop the growth. With $\eta > 2$ competition between branches is even more visible and in the result we are getting one composite branch which tends to grow in the middle of region with short nongrowing side branches (Fig.\ref{laplacian_etas}). For bigger region Fig.\ref{laplacian_big_etas}, river network strucutre is similar but side branches are more developed for higher $\eta$ values. Because bigger region gets more groundwater and fluxes are higher.
+        \pagebreak
+
       \subsection{Poisson field}
         
-        Here we present on Fig. \ref{poisson_etas} growth of complex networks in quadrangular region with width equal to $1$ and height -- $1$. Dirichlet boundary conditions $\phi = 0$ are applied on all faces.
+        In Fig.\ref{poisson_etas} we present the growth of complex networks in square region with side equal to $1.5$. Dirichlet boundary conditions $\phi = 0$ are applied on all faces.
 
         \begin{figure}[H]
           \centering
@@ -825,9 +830,11 @@
           \label{poisson_etas}
         \end{figure}
 
+        When $\eta = 0$, we have also constant growth as it was said for Laplacian case. This results in longer branches. With the higher values of $\eta$ network becomes more fragmented, more bifurcation occurs and river network more evenly is spreading over domain. Unlike in Laplacian field, in Poisson field source of groundwater is evenly distributed over domain.
+
       \subsection{Histograms of branch lengths and Strahler numbers}
       
-        Here we present on Fig. \ref{laplacian_etas_analysis} length and Strahler number histogram for laplacian river networks shown in Fig. \ref{laplacian_etas}.
+        In Fig.\ref{laplacian_etas_analysis} we present length and Strahler number histograms for Laplacian river networks shown in Fig. \ref{laplacian_etas}:
         
         \begin{figure}[H]
           \centering
@@ -836,7 +843,9 @@
           \label{laplacian_etas_analysis}
         \end{figure}
 
-        Next, we present on Fig. \ref{laplacian_big_etas_analysis} length and Strahler number histogram of laplacian river networks on bigger domain shown in Fig. \ref{laplacian_big_etas}.
+        Strahler number of river network is numerical measure of its branching complexity. Each segment of a river within river network is treated as a node in a tree, with the next segment downstream as its parent. When two first-order streams come together, they form a second-order stream. When two second-order streams come together, they form a third-order stream. Streams of lower order joining a higher order stream do not change the order of the higher stream. Strahler numbers evaluate for Poisson river networks are presented on histograms plots in log scale (both axes). On the plots also are present fitted power law functions plots where you can see that power $k$ is varying from $-1.3$ to $-2.9$ and coefficient of proportionality $a$ -- from $42$ to $169$. River branch length histogram is to noisy to make it fit into power law distribution, so we provide histogram in linear scale without fitting. 
+
+        In Fig.\ref{laplacian_big_etas_analysis} we present length and Strahler number histograms of Laplacian river networks on bigger domain shown in Fig. \ref{laplacian_big_etas}:
 
         \begin{figure}[H]
           \centering
@@ -845,7 +854,9 @@
           \label{laplacian_big_etas_analysis}
         \end{figure}
 
-        And here we present on Fig. \ref{poisson_etas_analysis} length and Strahler number histogram for poisson rivers networks shown in Fig. \ref{poisson_etas}.
+        For Fig.\ref{laplacian_big_etas_analysis} Strahler number distribution in log scale gives even better fit for power law. Parameter $k$ is in range from $-1.94$ to $-2.26$, and parameter $a$ -- from $112$ to $318$.
+
+        And here we present on Fig.\ref{poisson_etas_analysis} length and Strahler number histograms for Poisson rivers networks shown in Fig. \ref{poisson_etas}:
 
         \begin{figure}[H]
           \centering
@@ -854,11 +865,13 @@
           \label{poisson_etas_analysis}
         \end{figure}
 
+        River networks grown in Poisson field gives best fits of power law for Strahler numbers distribution and leght distribution. For Strahler number distribution parameter $k$ is in range from $1.79$ to $2.38$. River branch lengths distribution gives next parameter $k$ after power law fitting values -- from $-1.16$ to $-1.8$.
+
 
   \chapter{Summary}
 
     %В цій праці магістерській ми розглянули розвиток просторової мережі на прикладі еволюції мережі річок. Спочатку ми зарепрезентували теоретичну модель з фокусом на підземні води і ерозію в околиці джерел. Запровадили спрощення одновимірної річки. Показали як описати поле підземних вод $\phi(x, y)$ в околиці джерела за допомогою пареметрів розкладу $a_i$. Тоді показали як параметри $a_i$ можна інтерпретувати і як вони пов'язані із динамікою розвитку мережі.\par
-    In this Master thesis, we considered the development of the spatial network using the example of the evolution of the river network. First, we represented a theoretical model with a focus on groundwater and erosion in the vicinity of springs. Simplification of the one-dimensional river was introduced. It was shown how to describe the field of groundwater $\phi(x, y)$ in the vicinity of the spring using the $a_i$ parameters. Then it was shown how the parameters $a_i$ can be interpreted and how they are related to the dynamics of the network development.\par
+    In this Master thesis, we considered the development of the spatial network using the example of the evolution of the river network. First, we formulated a theoretical model with a focus on groundwater and erosion in the vicinity of springs. Simplification of the one-dimensional river was introduced. It was shown how to describe the field of groundwater $\phi(x, y)$ in the vicinity of the spring using the $a_i$ parameters. Then it was shown how the parameters $a_i$ can be interpreted and how they are related to the dynamics of the network development.\par
 
     %Далі ми запропонували своє чисельне рішення цієї складної проблеми взаємозалежності мережі і поля під впливом якого, вона розвивається у бібліотеці Python -- Riversim. Детально описали структуру бібліотеки із прикладами її використання. Як задавати довільну початкову геометрію. Як задати початкову позицію джерел із яких буде відбуватися розвиток річки. В якій структурі даних зберігається мережа річки і як із нею працювати. Як задавати граничні умови і яких видів вони присутні у програмі. Те, як із початкової геометрії згенерувати сітку з допомогою Tethex i Triangle С++ бібліотек. Після цього як отримати поле підземних вод з допомогою методу FEM, який імплементований в бібліотеці Deal.II. Як обчислити параметри  $a_i$ використовуючи чисельний інтеграл.\par
     Next, we described our open source numerical solution to the river network development in the Python library -- Riversim. The structure of the library was described in detail with examples of its use: 
@@ -874,7 +887,7 @@
     \end{itemize}
 
     %Коротко показана верифікація бібліотеки Riversim, приклад програми для обрахування розвитку мережі і деякі резултати симуляцій.\par
-    The verification of the Riversim library, an example of a program for calculating the development of the network, simulations result in Laplacian and Poisson field for different $\eta$, branch length distribution and Strahler number distribution for different $\eta$ are shown.\par
+    The verification of the Riversim library, an example of a program for calculating the development of the network, simulations result in Laplacian and Poisson field for different $\eta$, branch length distribution and Strahler number distribution for different $\eta$. Distributions of branch lengths and Strahler numbers in river networks grown in Poisson field shows good fit to power law which is shown in Fig.\ref{poisson_etas_analysis}.\par
 
     \section*{Acknowledgements}
       
