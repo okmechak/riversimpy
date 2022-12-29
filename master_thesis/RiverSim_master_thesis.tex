@@ -803,7 +803,7 @@
         \begin{figure}[H]
           \centering
           \includegraphics[width=1\textwidth]{figs/sims/laplacian_field_etas.png}         
-          \caption{River networks in Laplacian field with different $\eta$ parameter value and bifurcation threshold equal to $0.5$.}
+          \caption{River networks in Laplacian field with different $\eta$ parameter values and bifurcation threshold equal to $0.5$.}
           \label{laplacian_etas}
         \end{figure} 
 
@@ -812,11 +812,11 @@
         \begin{figure}[H]
           \centering
           \includegraphics[width=0.83\textwidth]{figs/sims/laplacian_big_field_etas.png}        
-          \caption{River networks in Laplacian field with different $\eta$ parameter value and bifurcation threshold equal to $0.5$.}
+          \caption{River networks in Laplacian field with different $\eta$ parameter values and bifurcation threshold equal to $0.5$.}
           \label{laplacian_big_etas}
         \end{figure}
 
-        When $\eta = 0$, as the result we are getting a network with few bifurcations and long branches. With the positive values of $\eta > 0$, we get a river network where springs with higher groundwater flux grow faster, and springs with lower flux eventually stop the growth. With $\eta > 2$ competition between branches is even more visible and as the result, we are getting one composite branch which tends to grow in the middle of the region with short nongrowing side branches (Fig.\ref{laplacian_etas}). For bigger region Fig.\ref{laplacian_big_etas}, river network structure is similar but side branches are more developed for higher $\eta$ values. Because bigger region gets more groundwater and fluxes are higher.
+        When $\eta = 0$, the velocity of erosion in the vicinity of springs does not depend on groundwater flux, as the result we are getting a network with few bifurcations and long branches which never stop their growth. With the positive values of $\eta > 0$, we get a river network where springs with higher groundwater flux grow faster, and springs with lower flux eventually stop the growth. With $\eta > 2$ competition between branches is even more visible and as the result, we are getting one composite branch which tends to grow in the middle of the region with short nongrowing side branches (Fig.\ref{laplacian_etas}). For bigger region Fig.\ref{laplacian_big_etas}, river network structure is similar but side branches are more developed for higher $\eta$ values. This is because bigger region gets more groundwater and fluxes are higher.
         \pagebreak
 
       \subsection{Poisson field}
@@ -826,11 +826,11 @@
         \begin{figure}[H]
           \centering
           \includegraphics[width=0.83\textwidth]{figs/sims/poisson_field_etas.png}        
-          \caption{River networks in Poisson field with different $\eta$ parameter value and bifurcation threshold equal to $0.5$.}
+          \caption{River networks in Poisson field with different $\eta$ parameter values and bifurcation threshold equal to $0.5$.}
           \label{poisson_etas}
         \end{figure}
 
-        When $\eta = 0$, we have also constant growth as was said for the Laplacian case. This results in longer branches. With the higher values of $\eta$ network becomes more fragmented, more bifurcation occurs and the river network more evenly is spreading over the domain. Unlike in the Laplacian field, in the Poisson field source of groundwater is evenly distributed over the domain.
+        When $\eta = 0$, we have also a constant growth rate of each spring. This results in longer branches and smaller coverage of the region by the river network. With the higher values of $\eta$ network becomes more fragmented, more bifurcation occurs and the river network more evenly is spreading over the domain. Unlike in the Laplacian field, in the Poisson field source of groundwater is evenly distributed over the domain.
 
       \subsection{Histograms of branch lengths and Strahler numbers}
       
@@ -843,7 +843,7 @@
           \label{laplacian_etas_analysis}
         \end{figure}
 
-        Strahler number of river networks is a numerical measure of its branching complexity. Each river segment within the river network is treated as a node in a tree, with the next segment downstream as its parent. When two first-order streams come together, they form a second-order stream. When two second-order streams come together, they form a third-order stream. Streams of lower order joining a higher order stream do not change the order of the higher stream. Strahler numbers evaluate for Poisson river networks are presented on histograms plots in log scale (both axes). On the plots also are present fitted power law functions plots where power $k$ is varying from $-1.3$ to $-2.9$ and coefficient of proportionality $a$ -- from $42$ to $169$. The river branch length histogram is too noisy to make it fit into power law distribution, so we provide a histogram in linear scale without fitting.
+        Strahler number of river networks is a numerical measure of its branching complexity. Each river segment within the river network is treated as a node in a tree, with the next segment downstream as its parent. When two first-order streams come together, they form a second-order stream. When two second-order streams come together, they form a third-order stream. Streams of lower order joining a higher order stream do not change the order of the higher stream. The statistics of the Strahler number of individual segments of the Poisson river networks are presented on histogram plots in log scale (both axes). On the plots also are present fitted power law functions plots where power $k = -2.1 \pm 0.16$. Power $k$ does not show a significant trend depending on $\eta$. The river branch length histogram is too noisy to make it fit into power law distribution, so we provide a histogram in linear scale without fitting.
 
         In Fig.\ref{laplacian_big_etas_analysis} we present length and Strahler number histograms of Laplacian river networks on a bigger domain shown in Fig. \ref{laplacian_big_etas}:
 
@@ -854,7 +854,7 @@
           \label{laplacian_big_etas_analysis}
         \end{figure}
 
-        For Fig.\ref{laplacian_big_etas_analysis} Strahler number distribution in the log scale gives an even better fit for power law. Parameter $k$ is in range from $-1.94$ to $-2.26$, and parameter $a$ -- from $112$ to $318$.
+        For Fig.\ref{laplacian_big_etas_analysis} Strahler number distribution in the log scale gives an even better fit for power law. Parameter $k$ is equal to $-2.12 \pm 0.05$.
 
         And here we present in Fig.\ref{poisson_etas_analysis} length and Strahler number histograms for Poisson rivers networks shown in Fig. \ref{poisson_etas}:
 
@@ -865,7 +865,7 @@
           \label{poisson_etas_analysis}
         \end{figure}
 
-        River networks grown in the Poisson field give the best fits of the power law for Strahler numbers distribution and length distribution. For Strahler number distribution parameter $k$ is in the range from $-1.79$ to $-2.38$. River branch lengths distribution gives the next parameter $k$ after power law fitting values -- from $-1.16$ to $-1.8$.
+        River networks grown in the Poisson field give the best fits of the power law for Strahler numbers distribution and length distribution also can be fitted into power law distribution. For Strahler number distribution parameter $k$ is equal to $-2.15 \pm 0.07$. And for river branch lengths distribution power $k$ is equal to $-1.47 \pm 0.48$. This means that the river networks in the Poisson field are scale-free and resemble fractal features.
 
 
   \chapter{Summary}
@@ -887,7 +887,8 @@
     \end{itemize}
 
     %Коротко показана верифікація бібліотеки Riversim, приклад програми для обрахування розвитку мережі і деякі резултати симуляцій.\par
-    The verification of the Riversim library, an example of a program for calculating the development of the network, simulations result in Laplacian and Poisson fields for different $\eta$, branch length distribution, and Strahler number distribution for different $\eta$. Distributions of branch lengths and Strahler numbers in river networks grown in the Poisson field show a good fit to power law which is shown in Fig.\ref{poisson_etas_analysis}.\par
+    %  Ми показали що програма дала правильні резудьати і на графіках
+    We showed verification of parameter $a_1$ which was compared with the analytical solution with relative error up to $0.0003\%$. We presented the main program loop for river network generations. Simulation results in Laplacian and Poisson fields for different $\eta$ were shown. We presented and analyzed branch length distribution and Strahler number distribution for different $\eta$. Strahler number distribution can be fit into power law distribution with power $k$ equal to $-2.11 \pm 0.13$ for Laplacian networks, and $k$ equal to $-2.15 \pm 0.07$ for Poisson networks. For Poisson river networks length distribution also can be fitted into power law distribution, which is not the case for Laplacian networks. Power $k$ for length distribution is equal to $-1.48 \pm 0.5$. This implies that the river networks in the Poisson field are scale-free and resemble fractal features.\par
 
     \section*{Acknowledgements}
       
